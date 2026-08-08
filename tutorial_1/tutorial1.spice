@@ -1,0 +1,36 @@
+** sch_path: /home/joyenbenitto/Desktop/projects/EE5311/tutorial_1/tutorial1.sch
+**.subckt tutorial1
+XM1 Vin Vin GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.45 nf=1 ad=0.1305 as=0.1305 pd=1.48 ps=1.48 nrd=0.644444444444444
++ nrs=0.644444444444444 sa=0 sb=0 sd=0 mult=1
+Vin1 Vin GND 1.8
+**** begin user architecture code
+
+
+.lib /home/joyenbenitto/pdk/open_pdks/sources/sky130_fd_pr/combined_models/sky130.lib.spice tt
+
+.control
+save all
+dc Vin1 0 1.8 0.01
+let mu = 0.025
+let WbyL = 0.42/0.15
+let Cox = 0.00834
+let Vth = 0.7
+let vsat = 8e4
+let Vgs = v(Vin)
+let Vds = Vgs
+let lambdan = 0.2
+let EcL = 2*vsat * 0.15e-6/mu
+let Vgt = max(Vgs - Vth, 0)
+let Vdsat = (Vgt)*EcL/(Vgt + EcL)
+let Vmin = min(Vgs, Vdsat)
+let idfit = 0.5*mu*Cox*WbyL*EcL*(Vgt^2)*(1 + lambdan * Vds)/(Vgt + EcL)
+set filetype=ascii
+wrdata nmos_ids_vgs.txt -I(Vin1) idfit
+plot -I(Vin1) idfit
+.endc
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

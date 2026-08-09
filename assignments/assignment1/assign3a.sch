@@ -38,3 +38,7 @@ m=1
 value=100p
 footprint=1206
 device="ceramic capacitor"}
+C {code_shown.sym} 240 -130 0 0 {name=sim only_toplevel=false value="
+.include sim3b.cir
+"}
+C {sky130_fd_pr/corner.sym} 240 -20 0 0 {name=CORNER only_toplevel=false corner=tt}

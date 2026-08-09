@@ -31,9 +31,9 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {gnd.sym} 370 210 0 0 {name=l1 lab=GND}
-C {code_shown.sym} 660 40 0 0 {name=sim only_toplevel=false 
+C {code_shown.sym} 310 -180 0 0 {name=sim only_toplevel=false 
 value="
 .include sim1b.cir
 "}
-C {sky130_fd_pr/corner.sym} 670 150 0 0 {name=CORNER only_toplevel=false corner=tt}
+C {sky130_fd_pr/corner.sym} 130 -220 0 0 {name=CORNER only_toplevel=false corner=tt}
 C {vsource.sym} 460 -20 2 0 {name=Vds value=1.8 savecurrent=false}

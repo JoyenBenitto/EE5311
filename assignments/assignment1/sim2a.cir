@@ -1,0 +1,35 @@
+.control
+  * net1 (=Gate=Drain, diode-connected) must swing negative for this pMOS
+  * to turn on: Source is grounded, so Vgs = net1 - 0 = net1, and pMOS
+  * conduction needs Vgs < -Vt_p (~ -0.7V), not Vgs > 0.
+  dc Vgs 0 -1.8 -0.01
+
+  let w_val = 0.42u
+  let l_val = 0.15u
+
+  * Simulation data (current flows into net1 from the transistor, same as
+  * the earlier S=VDD variant of this circuit -- i(Vgs) is already positive)
+  let isd_sim = i(Vgs)
+
+  * Analytical parameters (pMOS, Tutorial 1)
+  let vgs   = net1
+  let vsg   = -vgs
+  let vt_p  = 0.7
+  let mu_p  = 0.009
+  let cox_p = 8.16e-3
+  let vsat_p = 3e4
+
+  let vsgt = max(0, vsg - vt_p)
+
+  let EsatL = (vsat_p * l_val) / mu_p
+
+  let vsdsat = (vsgt * EsatL) / (vsgt + EsatL + 1e-12)
+
+  let isd_anal = mu_p * cox_p * (w_val / l_val) * (vsgt * vsdsat - 0.5 * vsdsat^2)
+
+  * computing and printing the error
+  let pct_error = abs((isd_sim - isd_anal) / (isd_sim + 1e-12)) * 100
+  print mean(pct_error)
+
+  plot isd_sim isd_anal vs vsg
+.endc

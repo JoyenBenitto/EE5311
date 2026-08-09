@@ -1,0 +1,19 @@
+** sch_path: /home/joyen/ee5311/workdir/EE5311/assignments/assignment1/assign2c.sch
+**.subckt assign2c
+Vgd net1 GND -1.8
+Vds net2 GND 1.8
+XM1 net2 net1 GND VDD sky130_fd_pr__pfet_01v8 L={Length} W={Width} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+Vb VDD GND 1.8
+**** begin user architecture code
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+
+
+.include sim2c.cir
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.GLOBAL VDD
+.end

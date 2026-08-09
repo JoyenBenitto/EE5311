@@ -6,14 +6,14 @@ S {}
 F {}
 E {}
 N 930 -170 930 -100 {lab=#net1}
-N 800 -70 890 -70 {lab=#net2}
-N 800 -10 800 10 {lab=GND}
-N 800 10 930 10 {lab=GND}
+N 800 -70 890 -70 {lab=VDD}
 N 930 -40 930 10 {lab=GND}
 N 990 -170 1070 -170 {lab=GND}
 N 1070 -170 1070 20 {lab=GND}
 N 930 20 1070 20 {lab=GND}
 N 930 10 930 20 {lab=GND}
+N 610 -150 610 -120 {lab=VDD}
+N 610 -60 610 -30 {lab=GND}
 C {code_shown.sym} 310 -180 0 0 {name=sim only_toplevel=false
 value="
 .include sim1c.cir
@@ -35,9 +35,8 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {gnd.sym} 930 10 0 0 {name=l1 lab=GND}
-C {vsource.sym} 800 -40 0 0 {name=Vgs value=1.8 savecurrent=false}
-C {vsource.sym} 800 -40 0 0 {name=V2 value=3 savecurrent=false}
-C {vsource.sym} 800 -40 0 0 {name=V3 value=3 savecurrent=false}
-C {vsource.sym} 800 -40 0 0 {name=V4 value=3 savecurrent=false}
-C {vsource.sym} 800 -40 0 0 {name=V5 value=3 savecurrent=false}
 C {vsource.sym} 960 -170 3 0 {name=Vds value=1.8 savecurrent=false}
+C {vdd.sym} 800 -70 0 0 {name=l2 lab=VDD}
+C {vsource.sym} 610 -90 0 0 {name=Vgs value=1.8 savecurrent=false}
+C {vdd.sym} 610 -150 0 0 {name=l3 lab=VDD}
+C {gnd.sym} 610 -30 0 0 {name=l4 lab=GND}

@@ -5,7 +5,6 @@ let vt_n     = 0.7
 let mu_n     = 0.025
 let cox_n    = 8.34e-3
 let vsat_n   = 8e4
-let lambda_n = 0.2
 let w_val    = 0.42u
 let l_val    = 0.15u
 let EsatL    = (vsat_n * l_val) / mu_n
@@ -27,16 +26,26 @@ foreach idx 1 2 3 4
   let vgt$idx      = max(0, vgs$idx - vt_n)
   let vdsat$idx    = (vgt$idx * EsatL) / (vgt$idx + EsatL + 1e-12)
   let vmin$idx     = min(vds$idx, vdsat$idx)
-  let ids_anal$idx = mu_n * cox_n * (w_val / l_val) * (vgt$idx * vmin$idx - 0.5 * vmin$idx^2) * (1 + lambda_n * (vds$idx - vmin$idx))
+  let ids_anal$idx = mu_n * cox_n * (w_val / l_val) * (vgt$idx * vmin$idx - 0.5 * vmin$idx^2)
   let pct_error$idx = abs((ids_sim$idx - ids_anal$idx) / (ids_sim$idx + 1e-12)) * 100
 
   print mean(pct_error$idx)
 end
 
-* Combined overlay: spans the 4 separate dc-analysis plots (dc1..dc4) made
-* above, so vectors from earlier iterations must be qualified by plot name.
-plot dc1.ids_sim1 dc1.ids_anal1 dc2.ids_sim2 dc2.ids_anal2 dc3.ids_sim3 dc3.ids_anal3 dc4.ids_sim4 dc4.ids_anal4 vs dc1.vds1
+* Human-readable aliases so the plot/hardcopy legend shows which curve is
+* which Vgs, instead of the bare ids_simN/ids_analN/dcN.* vector names.
+let Vds_V           = dc1.vds1
+let Ids_sim_Vgs0_6V  = dc1.ids_sim1
+let Ids_anal_Vgs0_6V = dc1.ids_anal1
+let Ids_sim_Vgs1_0V  = dc2.ids_sim2
+let Ids_anal_Vgs1_0V = dc2.ids_anal2
+let Ids_sim_Vgs1_4V  = dc3.ids_sim3
+let Ids_anal_Vgs1_4V = dc3.ids_anal3
+let Ids_sim_Vgs1_8V  = dc4.ids_sim4
+let Ids_anal_Vgs1_8V = dc4.ids_anal4
 
-hardcopy assign1b_output_char.ps dc1.ids_sim1 dc1.ids_anal1 dc2.ids_sim2 dc2.ids_anal2 dc3.ids_sim3 dc3.ids_anal3 dc4.ids_sim4 dc4.ids_anal4 vs dc1.vds1
+plot Ids_sim_Vgs0_6V Ids_anal_Vgs0_6V Ids_sim_Vgs1_0V Ids_anal_Vgs1_0V Ids_sim_Vgs1_4V Ids_anal_Vgs1_4V Ids_sim_Vgs1_8V Ids_anal_Vgs1_8V vs Vds_V
+
+hardcopy assign1b_output_char.ps Ids_sim_Vgs0_6V Ids_anal_Vgs0_6V Ids_sim_Vgs1_0V Ids_anal_Vgs1_0V Ids_sim_Vgs1_4V Ids_anal_Vgs1_4V Ids_sim_Vgs1_8V Ids_anal_Vgs1_8V vs Vds_V
 
 .endc

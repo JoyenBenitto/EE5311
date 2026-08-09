@@ -2,17 +2,112 @@
 .param Length = 0.15
 .dc Vds 0 1.8 0.01
 .control
-    let index = 1
-    set cache = ( )
-    while index <= 10
-        let newW = index * 0.42
-        let newL = index * 0.15
-        alterparam Width = $&newW
-        alterparam Length = $&newL
-        reset
-        run
-        set cache = ( $cache dc{$&index}.i(Vds)*-1 )
-        let index = index + 1
-    end
-    plot $cache
+
+* Process parameters (from Tutorial 1). Vgs is fixed at VDD=1.8V by the
+* schematic's own Vgs source, so the overdrive Vgt is the same constant
+* for every size swept below.
+let vt_n   = 0.7
+let mu_n   = 0.025
+let cox_n  = 8.34e-3
+let vsat_n = 8e4
+let vgt    = 1.8 - vt_n
+
+* Pre-allocate result vectors for the Vdsat-vs-L (and vsat_ratio-vs-L) plot.
+* Element-indexed assignment (v[i] = ...) below is what actually survives
+* across the dc analyses/plot-context switches in the loop -- unlike
+* vector-literal or comma-list construction, which silently don't do what
+* their syntax suggests (vector(N) means "ramp 0..N-1", not "pack these
+* N values together").
+let Vdsat_vs_L     = vector(10)*0
+let VsatRatio_vs_L = vector(10)*0
+let VelSatEffect_vs_L = vector(10)*0
+let L_vec          = vector(10)*0
+
+let index = 1
+set cache = ( )
+while index <= 10
+    let newW = index * 0.42
+    let newL = index * 0.15
+    alterparam Width = $&newW
+    alterparam Length = $&newL
+    reset
+    run
+
+    * newW/newL are bare micron-scale numbers (matching the netlist's own
+    * SCALE=1e-6 option applied to the device); convert to metres here
+    * since these physics formulas are not aware of that netlist-level scale.
+    let L_m = newL * 1u
+    let W_m = newW * 1u
+
+    * EsatL = L*vsat/mu grows with L, so Vdsat = Vgt*EsatL/(Vgt+EsatL)
+    * should climb toward the long-channel value Vgt as L increases --
+    * that rise IS the velocity-saturation effect shrinking.
+    let EsatL       = (vsat_n * L_m) / mu_n
+    let vdsat_pred  = (vgt * EsatL) / (vgt + EsatL)
+
+    * Ideal long-channel (no velocity saturation) square-law prediction:
+    * depends only on W/L, which is held constant across all 10 sizes, so
+    * this is the same number every iteration -- the "no effect" baseline.
+    let ids_ideal   = 0.5 * mu_n * cox_n * (W_m / L_m) * vgt * vgt
+
+    * Actual simulated current at Vds=1.8V (last point of the sweep).
+    let ids_sim_max = dc{$&index}.i(Vds)[180] * -1
+
+    * Ratio -> 1 as velocity saturation stops suppressing the current
+    * relative to the ideal long-channel prediction. (Secondary metric --
+    * can overshoot 1 at large L since it also picks up channel-length
+    * modulation, which this simplified ids_ideal does not model.)
+    let vsat_ratio  = ids_sim_max / ids_ideal
+
+    * Primary metric: fractional shortfall of Vdsat below the ideal
+    * long-channel value Vgt, i.e. how much velocity saturation is
+    * compressing the saturation voltage. Purely formula-derived (no
+    * simulation-based confound like channel-length modulation), so it
+    * decreases cleanly and monotonically from ~1 toward 0 as L grows.
+    let velsat_effect = 1 - (vdsat_pred / vgt)
+
+    let Vdsat_vs_L[index-1]        = vdsat_pred
+    let VsatRatio_vs_L[index-1]    = vsat_ratio
+    let VelSatEffect_vs_L[index-1] = velsat_effect
+    let L_vec[index-1]             = newL
+
+    print newL
+    print vdsat_pred
+    print ids_sim_max
+    print vsat_ratio
+    print velsat_effect
+
+    * Clean, readable legend name: "Nx the base (0.42/0.15) size"
+    let Ids_x$&index = dc{$&index}.i(Vds) * -1
+
+    * $cache is read back later from dc10's context, so each entry must be
+    * qualified with the plot it was actually defined in.
+    set cache = ( $cache dc{$&index}.Ids_x$&index )
+    let index = index + 1
+end
+
+let Vds_axis = dc1.v(net1)
+
+* Family of Ids-Vds curves across all 10 sizes (W/L ratio held constant)
+* Short, single-token axis labels (no spaces/parens/slashes) -- ngspice's
+* X11 plot renderer garbles/reverses longer multi-word label strings.
+plot $cache vs Vds_axis xlabel Vds_V ylabel Ids_A
+hardcopy assign1c_iv_family.ps $cache vs Vds_axis xlabel Vds_V ylabel Ids_A
+
+* Vdsat vs L (rises toward the long-channel value Vgt as L grows)
+plot Vdsat_vs_L vs L_vec xlabel L_um ylabel Vdsat_V
+hardcopy assign1c_vdsat_vs_L.ps Vdsat_vs_L vs L_vec xlabel L_um ylabel Vdsat_V
+
+* PRIMARY plot: velocity-saturation effect vs L -- decreases cleanly and
+* monotonically toward 0 as L grows, which is the direct answer to
+* "note how the velocity saturation effect decreases as length increases."
+plot VelSatEffect_vs_L vs L_vec xlabel L_um ylabel VelSatEffect
+hardcopy assign1c_velsat_effect_vs_L.ps VelSatEffect_vs_L vs L_vec xlabel L_um ylabel VelSatEffect
+
+* Secondary/supporting: ratio of simulated to ideal long-channel current.
+* Also trends toward 1 as velocity saturation fades, but can overshoot
+* past 1 at large L due to channel-length modulation (see discussion).
+plot VsatRatio_vs_L vs L_vec xlabel L_um ylabel Ids_ratio
+hardcopy assign1c_vsatratio_vs_L.ps VsatRatio_vs_L vs L_vec xlabel L_um ylabel Ids_ratio
+
 .endc

@@ -4,3 +4,23 @@
 \maketitle
 
 \section{Problem 1}
+
+\subsection*{Device Parameters}
+
+The following long-channel/velocity-saturation parameters (sky130, 1.8\,V process) are used throughout this problem:
+
+\begin{itemize}
+  \item nMOS: $V_{Tn} = 0.7$\,V, $\mu_n = 0.025\ \text{m}^2/\text{Vs}$, $C_{oxn} = 8.34\ \text{fF}/\mu\text{m}^2$, $v_{satn} = 8\times10^4$\,m/s, $\lambda_n = 0.2/\text{V}$
+  \item pMOS: $|V_{Tp}| = 0.7$\,V, $\mu_p = 0.009\ \text{m}^2/\text{Vs}$, $C_{oxp} = 8.16\ \text{fF}/\mu\text{m}^2$, $v_{satp} = 3\times10^4$\,m/s, $\lambda_p = 0.2/\text{V}$
+\end{itemize}
+
+\subsection{Part (a): nMOS Transfer Characteristics}
+
+Consider an nMOS transistor with $L = 0.15\,\mu\text{m}$ and $W = 0.42\,\mu\text{m}$, connected in a diode-connected configuration: the gate and drain are tied together to a swept input source $V_{in}$, the source and body are grounded, and the drain current $I_{ds}$ flows from $V_{in}$ into the drain.
+
+\begin{enumerate}
+  \item Determine whether the transistor operates in the saturation or linear region for this connection.
+  \item Using Ngspice, obtain the simulated transfer characteristic $I_{ds}$ vs.\ $V_{gs}$ by sweeping $V_{in}$ from 0 to 1.8\,V.
+  \item Derive and plot the analytical transfer characteristic on the same axes, using the velocity-saturation drain current model.
+  \item Compute the mean percentage error between the simulated and analytical curves.
+\end{enumerate}

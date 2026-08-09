@@ -1,0 +1,42 @@
+.control
+
+* Process / device parameters (from Tutorial 1)
+let vt_n     = 0.7
+let mu_n     = 0.025
+let cox_n    = 8.34e-3
+let vsat_n   = 8e4
+let lambda_n = 0.2
+let w_val    = 0.42u
+let l_val    = 0.15u
+let EsatL    = (vsat_n * l_val) / mu_n
+
+* Vgs values to sweep, one named constant per index (all defined before any
+* analysis has run, so they stay globally visible from any later dc<N> plot)
+let vgs1 = 0.6
+let vgs2 = 1.0
+let vgs3 = 1.4
+let vgs4 = 1.8
+
+foreach idx 1 2 3 4
+
+  alter Vin = vgs$idx
+  dc Vds 0 1.8 0.02
+
+  let vds$idx      = v(net2)
+  let ids_sim$idx  = -i(Vds)
+  let vgt$idx      = max(0, vgs$idx - vt_n)
+  let vdsat$idx    = (vgt$idx * EsatL) / (vgt$idx + EsatL + 1e-12)
+  let vmin$idx     = min(vds$idx, vdsat$idx)
+  let ids_anal$idx = mu_n * cox_n * (w_val / l_val) * (vgt$idx * vmin$idx - 0.5 * vmin$idx^2) * (1 + lambda_n * (vds$idx - vmin$idx))
+  let pct_error$idx = abs((ids_sim$idx - ids_anal$idx) / (ids_sim$idx + 1e-12)) * 100
+
+  print mean(pct_error$idx)
+end
+
+* Combined overlay: spans the 4 separate dc-analysis plots (dc1..dc4) made
+* above, so vectors from earlier iterations must be qualified by plot name.
+plot dc1.ids_sim1 dc1.ids_anal1 dc2.ids_sim2 dc2.ids_anal2 dc3.ids_sim3 dc3.ids_anal3 dc4.ids_sim4 dc4.ids_anal4 vs dc1.vds1
+
+hardcopy assign1b_output_char.ps dc1.ids_sim1 dc1.ids_anal1 dc2.ids_sim2 dc2.ids_anal2 dc3.ids_sim3 dc3.ids_anal3 dc4.ids_sim4 dc4.ids_anal4 vs dc1.vds1
+
+.endc

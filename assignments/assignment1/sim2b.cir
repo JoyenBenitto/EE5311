@@ -1,0 +1,44 @@
+.control
+
+* Process / device parameters (pMOS, from Tutorial 1)
+let vt_p     = 0.7
+let mu_p     = 0.009
+let cox_p    = 8.16e-3
+let vsat_p   = 3e4
+let lambda_p = 0.2
+let w_val    = 0.42u
+let l_val    = 0.15u
+let EsatL    = (vsat_p * l_val) / mu_p
+
+* Vsg magnitudes to sweep (matching the nMOS Vgs values)
+let vsg1 = 0.6
+let vsg2 = 1.0
+let vsg3 = 1.4
+let vsg4 = 1.8
+
+foreach idx 1 2 3 4
+  * Source is grounded (net1=Gate, net2=Drain, S=GND, B=VDD fixed via Vb),
+  * so Vsg = 0 - net1 = -net1 -> Vgd must be driven negative to turn M1 on.
+  let vg$idx = -vsg$idx
+  alter Vgd = vg$idx
+  * Sweep net2 negative so that Vsd = 0 - net2 = -net2 runs 0 -> 1.8
+  dc Vds 0 -1.8 -0.02
+
+  let vsd$idx      = -v(net2)
+  let isd_sim$idx  = i(Vds)
+  let vsgt$idx     = max(0, vsg$idx - vt_p)
+  let vsdsat$idx   = (vsgt$idx * EsatL) / (vsgt$idx + EsatL + 1e-12)
+  let vmin$idx     = min(vsd$idx, vsdsat$idx)
+  let isd_anal$idx = mu_p * cox_p * (w_val / l_val) * (vsgt$idx * vmin$idx - 0.5 * vmin$idx^2) * (1 + lambda_p * (vsd$idx - vmin$idx))
+  let pct_error$idx = abs((isd_sim$idx - isd_anal$idx) / (isd_sim$idx + 1e-12)) * 100
+
+  print mean(pct_error$idx)
+end
+
+* Combined overlay: spans 4 separate dc-analysis plots (dc1..dc4), so
+* vectors from earlier iterations must be qualified by plot name here.
+plot dc1.isd_sim1 dc1.isd_anal1 dc2.isd_sim2 dc2.isd_anal2 dc3.isd_sim3 dc3.isd_anal3 dc4.isd_sim4 dc4.isd_anal4 vs dc1.vsd1
+
+hardcopy assign2b_output_char.ps dc1.isd_sim1 dc1.isd_anal1 dc2.isd_sim2 dc2.isd_anal2 dc3.isd_sim3 dc3.isd_anal3 dc4.isd_sim4 dc4.isd_anal4 vs dc1.vsd1
+
+.endc

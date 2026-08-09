@@ -1,0 +1,18 @@
+.param Width = 0.42
+.param Length = 0.15
+.dc Vds 0 -1.8 -0.01
+.control
+    let index = 1
+    set cache = ( )
+    while index <= 10
+        let newW = index * 0.42
+        let newL = index * 0.15
+        alterparam Width = $&newW
+        alterparam Length = $&newL
+        reset
+        run
+        set cache = ( $cache dc{$&index}.i(Vds) )
+        let index = index + 1
+    end
+    plot $cache
+.endc

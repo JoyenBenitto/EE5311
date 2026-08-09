@@ -27,7 +27,7 @@ Consider an nMOS transistor with $L = 0.15\ \mu\text{m}$ and $W = 0.42\ \mu\text
 
 \subsubsection{Calculation}
 
-Since the gate and drain are tied together, $V_{ds} = V_{gs}$ at every point along the sweep. Once the device turns on ($V_{gs} > V_{Tn}$), the overdrive voltage satisfies $V_{ov} = V_{gs} - V_{Tn} \geq V_{dsat}$ (with equality only as $V_{Tn} \to 0$), so $V_{ds} = V_{gs} > V_{ov} \geq V_{dsat}$ always holds. The diode-connected nMOS is therefore biased in \textbf{saturation} for the entire range where it conducts.
+Since the gate and drain are tied together, $V_{ds} = V_{gs}$ at every point along the sweep. Once the device turns on ($V_{gs} > V_{Tn}$), the overdrive voltage satisfies $V_{gt} = V_{gs} - V_{Tn} \geq V_{dsat}$ (with equality only as $V_{Tn} \to 0$), so $V_{ds} = V_{gs} > V_{gt} \geq V_{dsat}$ always holds. The diode-connected nMOS is therefore biased in \textbf{saturation} for the entire range where it conducts.
 
 The analytical drain current uses the velocity-saturation model of Rabaey, \emph{Digital Integrated Circuits}, 2nd ed., p. 100. The carrier velocity is
 \[
@@ -38,20 +38,20 @@ v_{satn}, & \xi \ge \xi_c
 \end{cases}
 \qquad \Rightarrow \qquad \xi_c = \frac{v_{satn}}{\mu_n} \tag{3.37}
 \]
-The overdrive voltage is $V_{ov} = \max(0,\ V_{gs} - V_{Tn})$. The drain-source voltage at which the critical field $\xi_c$ is reached is approximated as a \emph{constant}, valid for $V_{ov} \gg \xi_c L$:
+The overdrive voltage is $V_{gt} = \max(0,\ V_{gs} - V_{Tn})$. The drain-source voltage at which the critical field $\xi_c$ is reached is approximated as a \emph{constant}, valid for $V_{gt} \gg \xi_c L$:
 \[
 V_{DSAT} = L\,\xi_c = \frac{L\,v_{satn}}{\mu_n} \tag{3.38}
 \]
 and the saturation current follows by evaluating the resistive-region current at $V_{DS} = V_{DSAT}$:
 \[
-I_{DSAT} = \mu_n C_{oxn} \frac{W}{L}\left(V_{ov}\,V_{DSAT} - \frac{1}{2}V_{DSAT}^2\right) \tag{3.39}
+I_{DSAT} = \mu_n C_{oxn} \frac{W}{L}\left(V_{gt}\,V_{DSAT} - \frac{1}{2}V_{DSAT}^2\right) \tag{3.39}
 \]
 
-In \texttt{sim1a.cir}, \texttt{EsatL} is exactly $L\xi_c$ of Eq.~(3.38). Rather than using it directly as $V_{DSAT}$ (which is only accurate for large $V_{ov}$), the script combines it with the overdrive through
+In \texttt{sim1a.cir}, \texttt{EsatL} is exactly $L\xi_c$ of Eq.~(3.38). Rather than using it directly as $V_{DSAT}$ (which is only accurate for large $V_{gt}$), the script combines it with the overdrive through
 \[
-V_{dsat} = \frac{V_{ov}\,(L\xi_c)}{V_{ov} + L\xi_c},
+V_{dsat} = \frac{V_{gt}\,(L\xi_c)}{V_{gt} + L\xi_c},
 \]
-which reduces to the long-channel result $V_{dsat} \to V_{ov}$ for small overdrive and to Eq.~(3.38) for large overdrive, avoiding the discontinuity that the constant approximation would otherwise introduce near $V_{ov} \to 0$. This smoothed $V_{dsat}$ is then substituted into the Eq.~(3.39)-form expression to obtain $I_{ds,\text{anal}}$.
+which reduces to the long-channel result $V_{dsat} \to V_{gt}$ for small overdrive and to Eq.~(3.38) for large overdrive, avoiding the discontinuity that the constant approximation would otherwise introduce near $V_{gt} \to 0$. This smoothed $V_{dsat}$ is then substituted into the Eq.~(3.39)-form expression to obtain $I_{ds,\text{anal}}$.
 
 \begin{center}
   % TODO: if this was worked out by hand, replace this box with:

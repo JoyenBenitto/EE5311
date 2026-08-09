@@ -1,26 +1,30 @@
-.control
-* 1. Run DC sweep from 0V to 1.8V with 0.01V steps
-dc Vin 0 1.8 0.01
+.control 
+  dc Vin 0 1.8 0.01 
 
-* 2. Dynamically extract or reference W and L matching your schematic
-let w_val = 0.42u
-let l_val = 0.15u
+  let w_val = 0.42u 
+  let l_val = 0.15u 
 
-* 3. Extract simulation vectors
-let ids_sim = -i(vin)
-let vgs = net1
+  * Simulation data 
+  let ids_sim = -i(vin) 
 
-* 4. Define analytical parameters given in your assignment prompt
-let kn_prime = 208.5e-6   ; Calculated from mu_n * Coxn
-let vth = 0.7            ; Given threshold voltage for nMOS
+  * Analytical parameters
+  let vgs = net1 
+  let vt_n = 0.7 
+  let meu_n = 0.025 
+  let cox_n = 8.34e-3 
+  let vsat_n = 8e4 
 
-* 5. Compute analytical model (Saturation region equation since Vds = Vgs)
-let ids_anal_prime = 0.5 * kn_prime * (w_val / l_val) * (vgs - vth)^2
-let ids_anal= ids_anal_prime * (1+ 0.2*vgs)
-* 6. Calculate point-by-point percentage error and mean error
-*let error_pct = abs(ids_sim - ids_anal) / (ids_sim + 1e-12) * 100
-*print mean(error_pct)
+  let vgt = max(0, vgs - vt_n)
 
-* 7. Plot Simulation vs Analytical Model
-plot ids_sim ids_anal vs vgs
+  let EsatL = (vsat_n * l_val) / meu_n
+
+  let vdsat = (vgt * EsatL) / (vgt + EsatL + 1e-12)
+
+  let ids_anal = meu_n * cox_n * (w_val / l_val) * (vgt * vdsat - 0.5 * vdsat^2)
+ 
+  *computing and printing the error
+  let pct_error = abs((ids_sim - ids_anal) / (ids_sim + 1e-12)) * 100
+  print mean(pct_error)
+
+  plot ids_sim ids_anal vs vgs 
 .endc

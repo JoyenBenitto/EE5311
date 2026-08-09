@@ -32,5 +32,8 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {gnd.sym} -80 -240 0 0 {name=l1 lab=GND}
-C {code_shown.sym} 350 -550 0 0 {name=sim only_toplevel=false value=blabla}
-C {sky130_fd_pr/corner.sym} 340 -480 0 0 {name=CORNER only_toplevel=false corner=tt}
+C {code_shown.sym} 210 -410 0 0 {name=sim only_toplevel=false 
+value="
+.include sim1a.cir
+"}
+C {sky130_fd_pr/corner.sym} 220 -300 0 0 {name=CORNER only_toplevel=false corner=tt}

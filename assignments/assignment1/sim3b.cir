@@ -1,0 +1,30 @@
+.ic V(vds)=1.8
+.control
+  tran 1p 150n
+
+  * Gate is fixed at GND, Source/Body fixed at VDD, so Vsg = VDD - 0 = 1.8V
+  * constant -- M1 is always fully on, regardless of what the Drain does.
+  *
+  * CAVEAT: C1 and the independent source "Vds" are wired to the SAME node
+  * (M1's drain). An ideal voltage source pins its node's voltage outright,
+  * so V(vds) below is just going to reproduce the PULSE waveform almost
+  * exactly (10ps fall time) -- M1's own channel current is NOT what's
+  * charging/discharging this node, unlike assign3a/assign3c where the cap
+  * sat on a node with no other source touching it. The one thing M1's
+  * conduction actually shows up in here is the current drawn from the
+  * fixed Vsrc (VDD) supply, i(Vsrc), which is what's plotted below
+  * alongside V(vds) for reference.
+  let vt_p = 0.7
+
+  meas tran vds_20ns  find v(vds) at=20n
+  meas tran vds_100ns find v(vds) at=100n
+
+  plot v(vds) xlabel time_s ylabel Vds_V
+  hardcopy assign3b_vds.ps v(vds) xlabel time_s ylabel Vds_V
+
+  plot i(Vsrc) xlabel time_s ylabel I_Vsrc_A
+  hardcopy assign3b_isrc.ps i(Vsrc) xlabel time_s ylabel I_Vsrc_A
+
+  plot v(vds) xlimit 0 200p xlabel time_s ylabel Vds_V
+  hardcopy assign3b_vds_zoom.ps v(vds) xlimit 0 200p xlabel time_s ylabel Vds_V
+.endc

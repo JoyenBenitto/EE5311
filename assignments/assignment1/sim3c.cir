@@ -1,0 +1,19 @@
+.ic V(vout)=1.8
+.control
+  tran 1p 150n
+
+  * Gate (VDD) is held fixed at 1.8V the whole time; the pulse is on the
+  * drain (net1), which falls from 1.8V to 0V at t=0. Once net1 drops below
+  * vout, net1 becomes the effective source, so Vgs_eff = 1.8 - 0 = 1.8V,
+  * well above Vtn -- the nMOS turns ON hard and pulls the cap down toward
+  * 0V with no threshold-drop penalty (unlike the pull-up in 3a). Expected
+  * result: Vout collapses from 1.8V to ~0V quickly and stays there.
+  let vt_n = 0.7
+  print vt_n
+
+  meas tran vout_20ns  find v(vout) at=20n
+  meas tran vout_100ns find v(vout) at=100n
+
+  plot v(vout) v(net1) xlabel time_s ylabel V
+  hardcopy assign3c_vout.ps v(vout) v(net1) xlabel time_s ylabel V
+.endc

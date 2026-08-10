@@ -1,0 +1,17 @@
+.ic V(vout)=0
+.control
+  tran 1p 150n
+
+  * Steady-state analytical value: at t=infinity both gate and drain sit at
+  * VDD, so the source (vout) floats up until Vgs=Vt exactly (Ids=0) --
+  * independent of which current-vs-voltage model is used.
+  let vt_n = 0.7
+  let vout_inf = 1.8 - vt_n
+  print vout_inf
+
+  meas tran vout_20ns  find v(vout) at=20n
+  meas tran vout_100ns find v(vout) at=100n
+
+  plot v(vout) xlabel time_s ylabel Vout_V
+  hardcopy assign3a_vout.ps v(vout) xlabel time_s ylabel Vout_V
+.endc

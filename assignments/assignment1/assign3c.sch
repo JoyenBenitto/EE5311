@@ -39,11 +39,11 @@ value=100f
 footprint=1206
 device="ceramic capacitor"}
 C {code_shown.sym} 240 -130 0 0 {name=sim only_toplevel=false value="
-.include sim3a.cir
+.include sim3c.cir
 "}
 C {sky130_fd_pr/corner.sym} 240 -20 0 0 {name=CORNER only_toplevel=false corner=tt}
 C {lab_pin.sym} 160 40 0 0 {name=p1  lab=vout}
 C {vdd.sym} -270 -120 0 0 {name=l2 lab=VDD}
 C {gnd.sym} -270 0 0 0 {name=l3 lab=GND}
-C {vsource.sym} -10 -80 3 0 {name=Vds1 value="PULSE (0 1.8 0 10p 10p 1 1)" savecurrent=false}
+C {vsource.sym} -10 -80 3 0 {name=Vds1 value="PULSE (1.8 0 0 10p 10p 1 1)" savecurrent=false}
 C {vdd.sym} -130 0 3 0 {name=l4 lab=VDD}

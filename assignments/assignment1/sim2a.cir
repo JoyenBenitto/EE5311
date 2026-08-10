@@ -1,18 +1,19 @@
 .control
-  * net1 (=Gate=Drain, diode-connected) must swing negative for this pMOS
-  * to turn on: Source is grounded, so Vgs = net1 - 0 = net1, and pMOS
-  * conduction needs Vgs < -Vt_p (~ -0.7V), not Vgs > 0.
-  dc Vgs 0 -1.8 -0.01
+  * Vin (=Gate=Drain, diode-connected) sweeps from VDD down to 0. Source
+  * and Body are tied to VDD, so Vgs = Vin - VDD swings from 0 down to
+  * -1.8V as Vin falls, and pMOS conduction needs Vgs < -Vt_p (~ -0.7V).
+  dc Vin 1.8 0 -0.01
 
   let w_val = 0.42u
   let l_val = 0.15u
 
-  * Simulation data (current flows into net1 from the transistor, same as
-  * the earlier S=VDD variant of this circuit -- i(Vgs) is already positive)
-  let isd_sim = i(Vgs)
+  * Simulation data (current flows into the Vin node from the transistor;
+  * same sign convention as the earlier S=VDD variant of this circuit --
+  * i(Vin) is already positive)
+  let isd_sim = i(Vin)
 
   * Analytical parameters (pMOS, Tutorial 1)
-  let vgs   = net1
+  let vgs   = v(vin) - 1.8
   let vsg   = -vgs
   let vt_p  = 0.7
   let mu_p  = 0.009

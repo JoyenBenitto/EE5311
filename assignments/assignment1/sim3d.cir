@@ -1,0 +1,34 @@
+.ic V(vds)=1.8
+.control
+  tran 1p 150n
+
+  * Same M1 bias as assign3b: Gate fixed at GND, Source/Body fixed at VDD,
+  * so Vsg = 1.8V constant -- M1 is always fully on regardless of what the
+  * pulsed Drain (node "Vds") does.
+  *
+  * CAVEAT (worse than assign3b's): here C1 is wired straight across VDD
+  * and GND -- both already pinned by ideal sources (Vsrc and the GND
+  * reference) -- so C1 shares NO node with M1 at all. V(VDD) below is
+  * printed purely to demonstrate this: it should stay flat at exactly
+  * 1.8V for the whole run, proving the capacitor has zero effect on
+  * anything in this circuit as currently wired. The only thing that
+  * actually reflects M1 conducting is i(Vsrc), same as in assign3b.
+  let vt_p = 0.7
+
+  meas tran vds_20ns  find v(vds) at=20n
+  meas tran vds_100ns find v(vds) at=100n
+  meas tran vdd_20ns  find v(vdd) at=20n
+  meas tran vdd_100ns find v(vdd) at=100n
+
+  plot v(vds) xlabel time_s ylabel Vds_V
+  hardcopy assign3d_vds.ps v(vds) xlabel time_s ylabel Vds_V
+
+  plot v(vdd) xlabel time_s ylabel Vdd_V
+  hardcopy assign3d_vdd.ps v(vdd) xlabel time_s ylabel Vdd_V
+
+  plot i(Vsrc) xlabel time_s ylabel I_Vsrc_A
+  hardcopy assign3d_isrc.ps i(Vsrc) xlabel time_s ylabel I_Vsrc_A
+
+  plot v(vds) xlimit 0 200p xlabel time_s ylabel Vds_V
+  hardcopy assign3d_vds_zoom.ps v(vds) xlimit 0 200p xlabel time_s ylabel Vds_V
+.endc

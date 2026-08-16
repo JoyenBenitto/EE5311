@@ -5,7 +5,7 @@ V {}
 S {}
 F {}
 E {}
-N -110 30 -110 70 {lab=0}
+N -110 30 -110 70 {lab=GND}
 N 230 -10 230 50 {lab=Vout}
 N 60 10 160 10 {lab=Vin}
 N 160 -40 160 10 {lab=Vin}
@@ -13,11 +13,15 @@ N 160 -40 190 -40 {lab=Vin}
 N 160 80 190 80 {lab=Vin}
 N 160 10 160 80 {lab=Vin}
 N 230 20 360 20 {lab=Vout}
-C {vsource.sym} -110 0 0 0 {name=Vin value=1.8 savecurrent=false}
+N -200 30 -200 70 {lab=GND}
+N -200 -60 -200 -30 {lab=VDD}
+N 230 -100 230 -70 {lab=VDD}
+N 230 110 230 140 {lab=GND}
+C {vsource.sym} -110 0 0 0 {name=Vin value="pulse(0 1.8 0 1ns 1ns 5ns 10ns)" savecurrent=false}
 C {lab_wire.sym} -110 -30 0 0 {name=p1 sig_type=std_logic lab=Vin}
-C {gnd.sym} -110 70 0 0 {name=l1 lab=0}
+C {gnd.sym} -110 70 0 0 {name=l1 lab=GND}
 C {sky130_fd_pr/pfet3_01v8.sym} 210 -40 0 0 {name=M1
-W=0.42
+W=1.1995
 L=0.15
 body=VDD
 nf=1
@@ -48,6 +52,30 @@ spiceprefix=X
 }
 C {lab_wire.sym} 60 10 0 0 {name=p2 sig_type=std_logic lab=Vin}
 C {lab_wire.sym} 360 20 0 0 {name=p3 sig_type=std_logic lab=Vout}
-C {code_shown.sym} 380 -120 0 0 {name=sim only_toplevel=false value="
-.include sim1a.cir
+C {code_shown.sym} 680 -120 0 0 {name=sim only_toplevel=false value="
+* Control flag: 1 for DC Sweep / VTC, 2 for Transient Pulse
+.control
+  let sim_type = 1 
+
+  if sim_type = 1
+    * Run DC Sweep for VTC and Noise Margins
+    destroy all
+    dc Vin 0 1.8 0.01
+    run
+    plot v(Vout) v(Vin) vs v(Vin)
+    plot deriv(v(Vout))
+  else
+    * Run Transient Pulse Response
+    destroy all
+    tran 0.01ns 20ns
+    run
+    plot v(Vin) v(Vout) vs time
+  end
+.endc
 "}
+C {vsource.sym} -200 0 0 0 {name=Vin1 value=1.8 savecurrent=false}
+C {gnd.sym} -200 70 0 0 {name=l2 lab=GND}
+C {vdd.sym} -200 -60 0 0 {name=l3 lab=VDD}
+C {vdd.sym} 230 -100 0 0 {name=l4 lab=VDD}
+C {sky130_fd_pr/corner.sym} 420 -60 0 0 {name=CORNER only_toplevel=false corner=tt}
+C {gnd.sym} 230 140 0 0 {name=l5 lab=GND}

@@ -1,0 +1,24 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment2/assign2b.sch
+**.subckt assign2b
+XM1 Vout GND VDD VDD sky130_fd_pr__pfet_01v8 L=0.30 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 Vout Vin GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+Vin1 VDD GND 1.8
+Vin Vin GND 1.8
+**** begin user architecture code
+
+
+.control
+dc Vin 0 1.8 0.01
+plot deriv(v(Vout))
+print -i(Vin1) * 1.8
+.endc
+
+
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.GLOBAL VDD
+.end

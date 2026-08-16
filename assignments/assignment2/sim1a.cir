@@ -1,0 +1,8 @@
+* Run transient analysis for 20 nanoseconds
+.tran 0.01ns 20ns
+
+.control
+run
+* Plot both input pulse and output response over time
+plot v(Vin) v(Vout) vs time
+.endc

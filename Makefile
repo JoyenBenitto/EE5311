@@ -11,6 +11,13 @@ assignment2:
 	@echo "Building assignment 2..."
 	$(MAKE) -C assignments/assignment2 all
 
+.PHONY: release
+release:
+	@echo "Releasing assignment 1..."
+	$(MAKE) -C assignments/assignment1 release
+	@echo "Releasing assignment 2..."
+	$(MAKE) -C assignments/assignment2 release
+
 clean:
 	@echo "Cleaning assignment 1..."
 	$(MAKE) -C assignments/assignment1 clean

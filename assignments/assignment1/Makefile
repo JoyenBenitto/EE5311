@@ -8,6 +8,8 @@ index.pdf: index.tex $(TEMPLATE)
 	pandoc index.tex -o index.pdf --template=$(TEMPLATE) --pdf-engine=pdflatex \
 		--toc --number-sections -V boxlinks=true -V graphics=true
 
-clean:
+clean: clean-release
 	@echo "Cleaning all submodules..."
 	rm -f index.pdf
+
+include ../../common/release.mk

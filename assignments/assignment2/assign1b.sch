@@ -21,8 +21,8 @@ C {vsource.sym} -360 -40 0 0 {name=Vin value="pulse(0 1.8 0 1ns 1ns 5ns 10ns)" s
 C {lab_wire.sym} -360 -70 0 0 {name=p1 sig_type=std_logic lab=Vin}
 C {gnd.sym} -360 30 0 0 {name=l1 lab=GND}
 C {sky130_fd_pr/pfet3_01v8.sym} -40 -80 0 0 {name=M1
-W=1.1995
-L=1.5
+W=11.99958
+L=0.15
 body=VDD
 nf=1
 mult=1

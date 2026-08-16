@@ -54,11 +54,29 @@ C {gnd.sym} 30 140 0 0 {name=l4 lab=GND}
 C {vdd.sym} 30 10 0 0 {name=l5 lab=VDD}
 C {lab_wire.sym} 340 -10 0 0 {name=p1 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 490 120 0 0 {name=p2 sig_type=std_logic lab=Vout}
-C {code_shown.sym} 660 20 0 0 {name=sim only_toplevel=false value="
+C {code_shown.sym} 920 30 0 0 {name=sim only_toplevel=false value="
 .control
 dc Vin 0 1.8 0.01
-plot deriv(v(Vout))
-print -i(Vin1) * 1.8
+
+* 1. Calculate the Derivative (Gain)
+let dvout = deriv(v(Vout))
+
+* 2. Find Unity Gain Points (where gain = -1)
+meas dc vil find v(Vin) when dvout=-1 rise=1
+meas dc vih find v(Vin) when dvout=-1 fall=1
+
+* 3. Get VOH and VOL at those exact points
+meas dc voh find v(Vout) when v(Vin)=vil
+meas dc vol find v(Vout) when v(Vin)=vih
+
+* 4. Calculate and Print the Noise Margins
+* NM_L = VIL - VOL
+* NM_H = VOH - VIH
+let nml = vil - vol
+let nmh = voh - vih
+
+print nml
+print nmh
 .endc
 "}
 C {sky130_fd_pr/corner.sym} 670 230 0 0 {name=CORNER only_toplevel=false corner=tt}

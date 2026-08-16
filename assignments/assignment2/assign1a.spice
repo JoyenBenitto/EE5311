@@ -24,8 +24,8 @@ Vin1 VDD GND 1.8
 
     * Extract Vth (Vin=Vout crossing) and unity-gain points VIL/VIH for noise margins
     meas dc vth  find v(Vin) when v(Vout)=v(Vin)
-    meas dc vil  find v(Vin) when dvout=-1 rise=1
-    meas dc vih  find v(Vin) when dvout=-1 fall=1
+    meas dc vil  find v(Vin) when dvout=-1 fall=1
+    meas dc vih  find v(Vin) when dvout=-1 rise=1
     meas dc vol  find v(Vout) at=vih
     meas dc voh  find v(Vout) at=vil
   else

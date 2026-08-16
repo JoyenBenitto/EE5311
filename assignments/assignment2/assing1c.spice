@@ -9,17 +9,33 @@ Vin1 Vdd GND 1.8
 **** begin user architecture code
 
 
-* Nested DC Sweep: Sweep Vin from 0 to 1.8, and loop Vin1 from 0.2 to 1.8
-.dc Vin 0 1.8 0.01 Vin1 0.2 1.8 0.2
-
 .control
-run
+let vds = 0.2
+let index = 1
+let N = 10
+let imax = vector(N)
+let vdscache = vector(N)
 
-* Plot v(Vout) vs v(Vin)
-* Since this is a nested sweep, NGspice will automatically assign different
-* colors to each 'Vin1' iteration.
-plot v(Vout) vs v(Vin)
+while index le N
+    alter Vin1 $&vds
+    dc Vin 0 $&vds 0.01
 
+    let imax[index - 1] = abs(vecmin(dc{$&index}.i(Vin1)))
+    let vdscache[index - 1] = vds
+
+    let vds = vds + 0.2
+    let index = index + 1
+end
+
+* Plot all VTC curves together (now they will correctly scale from 0.2V up to 2.0V!)
+plot dc1.v(Vout) dc2.v(Vout) dc3.v(Vout) dc4.v(Vout) dc5.v(Vout) dc6.v(Vout) dc7.v(Vout) dc8.v(Vout) dc9.v(Vout) dc10.v(Vout)
+
+* Plot all IDS curves together
+plot dc1.i(Vin1) dc2.i(Vin1) dc3.i(Vin1) dc4.i(Vin1) dc5.i(Vin1) dc6.i(Vin1) dc7.i(Vin1) dc8.i(Vin1) dc9.i(Vin1) dc10.i(Vin1)
+
+* Peak |Ids| per VDD (needed for Part 1(d))
+print vdscache
+print imax
 .endc
 
 

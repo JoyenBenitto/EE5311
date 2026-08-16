@@ -1,0 +1,43 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment2/assign1c.sch
+**.subckt assign1c
+Vin Vin GND 1.8
+XM1 Vout Vin VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=11.99958 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 Vout Vin GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+Vin1 VDD GND 1.8
+**** begin user architecture code
+
+
+.control
+let vds = 0.2
+let index = 1
+let N = 10
+let imax = vector(N)
+let vdscache = vector(N)
+
+while index le N
+	alter Vin1 $&vds
+	dc Vin 0 $&vds 0.01
+
+	let imax[index - 1] = abs(vecmin(dc{$&index}.i(Vin1)))
+	let vdscache[index - 1] = vds
+	print vds abs(vecmin(dc{$&index}.i(Vin1)))
+	let vds = vds + 0.2
+	let index = index + 1
+end
+
+* Plot all VTC curves together (now they will correctly scale from 0.2V up to 1.8V!)
+plot dc1.v(Vout) dc2.v(Vout) dc3.v(Vout) dc4.v(Vout) dc5.v(Vout) dc6.v(Vout) dc7.v(Vout) dc8.v(Vout) dc9.v(Vout) dc10.v(Vout)
+
+* Plot all IDS curves together
+plot dc1.i(Vin1) dc2.i(Vin1) dc3.i(Vin1) dc4.i(Vin1) dc5.i(Vin1) dc6.i(Vin1) dc7.i(Vin1) dc8.i(Vin1) dc9.i(Vin1) dc10.i(Vin1)
+.endc
+
+
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.GLOBAL VDD
+.end

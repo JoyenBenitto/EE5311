@@ -12,6 +12,9 @@ Vin Vin GND 1.8
 .control
 dc Vin 0 1.8 0.01
 plot v(Vout) vs v(Vin)
+
+* VOL (output at Vin=VDD) and Vth (Vin=Vout crossing), needed for Sections 2.1/2(a)
+meas dc vol find v(Vout) at=1.8
 meas dc vth find v(Vin) when v(Vout)=v(Vin)
 .endc
 

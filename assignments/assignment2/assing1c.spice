@@ -1,0 +1,30 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment2/assing1c.sch
+**.subckt assing1c
+Vin Vin GND 1.8
+XM1 Vout Vin Vdd Vdd sky130_fd_pr__pfet_01v8 L=0.15 W=1.1995 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 Vout Vin GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+Vin1 Vdd GND 1.8
+**** begin user architecture code
+
+
+* Nested DC Sweep: Sweep Vin from 0 to 1.8, and loop Vin1 from 0.2 to 1.8
+.dc Vin 0 1.8 0.01 Vin1 0.2 1.8 0.2
+
+.control
+run
+
+* Plot v(Vout) vs v(Vin)
+* Since this is a nested sweep, NGspice will automatically assign different
+* colors to each 'Vin1' iteration.
+plot v(Vout) vs v(Vin)
+
+.endc
+
+
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

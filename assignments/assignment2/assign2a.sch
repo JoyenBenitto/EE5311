@@ -56,8 +56,9 @@ C {lab_wire.sym} 150 -70 0 0 {name=p1 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 300 60 0 0 {name=p2 sig_type=std_logic lab=Vout}
 C {code_shown.sym} 470 -40 0 0 {name=sim only_toplevel=false value="
 .control
-dc Vin 0.1 1.8 0.01
+dc Vin 0 1.8 0.01
 plot v(Vout) vs v(Vin)
+meas dc vth find v(Vin) when v(Vout)=v(Vin)
 .endc
 "}
 C {sky130_fd_pr/corner.sym} 480 170 0 0 {name=CORNER only_toplevel=false corner=tt}

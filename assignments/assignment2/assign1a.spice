@@ -19,7 +19,15 @@ Vin1 VDD GND 1.8
     dc Vin 0 1.8 0.01
     run
     plot v(Vout) v(Vin) vs v(Vin)
-    plot deriv(v(Vout))
+    let dvout = deriv(v(Vout))
+    plot dvout
+
+    * Extract Vth (Vin=Vout crossing) and unity-gain points VIL/VIH for noise margins
+    meas dc vth  find v(Vin) when v(Vout)=v(Vin)
+    meas dc vil  find v(Vin) when dvout=-1 rise=1
+    meas dc vih  find v(Vin) when dvout=-1 fall=1
+    meas dc vol  find v(Vout) at=vih
+    meas dc voh  find v(Vout) at=vil
   else
     * Run Transient Pulse Response
     destroy all

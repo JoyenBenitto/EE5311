@@ -1,0 +1,14 @@
+// sch_path: /home/joyen/ee5311/EE5311/assignments/assignment3/assign1b.sch
+//subckt assign1b ( )
+vin ( vin GND ) vsource '1.8' 
+//// begin user architecture code
+
+blabla
+
+//// end user architecture code
+//ends
+global VDD 
+ground GND 
+//// begin user architecture code
+model vsource vsource
+//// end user architecture code

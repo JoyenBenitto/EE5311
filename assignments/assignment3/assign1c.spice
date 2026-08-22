@@ -1,0 +1,105 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment3/assign1c.sch
+**.subckt assign1c
+vin inp GND PULSE(0 {VDDVal} 0 5ps 5ps 250ps 600ps)
+x1 net1 inp net2 ignd
+x2 out22 net1 inverter
+Vmeas net2 GND 0
+.save i(vmeas)
+vdd VDD GND {VDDval}
+**** begin user architecture code
+
+
+.param VDDVal = 1.8
+.param width_p = 0.84
+
+.save all
+
+.control
+let Nsim = 9
+let edpvec = vector(Nsim)
+let edpvec_ana = vector(Nsim)
+let vddvec = vector(Nsim)
+let index = 0
+
+* Analytical Constants from your notes
+let Ctot = 3.8e-15
+let Vtn = 0.7
+let Vtp = 0.7
+let EcnLn = 0.96
+let EcpLp = 1.0
+let Kn_WL = 5.838e-4
+let Kp_WL = 4.112e-4
+
+while index < Nsim
+  let vddv = 1.0 + (index * 0.1)
+  let vby2 = vddv / 2
+
+  alterparam VDDVal = $&vddv
+  reset
+  tran 1p 600p
+
+  * 1. Simulated Delay & Energy
+  meas tran thl trig v(inp) val=$&vby2 rise=1 targ v(net1) val=$&vby2 fall=1
+  meas tran tlh trig v(inp) val=$&vby2 fall=1 targ v(net1) val=$&vby2 rise=1
+  let tp_sim = (thl + tlh) / 2
+
+  * Integrate current to get Charge (Q), then Energy = Q * VDD
+  meas tran iinteg integ i(vmeas)
+  let edpvec[index] = abs(iinteg) * vddv * tp_sim
+
+  * 2. Analytical Delay & Energy
+  let num_hl = Ctot * vby2 * (EcnLn + vddv - Vtn)
+  let den_hl = Kn_WL * EcnLn * (vddv - Vtn) * (vddv - Vtn)
+  let tphl_ana = num_hl / den_hl
+
+  let num_lh = Ctot * vby2 * (EcpLp + vddv - Vtp)
+  let den_lh = Kp_WL * EcpLp * (vddv - Vtp) * (vddv - Vtp)
+  let tplh_ana = num_lh / den_lh
+
+  let tp_ana = (tphl_ana + tplh_ana) / 2
+
+  * Analytical EDP = (C * VDD^2) * tp
+  let edpvec_ana[index] = (Ctot * vddv * vddv) * tp_ana
+
+  let vddvec[index] = vddv
+  let index = index + 1
+end
+
+* Plot Simulated vs Analytical EDP
+plot edpvec edpvec_ana vs vddvec
+.endc
+
+
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  ignd.sym # of pins=3
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment3/ignd.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment3/ignd.sch
+.subckt ignd y a to_gnd
+*.ipin a
+*.opin y
+*.opin to_gnd
+XM1 y a to_gnd GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 y a VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W={width_p} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+.ends
+
+
+* expanding   symbol:  inverter.sym # of pins=2
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment3/inverter.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment3/inverter.sch
+.subckt inverter y a
+*.ipin a
+*.opin y
+XM1 y a GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 y a VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W={width_p} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+.ends
+
+.GLOBAL GND
+.GLOBAL VDD
+.end

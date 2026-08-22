@@ -5,92 +5,86 @@ V {}
 S {}
 F {}
 E {}
-N 550 250 550 340 {lab=#net1}
-N 270 220 270 260 {lab=vin}
-N 270 320 270 360 {lab=GND}
-N 820 400 820 440 {lab=GND}
-N 550 400 550 440 {lab=GND}
-N 550 290 740 290 {lab=#net1}
-N 740 220 740 290 {lab=#net1}
-N 740 220 780 220 {lab=#net1}
-N 740 290 740 370 {lab=#net1}
-N 740 370 780 370 {lab=#net1}
-N 820 250 820 340 {lab=vout}
-N 820 280 930 280 {lab=vout}
-N 550 140 550 190 {lab=VDD}
-N 820 140 820 190 {lab=VDD}
-N 430 220 430 300 {lab=vin}
-N 430 220 510 220 {lab=vin}
-N 430 370 510 370 {lab=vin}
-N 430 300 430 370 {lab=vin}
-C {sky130_fd_pr/pfet3_01v8.sym} 530 220 0 0 {name=M1
-W=1
-L=0.15
-body=VDD
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=pfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/nfet3_01v8.sym} 530 370 0 0 {name=M2
-W=1
-L=0.15
-body=GND
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/pfet3_01v8.sym} 800 220 0 0 {name=M3
-W=1
-L=0.15
-body=VDD
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=pfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/nfet3_01v8.sym} 800 370 0 0 {name=M4
-W=1
-L=0.15
-body=GND
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
-C {vdd.sym} 550 140 0 0 {name=l2 lab=VDD}
-C {vsource.sym} 270 290 0 0 {name=vin value=1.8 savecurrent=false}
-C {gnd.sym} 270 360 0 0 {name=l3 lab=GND}
-C {gnd.sym} 820 440 0 0 {name=l4 lab=GND}
-C {gnd.sym} 550 440 0 0 {name=l5 lab=GND}
-C {lab_wire.sym} 930 280 0 0 {name=p1 sig_type=std_logic lab=vout}
-C {vdd.sym} 820 140 0 0 {name=l6 lab=VDD}
-C {lab_wire.sym} 270 220 0 0 {name=p2 sig_type=std_logic lab=vin}
-C {lab_wire.sym} 430 300 0 0 {name=p3 sig_type=std_logic lab=vin}
-C {code_shown.sym} 1150 90 0 0 {name=sim only_toplevel=false value=blabla}
-C {sky130_fd_pr/corner.sym} 1150 250 0 0 {name=CORNER only_toplevel=false corner=tt}
+N 310 480 310 520 {lab=inp}
+N 310 580 310 620 {lab=GND}
+N 510 420 620 420 {lab=inp}
+N 920 420 990 420 {lab=#net1}
+N 1290 420 1400 420 {lab=out22}
+N 920 440 920 480 {lab=#net2}
+N 920 540 920 570 {lab=GND}
+N 220 490 220 530 {lab=VDD}
+N 220 590 220 620 {lab=GND}
+N 220 620 310 620 {lab=GND}
+C {code_shown.sym} 1760 90 0 0 {name=sim only_toplevel=false value="
+.param VDDVal = 1.8
+.param width_p = 0.84
+
+.save all
+
+.control
+let Nsim = 9
+let edpvec = vector(Nsim)
+let edpvec_ana = vector(Nsim)
+let vddvec = vector(Nsim)
+let index = 0
+
+* Analytical Constants from your notes
+let Ctot = 3.8e-15
+let Vtn = 0.7
+let Vtp = 0.7
+let EcnLn = 0.96
+let EcpLp = 1.0
+let Kn_WL = 5.838e-4
+let Kp_WL = 4.112e-4
+
+while index < Nsim
+  let vddv = 1.0 + (index * 0.1)
+  let vby2 = vddv / 2
+
+  alterparam VDDVal = $&vddv
+  reset
+  tran 1p 600p
+
+  * 1. Simulated Delay & Energy
+  meas tran thl trig v(inp) val=$&vby2 rise=1 targ v(net1) val=$&vby2 fall=1
+  meas tran tlh trig v(inp) val=$&vby2 fall=1 targ v(net1) val=$&vby2 rise=1
+  let tp_sim = (thl + tlh) / 2
+  
+  * Integrate current to get Charge (Q), then Energy = Q * VDD
+  meas tran iinteg integ i(vmeas)
+  let edpvec[index] = abs(iinteg) * vddv * tp_sim
+
+  * 2. Analytical Delay & Energy
+  let num_hl = Ctot * vby2 * (EcnLn + vddv - Vtn)
+  let den_hl = Kn_WL * EcnLn * (vddv - Vtn) * (vddv - Vtn)
+  let tphl_ana = num_hl / den_hl
+
+  let num_lh = Ctot * vby2 * (EcpLp + vddv - Vtp)
+  let den_lh = Kp_WL * EcpLp * (vddv - Vtp) * (vddv - Vtp)
+  let tplh_ana = num_lh / den_lh
+  
+  let tp_ana = (tphl_ana + tplh_ana) / 2
+  
+  * Analytical EDP = (C * VDD^2) * tp
+  let edpvec_ana[index] = (Ctot * vddv * vddv) * tp_ana
+
+  let vddvec[index] = vddv
+  let index = index + 1
+end
+
+* Plot Simulated vs Analytical EDP
+plot edpvec edpvec_ana vs vddvec
+.endc
+"}
+C {sky130_fd_pr/corner.sym} 1430 870 0 0 {name=CORNER only_toplevel=false corner=tt}
+C {vsource.sym} 310 550 0 0 {name=vin value="PULSE(0 \{VDDVal\} 0 5ps 5ps 250ps 600ps)" savecurrent=false}
+C {gnd.sym} 310 620 0 0 {name=l2 lab=GND}
+C {lab_wire.sym} 1400 420 0 0 {name=p2 sig_type=std_logic lab=out22}
+C {lab_wire.sym} 510 420 0 0 {name=p4 sig_type=std_logic lab=inp}
+C {ignd.sym} 770 430 0 0 {name=x1}
+C {inverter.sym} 1140 420 0 0 {name=x2}
+C {ammeter.sym} 920 510 0 0 {name=Vmeas savecurrent=true spice_ignore=0}
+C {gnd.sym} 920 570 0 0 {name=l4 lab=GND}
+C {vsource.sym} 220 560 0 0 {name=vdd value=\{VDDval\} savecurrent=false}
+C {vdd.sym} 220 490 0 0 {name=l5 lab=VDD}
+C {lab_wire.sym} 310 480 0 0 {name=p1 sig_type=std_logic lab=inp}

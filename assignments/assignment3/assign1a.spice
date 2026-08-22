@@ -4,6 +4,7 @@ vin inp GND PULSE(0 1.8 0 5PS 5PS 50PS 300PS 5)
 vin1 VDD GND 1.8
 x1 net1 inp inverter
 x2 out net1 inverter
+C1 out net2 100f
 **** begin user architecture code
 
 

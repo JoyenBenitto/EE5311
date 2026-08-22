@@ -1,20 +1,12 @@
-v {xschem version=3.4.8RC file_version=1.3}
-G {}
-K {}
-V {}
-S {}
-F {}
-E {}
-N -320 280 -320 320 {lab=GND}
-N -530 290 -530 320 {lab=GND}
-N -530 200 -530 230 {lab=VDD}
-N -320 160 -320 220 {lab=inp}
-N -120 -120 -80 -120 {lab=#net1}
-N -500 -120 -420 -120 {lab=inp}
-N 220 -120 320 -120 {lab=out}
-C {vsource.sym} -320 250 0 0 {name=vin value="PULSE(0 1.8 0 5PS 5PS 50PS 300PS 5)" savecurrent=false}
-C {gnd.sym} -320 320 0 0 {name=l3 lab=GND}
-C {code_shown.sym} 580 -580 0 0 {name=sim only_toplevel=false value="
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment3/assign1a.sch
+**.subckt assign1a
+vin inp GND PULSE(0 1.8 0 5PS 5PS 50PS 300PS 5)
+vin1 VDD GND 1.8
+x1 net1 inp inverter
+x2 out net1 inverter
+**** begin user architecture code
+
+
 .param width_p = 0.42
 
 .control
@@ -54,13 +46,24 @@ echo Wp = 1.26 : delay = $&delay_126
 * Overlay all three runs on one plot, each curve tagged by its Wp
 plot tran1.out_042 tran2.out_084 tran3.out_126 tran1.in_042 xlabel Time ylabel Voltage title 'v(out) for Wp = 0.42 / 0.84 / 1.26'
 .endc
-"}
-C {sky130_fd_pr/corner.sym} 590 300 0 0 {name=CORNER only_toplevel=false corner=tt}
-C {vsource.sym} -530 260 0 0 {name=vin1 value=1.8 savecurrent=false}
-C {gnd.sym} -530 320 0 0 {name=l1 lab=GND}
-C {vdd.sym} -530 200 0 0 {name=l7 lab=VDD}
-C {lab_wire.sym} -320 160 0 0 {name=p1 sig_type=std_logic lab=inp}
-C {inverter.sym} -270 -120 0 0 {name=x1}
-C {inverter.sym} 70 -120 0 0 {name=x2}
-C {lab_wire.sym} -500 -120 0 0 {name=p2 sig_type=std_logic lab=inp}
-C {lab_wire.sym} 320 -120 0 0 {name=p3 sig_type=std_logic lab=out}
+
+
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  inverter.sym # of pins=2
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment3/inverter.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment3/inverter.sch
+.subckt inverter y a
+*.ipin a
+*.opin y
+XM1 y a GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 y a VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W={width_p} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+.ends
+
+.GLOBAL GND
+.GLOBAL VDD
+.end

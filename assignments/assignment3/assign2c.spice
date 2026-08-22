@@ -1,0 +1,71 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment3/assign2c.sch
+**.subckt assign2c
+x1 net1 vout inverter
+x2 net2 net1 inverter
+x3 net3 net2 inverter
+x4 net4 net3 inverter
+x5 net5 net4 inverter
+x6 net6 net5 inverter
+x7 net7 net6 inverter
+V1 VDD GND {vdd_val}
+x8 net8 net7 inverter
+x9 vout net8 inverter
+**** begin user architecture code
+
+
+.param vdd_val = 1.8
+.param width_p = 0.84
+
+.ic v(vout)=0
+
+.control
+let Nsim = 9
+let periodvec = vector(Nsim)
+let freqvec = vector(Nsim)
+let vddvec = vector(Nsim)
+let index = 0
+
+while index < Nsim
+  let vddv = 1.0 + (index * 0.1)
+
+  alterparam vdd_val = $&vddv
+  reset
+
+  * Increase transient time to 20ns to ensure lower VDDs fully stabilize
+  tran 1p 20n uic
+
+  * Measure between later edges (rise=8 and rise=9) to avoid startup transients
+  meas tran t1 WHEN v(vout)=0.5 rise=8
+  meas tran t2 WHEN v(vout)=0.5 rise=9
+
+  let periodvec[index] = t2 - t1
+  let freqvec[index] = 1 / (t2 - t1)
+  let vddvec[index] = vddv
+
+  let index = index + 1
+end
+
+plot freqvec vs vddvec
+plot periodvec vs vddvec
+.endc
+
+
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  inverter.sym # of pins=2
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment3/inverter.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment3/inverter.sch
+.subckt inverter y a
+*.ipin a
+*.opin y
+XM1 y a GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 y a VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W={width_p} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+.ends
+
+.GLOBAL GND
+.GLOBAL VDD
+.end

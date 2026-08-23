@@ -11,7 +11,8 @@ N -530 200 -530 230 {lab=VDD}
 N -320 160 -320 220 {lab=inp}
 N -120 -120 -80 -120 {lab=#net1}
 N -500 -120 -420 -120 {lab=inp}
-N 220 -120 320 -120 {lab=out}
+N -280 -120 -120 -120 {lab=#net1}
+N 60 -120 320 -120 {lab=out}
 C {vsource.sym} -320 250 0 0 {name=vin value="PULSE(0 1.8 0 5PS 5PS 50PS 300PS 5)" savecurrent=false}
 C {gnd.sym} -320 320 0 0 {name=l3 lab=GND}
 C {code_shown.sym} 580 -580 0 0 {name=sim only_toplevel=false value="

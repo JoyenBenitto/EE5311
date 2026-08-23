@@ -41,8 +41,8 @@ C {code_shown.sym} -330 270 0 0 {name=s1 only_toplevel=false value="
 tran 1p 5n uic
 
 * CORRECTED: Use 'WHEN' to grab the exact timestamp of the edges
-meas tran t1 WHEN v(vout)=0.9 rise=3
-meas tran t2 WHEN v(vout)=0.9 rise=4
+meas tran t1 WHEN v(vout)=0.9 rise=4
+meas tran t2 WHEN v(vout)=0.9 rise=5
 
 * Calculate period and frequency (Frequency = 1 / Period)
 let period = t2 - t1

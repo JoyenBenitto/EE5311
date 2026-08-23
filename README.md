@@ -9,6 +9,7 @@ EE5311 (Digital IC Design) course.
 - `assignments/` - graded assignments, one directory each:
   - [`assignment1`](assignments/assignment1) - MOSFET I-V characteristics (nMOS/pMOS transfer & output characteristics, velocity saturation, capacitor charging/discharging)
   - [`assignment2`](assignments/assignment2) - Inverter DC characteristics (static CMOS inverter sizing/VTC/noise margins, pseudo-nMOS inverter)
+  - [`assignment3`](assignments/assignment3) - CMOS inverter transient characteristics and ring oscillator (propagation delay vs.\ Wp/VDD, energy-delay product, 7-/9-stage ring oscillator frequency)
 - `common/` - shared LaTeX template and the `release` Makefile logic used by every assignment
 
 ## Build

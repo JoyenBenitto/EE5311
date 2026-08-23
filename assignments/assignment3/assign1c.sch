@@ -9,12 +9,12 @@ N 310 480 310 520 {lab=inp}
 N 310 580 310 620 {lab=GND}
 N 510 420 620 420 {lab=inp}
 N 920 420 990 420 {lab=#net1}
-N 1290 420 1400 420 {lab=out22}
 N 920 440 920 480 {lab=#net2}
 N 920 540 920 570 {lab=GND}
 N 220 490 220 530 {lab=VDD}
 N 220 590 220 620 {lab=GND}
 N 220 620 310 620 {lab=GND}
+N 1130 420 1400 420 {lab=out22}
 C {code_shown.sym} 1760 90 0 0 {name=sim only_toplevel=false value="
 .param VDDVal = 1.8
 .param width_p = 0.84
@@ -76,7 +76,7 @@ end
 plot edpvec edpvec_ana vs vddvec
 .endc
 "}
-C {sky130_fd_pr/corner.sym} 1430 870 0 0 {name=CORNER only_toplevel=false corner=tt}
+C {sky130_fd_pr/corner.sym} 1180 600 0 0 {name=CORNER only_toplevel=false corner=tt}
 C {vsource.sym} 310 550 0 0 {name=vin value="PULSE(0 \{VDDVal\} 0 5ps 5ps 250ps 600ps)" savecurrent=false}
 C {gnd.sym} 310 620 0 0 {name=l2 lab=GND}
 C {lab_wire.sym} 1400 420 0 0 {name=p2 sig_type=std_logic lab=out22}

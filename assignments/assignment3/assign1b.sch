@@ -9,12 +9,12 @@ N -1060 -20 -1060 20 {lab=inp}
 N -1060 80 -1060 120 {lab=GND}
 N -860 -80 -750 -80 {lab=inp}
 N -450 -80 -380 -80 {lab=#net1}
-N -80 -80 30 -80 {lab=out22}
 N -450 -60 -450 -20 {lab=#net2}
 N -450 40 -450 70 {lab=GND}
 N -1150 -10 -1150 30 {lab=VDD}
 N -1150 90 -1150 120 {lab=GND}
 N -1150 120 -1060 120 {lab=GND}
+N -240 -80 30 -80 {lab=out22}
 C {code_shown.sym} 390 -410 0 0 {name=sim only_toplevel=false value="
 .param VDDVal = 1.8
 .param width_p = 0.84
@@ -70,7 +70,7 @@ end
 plot delayvec delayvec_ana vs vddvec
 .endc
 "}
-C {sky130_fd_pr/corner.sym} 60 730 0 0 {name=CORNER only_toplevel=false corner=tt}
+C {sky130_fd_pr/corner.sym} -240 130 0 0 {name=CORNER only_toplevel=false corner=tt}
 C {vsource.sym} -1060 50 0 0 {name=vin value="PULSE(0 \{VDDVal\} 0 5ps 5ps 250ps 600ps)" savecurrent=false}
 C {gnd.sym} -1060 120 0 0 {name=l2 lab=GND}
 C {lab_wire.sym} 30 -80 0 0 {name=p2 sig_type=std_logic lab=out22}

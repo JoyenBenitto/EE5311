@@ -5,19 +5,19 @@ V {}
 S {}
 F {}
 E {}
-N -20 -50 40 -50 {lab=#net1}
-N 340 -50 420 -50 {lab=#net2}
-N 720 -50 780 -50 {lab=#net3}
-N 1080 -50 1140 -50 {lab=#net4}
-N 1440 -50 1520 -50 {lab=#net5}
-N 1820 -50 1890 -50 {lab=#net6}
-N 2190 -50 2280 -50 {lab=vout}
 N 2280 -50 2280 80 {lab=vout}
 N -330 80 2280 80 {lab=vout}
 N -330 -50 -330 80 {lab=vout}
 N -330 -50 -320 -50 {lab=vout}
 N -600 30 -600 90 {lab=VDD}
 N -600 150 -600 200 {lab=GND}
+N -180 -50 40 -50 {lab=#net1}
+N 180 -50 420 -50 {lab=#net2}
+N 560 -50 780 -50 {lab=#net3}
+N 920 -50 1140 -50 {lab=#net4}
+N 1280 -50 1520 -50 {lab=#net5}
+N 1660 -50 1890 -50 {lab=#net6}
+N 2030 -50 2280 -50 {lab=vout}
 C {inverter.sym} -170 -50 0 0 {name=x1}
 C {inverter.sym} 190 -50 0 0 {name=x2}
 C {inverter.sym} 570 -50 0 0 {name=x3}

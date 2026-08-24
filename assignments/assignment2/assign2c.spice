@@ -13,7 +13,8 @@ Vin Vin GND 1.8
 dc Vin 0 1.8 0.01
 plot v(Vout) vs v(Vin)
 * Run a single operating point or check the value at Vin = 1.8V
-print v(VDD) * abs(i(Vin1))
+let p_tot= v(VDD) * abs(i(Vin1))
+print mean(p_tot)
 .endc
 
 

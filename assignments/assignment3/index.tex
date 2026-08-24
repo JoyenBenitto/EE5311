@@ -483,23 +483,7 @@ the next, the last driving the first). Oscillation is seeded with
 \texttt{.ic v(vout)=0} so the odd-inverter-count ring does not sit at a
 (metastable) fixed point.
 
-\paragraph{Analytical frequency.} For an $N$-stage ring oscillator, the loop
-must accumulate a total delay of one half-period per full logic inversion
-around the loop, giving the standard estimate
-\[
-f_{osc} = \frac{1}{2\,N\,t_p},
-\]
-using the same per-stage $t_p(V_{DD})$ from Problem 1(b) (Table~\ref{tab:1b-analytical}).
-
 \subsection{Part (a): Oscillation Frequency at $V_{DD}=1.8$~V, $N=7$}
-
-\subsubsection{Calculation}
-
-Using $t_p(1.8\text{V})=12.41$~ps from Table~\ref{tab:1b-analytical} and $N=7$:
-\[
-f_{osc} = \frac{1}{2\times7\times12.41\text{ps}} \approx 5.75\ \text{GHz},
-\qquad T = 1/f_{osc} \approx 173.8\ \text{ps}.
-\]
 
 \subsubsection{Schematic}
 
@@ -540,68 +524,38 @@ plot v(vout)
 
 \begin{table}[h]
   \centering
-  \begin{tabular}{|l|c|c|}
+  \begin{tabular}{|l|c|}
     \hline
-    Quantity & Analytical & Simulated \\
+    Quantity & Simulated \\
     \hline
-    Period $T$ & 173.8 ps & 409.12 ps \\
-    Frequency $f_{osc}$ & 5.75 GHz & 2.444 GHz \\
+    Period $T$ & 409.12 ps \\
+    Frequency $f_{osc}$ & 2.444 GHz \\
     \hline
   \end{tabular}
-  \caption{Analytical vs.\ simulated 7-stage ring oscillator period/frequency
-  at $V_{DD}=1.8$~V. Simulated values from the \texttt{period}/\texttt{freq}
+  \caption{Simulated 7-stage ring oscillator period/frequency at
+  $V_{DD}=1.8$~V. Values from the \texttt{period}/\texttt{freq}
   \texttt{print} output ($t_1=1.9663$~ns, $t_2=2.3754$~ns, 4th/5th rising
   edges of $v(vout)=0.9$~V -- chosen well after the first cycle so the ring
   has settled into steady-state oscillation).}
   \label{tab:2a-sim}
 \end{table}
 
-\paragraph{Discussion.} The simulated oscillation is $2.35\times$ slower than
-the analytical estimate ($2.444$~GHz vs.\ $5.75$~GHz simulated/analytical, or
-equivalently $T=409.1$~ps vs.\ $173.8$~ps). Backing out an effective
-per-stage delay from the simulated period, $t_{p,\text{eff}} = T/(2N) =
-409.1/14 = 29.2$~ps -- itself $1.47\times$ \emph{larger} than the single-stage
-FO1 delay directly measured in Part 1(b) at the same $V_{DD}$ ($19.94$~ps,
-Table~\ref{tab:1b-sim}), even though both circuits use the identical inverter
-sizing and (effectively) the same FO1 loading. The extra gap beyond Part
-1(b)'s already-larger-than-analytical delay is consistent with
-Figure~\ref{fig:2a-waveform}: unlike Part 1(b)'s single clean pulse response
-settling to a quiescent rail, the ring's node never fully settles between
-transitions (visible rail-overshoot/undershoot every cycle, and the high
-phase sits at a shallower, rounded plateau rather than a flat $1.8$~V) --
-i.e.\ each stage is repeatedly re-triggered from a partially-settled state
-rather than from a clean $0$/$V_{DD}$ starting point, which is exactly the
-kind of steady-state loading effect a single-transition delay measurement
-(Part 1(b)) or a static per-stage formula (this section's Calculation) cannot
+\paragraph{Discussion.} Backing out an effective per-stage delay from the
+simulated period, $t_{p,\text{eff}} = T/(2N) = 409.1/14 = 29.2$~ps -- this is
+$1.47\times$ \emph{larger} than the single-stage FO1 delay directly measured
+in Part 1(b) at the same $V_{DD}$ ($19.94$~ps, Table~\ref{tab:1b-sim}), even
+though both circuits use the identical inverter sizing and (effectively) the
+same FO1 loading. This gap is consistent with Figure~\ref{fig:2a-waveform}:
+unlike Part 1(b)'s single clean pulse response settling to a quiescent rail,
+the ring's node never fully settles between transitions (visible
+rail-overshoot/undershoot every cycle, and the high phase sits at a
+shallower, rounded plateau rather than a flat $1.8$~V) -- i.e.\ each stage is
+repeatedly re-triggered from a partially-settled state rather than from a
+clean $0$/$V_{DD}$ starting point, which is exactly the kind of steady-state
+loading effect a single-transition delay measurement (Part 1(b)) cannot
 capture.
 
 \subsection{Part (b): Frequency/Period vs.\ $V_{DD}$, $N=7$}
-
-\subsubsection{Calculation}
-
-Applying $f_{osc}=1/(2\,N\,t_p(V_{DD}))$ with $N=7$ to
-Table~\ref{tab:1b-analytical}:
-
-\begin{table}[h]
-  \centering
-  \begin{tabular}{|c|c|c|c|}
-    \hline
-    $V_{DD}$ (V) & $t_p$ (ps) & $f_{osc}$ (GHz) & $T$ (ps) \\
-    \hline
-    1.0 & 57.10 & 1.251 & 799.4 \\
-    1.1 & 38.09 & 1.875 & 533.2 \\
-    1.2 & 28.51 & 2.505 & 399.2 \\
-    1.3 & 22.90 & 3.120 & 320.6 \\
-    1.4 & 19.26 & 3.708 & 269.7 \\
-    1.5 & 16.74 & 4.267 & 234.3 \\
-    1.6 & 14.90 & 4.794 & 208.6 \\
-    1.7 & 13.50 & 5.290 & 189.0 \\
-    1.8 & 12.41 & 5.755 & 173.8 \\
-    \hline
-  \end{tabular}
-  \caption{Analytical 7-stage ring oscillator frequency/period vs.\ $V_{DD}$.}
-  \label{tab:2b-analytical}
-\end{table}
 
 \subsubsection{Schematic}
 
@@ -662,75 +616,40 @@ plot periodvec vs vddvec
 
 \begin{table}[h]
   \centering
-  \begin{tabular}{|c|c|c|c|c|c|}
+  \begin{tabular}{|c|c|c|}
     \hline
-    $V_{DD}$ (V) & Sim.\ $T$ (ns) & Ana.\ $T$ (ns) & Ratio & Sim.\ $f$ (GHz) & Ana.\ $f$ (GHz) \\
+    $V_{DD}$ (V) & Sim.\ $T$ (ns) & Sim.\ $f$ (GHz) \\
     \hline
-    1.0 & 2.07  & 0.799 & 2.59 & 0.483 & 1.251 \\
-    1.1 & 1.71  & 0.533 & 3.21 & 0.585 & 1.875 \\
-    1.2 & 1.34  & 0.399 & 3.36 & 0.746 & 2.505 \\
-    1.3 & 1.00  & 0.321 & 3.12 & 1.000 & 3.120 \\
-    1.4 & 0.80  & 0.270 & 2.97 & 1.250 & 3.708 \\
-    1.5 & 0.65  & 0.234 & 2.77 & 1.538 & 4.267 \\
-    1.6 & 0.545 & 0.209 & 2.61 & 1.835 & 4.794 \\
-    1.7 & 0.465 & 0.189 & 2.46 & 2.151 & 5.290 \\
-    1.8 & 0.409\textsuperscript{\dag} & 0.174 & 2.35\textsuperscript{\dag} & 2.444\textsuperscript{\dag} & 5.755 \\
+    1.0 & 2.07  & 0.483 \\
+    1.1 & 1.71  & 0.585 \\
+    1.2 & 1.34  & 0.746 \\
+    1.3 & 1.00  & 1.000 \\
+    1.4 & 0.80  & 1.250 \\
+    1.5 & 0.65  & 1.538 \\
+    1.6 & 0.545 & 1.835 \\
+    1.7 & 0.465 & 2.151 \\
+    1.8 & 0.409\textsuperscript{\dag} & 2.444\textsuperscript{\dag} \\
     \hline
   \end{tabular}
-  \caption{Simulated vs.\ analytical 7-stage ring oscillator period/frequency
-  vs.\ $V_{DD}$. All simulated values read off
-  Figures~\ref{fig:2b-period}/\ref{fig:2b-freq} except $V_{DD}=1.8$~V
-  (\textsuperscript{\dag}), which is the exact Part 2(a) \texttt{meas} value
-  ($T=409.12$~ps, $f=2.444$~GHz) and confirms the plot-reading calibration.}
+  \caption{Simulated 7-stage ring oscillator period/frequency vs.\ $V_{DD}$.
+  All values read off Figures~\ref{fig:2b-period}/\ref{fig:2b-freq} except
+  $V_{DD}=1.8$~V (\textsuperscript{\dag}), which is the exact Part 2(a)
+  \texttt{meas} value ($T=409.12$~ps, $f=2.444$~GHz) and confirms the
+  plot-reading calibration.}
   \label{tab:2b-sim}
 \end{table}
 
-\paragraph{Discussion.} As in Part 2(a), the simulated ring is uniformly
-slower than the analytical single-stage-delay estimate across the whole
-sweep (ratio $>1$ throughout), but the size of that gap is
-\textbf{non-monotonic} in $V_{DD}$ -- it grows from $2.6\times$ at
-$V_{DD}=1.0$~V to a peak of $\approx3.4\times$ around $V_{DD}=1.2$~V, then
-\emph{shrinks} steadily back down to $2.35\times$ at $V_{DD}=1.8$~V (matching
-Part 2(a)'s finding exactly, as it should since both come from the same
-$V_{DD}=1.8$~V simulation). This differs from Part 1(b)'s single-stage delay
-ratio, which grew \emph{monotonically} with $V_{DD}$
-(Table~\ref{tab:1b-sim}) -- the ring's steady-state loading effect (each
-stage never settling fully between transitions, as seen in
-Figure~\ref{fig:2a-waveform}) evidently interacts with $V_{DD}$ differently
-than a single isolated FO1 transition does, and is most pronounced at
-intermediate $V_{DD}\approx1.2$~V rather than growing monotonically. Both
-simulated curves (period and frequency) are smooth and monotonic in $V_{DD}$
-themselves (Figures~\ref{fig:2b-period}, \ref{fig:2b-freq}), just uniformly
-offset from -- and non-uniformly scaled relative to -- the analytical
-prediction.
+\paragraph{Discussion.} Both period and frequency vary smoothly and
+monotonically with $V_{DD}$ (Figures~\ref{fig:2b-period},
+\ref{fig:2b-freq}): the period falls from $2.07$~ns at $V_{DD}=1.0$~V to
+$0.409$~ns at $V_{DD}=1.8$~V (a $\approx5\times$ speedup), with the steepest
+drop at low $V_{DD}$ and a flattening trend as $V_{DD}$ approaches $1.8$~V --
+consistent with the per-stage delay trend seen directly in Part 1(b)
+(Table~\ref{tab:1b-sim}). The $V_{DD}=1.8$~V endpoint matches Part 2(a)'s
+directly-measured value exactly, as expected since both come from the same
+simulation.
 
 \subsection{Part (c): Frequency/Period vs.\ $V_{DD}$, $N=9$}
-
-\subsubsection{Calculation}
-
-Applying $f_{osc}=1/(2\,N\,t_p(V_{DD}))$ with $N=9$ (a $9/7\approx1.29\times$
-scaling down of every frequency in Table~\ref{tab:2b-analytical}):
-
-\begin{table}[h]
-  \centering
-  \begin{tabular}{|c|c|c|c|}
-    \hline
-    $V_{DD}$ (V) & $t_p$ (ps) & $f_{osc}$ (GHz) & $T$ (ps) \\
-    \hline
-    1.0 & 57.10 & 0.973 & 1027.8 \\
-    1.1 & 38.09 & 1.459 & 685.5 \\
-    1.2 & 28.51 & 1.948 & 513.2 \\
-    1.3 & 22.90 & 2.426 & 412.2 \\
-    1.4 & 19.26 & 2.884 & 346.7 \\
-    1.5 & 16.74 & 3.319 & 301.3 \\
-    1.6 & 14.90 & 3.729 & 268.2 \\
-    1.7 & 13.50 & 4.114 & 243.1 \\
-    1.8 & 12.41 & 4.476 & 223.4 \\
-    \hline
-  \end{tabular}
-  \caption{Analytical 9-stage ring oscillator frequency/period vs.\ $V_{DD}$.}
-  \label{tab:2c-analytical}
-\end{table}
 
 \subsubsection{Schematic}
 
@@ -765,53 +684,43 @@ unchanged.
 
 \begin{table}[h]
   \centering
-  \begin{tabular}{|c|c|c|c|c|c|c|}
+  \begin{tabular}{|c|c|c|c|}
     \hline
-    $V_{DD}$ (V) & Sim.\ $T$ (ns) & Ana.\ $T$ (ns) & Ratio & Sim.\ $f$ (GHz) & Ana.\ $f$ (GHz) & $f_9/f_7$ (sim) \\
+    $V_{DD}$ (V) & Sim.\ $T$ (ns) & Sim.\ $f$ (GHz) & $f_9/f_7$ (sim) \\
     \hline
-    1.0 & 2.68  & 1.028 & 2.61 & 0.373 & 0.973 & 0.772 \\
-    1.1 & 2.20  & 0.686 & 3.21 & 0.455 & 1.459 & 0.778 \\
-    1.2 & 1.75  & 0.513 & 3.41 & 0.571 & 1.948 & 0.766 \\
-    1.3 & 1.30  & 0.412 & 3.15 & 0.769 & 2.426 & 0.769 \\
-    1.4 & 1.05  & 0.347 & 3.03 & 0.952 & 2.884 & 0.762 \\
-    1.5 & 0.85  & 0.301 & 2.82 & 1.176 & 3.319 & 0.765 \\
-    1.6 & 0.70  & 0.268 & 2.61 & 1.429 & 3.729 & 0.779 \\
-    1.7 & 0.605 & 0.243 & 2.49 & 1.653 & 4.114 & 0.769 \\
-    1.8 & 0.526 & 0.223 & 2.36 & 1.901 & 4.476 & 0.778 \\
+    1.0 & 2.68  & 0.373 & 0.772 \\
+    1.1 & 2.20  & 0.455 & 0.778 \\
+    1.2 & 1.75  & 0.571 & 0.766 \\
+    1.3 & 1.30  & 0.769 & 0.769 \\
+    1.4 & 1.05  & 0.952 & 0.762 \\
+    1.5 & 0.85  & 1.176 & 0.765 \\
+    1.6 & 0.70  & 1.429 & 0.779 \\
+    1.7 & 0.605 & 1.653 & 0.769 \\
+    1.8 & 0.526 & 1.901 & 0.778 \\
     \hline
   \end{tabular}
-  \caption{Simulated vs.\ analytical 9-stage ring oscillator period/frequency
-  vs.\ $V_{DD}$, all read off Figures~\ref{fig:2c-period}/\ref{fig:2c-freq}
-  (cross-checked against each other via $T=1/f$, and against the $N=9/N=7$
-  scaling argument below). Last column: simulated 9-stage frequency divided
-  by the corresponding simulated 7-stage frequency
-  (Table~\ref{tab:2b-sim}), compared to the ideal $7/9\approx0.778$
-  prediction.}
+  \caption{Simulated 9-stage ring oscillator period/frequency vs.\ $V_{DD}$,
+  read off Figures~\ref{fig:2c-period}/\ref{fig:2c-freq} (cross-checked
+  against each other via $T=1/f$). Last column: simulated 9-stage frequency
+  divided by the corresponding simulated 7-stage frequency
+  (Table~\ref{tab:2b-sim}).}
   \label{tab:2c-sim}
 \end{table}
 
 \paragraph{Discussion.} The 9-stage ring reproduces the same qualitative
-picture as the 7-stage ring: uniformly slower than the analytical estimate
-(ratio $2.4$--$3.4\times$), with the same non-monotonic ratio-vs-$V_{DD}$
-shape peaking around $V_{DD}\approx1.2$~V -- as expected, since both rings
-share the identical per-stage inverter and the same steady-state loading
-mechanism identified in Part (a)/(b).
+picture as the 7-stage ring: period and frequency vary smoothly and
+monotonically with $V_{DD}$ (Figures~\ref{fig:2c-period},
+\ref{fig:2c-freq}), falling from $T=2.68$~ns at $V_{DD}=1.0$~V to
+$T=0.526$~ns at $V_{DD}=1.8$~V -- as expected, since both rings share the
+identical per-stage inverter and loading.
 
 The more interesting result is the last column of Table~\ref{tab:2c-sim}: the
 ratio of simulated $N=9$ to simulated $N=7$ frequency at each $V_{DD}$ comes
-out to $0.762$--$0.779$ across the whole sweep, averaging almost exactly the
-ideal analytical prediction of $7/9\approx0.778$ (within
-$\sim1$--$2\%$ at most points, well within plot-reading precision). In other
-words, even though the \emph{absolute} per-stage delay in both rings is
-inflated well beyond the single-stage analytical estimate (by the
-steady-state loading effect discussed in Part (a)), that inflation is
-essentially \textbf{independent of the ring length $N$} -- it does not grow
-with the number of stages, so the simple $f_{osc}\propto1/N$ scaling from the
-Calculation model still holds almost exactly between the two simulated
-rings. This is a cleaner result than the earlier working hypothesis (that
-$N$-dependent loading, i.e.\ each stage driving one more identical fan-out
-around a longer loop, might explain part of the analytical gap): the data
-shows no such $N$-dependence, so the entire gap from Table~\ref{tab:2b-sim}/
-\ref{tab:2c-sim} must instead come from the ring's steady-state (never fully
-settling) switching behavior itself, common to any $N$, rather than from
-loop length.
+out to a tight $0.762$--$0.779$ across the whole sweep, essentially constant
+regardless of $V_{DD}$ (well within plot-reading precision). In other words,
+whatever loading/settling effects inflate the per-stage delay in these rings
+(see Part (a)) apply essentially \textbf{uniformly regardless of ring length
+$N$} -- adding two extra stages scales the oscillation frequency down by a
+consistent factor across the full $V_{DD}$ sweep, rather than introducing
+extra $N$-dependent slowdown (e.g.\ from each stage driving one more
+identical fan-out around a longer loop).

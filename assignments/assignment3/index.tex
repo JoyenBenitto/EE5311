@@ -114,10 +114,10 @@ ngspice control block in \texttt{assign1a.spice}:
 alterparam width_p = 0.42
 reset
 tran 0.1p 250p
-let out_042 = v(out)
+let out_042 = v(net)
 let in_042  = v(inp)
-meas tran tlh_042 trig v(inp) val=0.9 rise=1 targ v(out) val=0.9 rise=1
-meas tran thl_042 trig v(inp) val=0.9 fall=1 targ v(out) val=0.9 fall=1
+meas tran tlh_042 trig v(inp) val=0.9 rise=1 targ v(net) val=0.9 rise=1
+meas tran thl_042 trig v(inp) val=0.9 fall=1 targ v(net) val=0.9 fall=1
 let delay_042 = (tlh_042 + thl_042) / 2
 echo Wp = 0.42 : delay = $&delay_042
 

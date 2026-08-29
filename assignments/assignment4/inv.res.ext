@@ -1,0 +1,25 @@
+scale 1000 1 500000
+rnode "DGND.t0" 0 0 -176 166 0
+rnode "DGND.t1" 0 0 -191 166 0
+rnode "DGND" 0 0 -71 29 0
+resist "DGND" "DGND.t1" 267.275
+resist "DGND" "DGND.t0" 5031.67
+rnode "out.t1" 0 0 -161 471 0
+rnode "out.t0" 0 0 -161 166 0
+rnode "out" 0 0 -131 276 0
+resist "out" "out.t0" 269.269
+resist "out" "out.t1" 418.108
+rnode "DVDD.t0" 0 0 -176 630 0
+rnode "DVDD.t1" 0 0 -191 471 0
+rnode "DVDD" 0 0 -55 600 0
+resist "DVDD" "DVDD.t1" 388.978
+resist "DVDD" "DVDD.t0" 1033.4
+rnode "in.t0" 0 0 -176 471 0
+rnode "in.t1" 0 0 -176 166 0
+rnode "in.n0" 0 0 -176 285 0
+rnode "in" 0 0 -297 261 0
+resist "in.n0" "in.t1" 142.993
+resist "in" "in.n0" 288.601
+resist "in.n0" "in.t0" 298.84
+device msubckt sky130_fd_pr__nfet_01v8 -191 124 -190 125  "DGND.t0" "in.t1" 60 0 "DGND.t1" 84 5040,288 "out.t0" 84 5040,288
+device msubckt sky130_fd_pr__pfet_01v8 -191 387 -190 388  "DVDD.t0" "in.t0" 60 0 "DVDD.t1" 168 10080,456 "out.t1" 168 10080,456

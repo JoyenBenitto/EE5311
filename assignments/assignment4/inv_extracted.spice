@@ -1,0 +1,22 @@
+* NGSPICE file created from inv.ext - technology: sky130A
+
+.subckt inv DVDD in out DGND
+X0 out.t1 in.t0 DVDD.t1 DVDD.t0 sky130_fd_pr__pfet_01v8 ad=0.252 pd=2.28 as=0.252 ps=2.28 w=0.84 l=0.15
+X1 out.t0 in.t1 DGND.t1 DGND.t0 sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.126 ps=1.44 w=0.42 l=0.15
+R0 in.n0 in.t0 298.841
+R1 in in.n0 288.601
+R2 in.n0 in.t1 142.994
+R3 DVDD DVDD.t0 1033.4
+R4 DVDD DVDD.t1 388.978
+R5 out out.t1 418.108
+R6 out out.t0 269.269
+R7 DGND DGND.t0 5031.67
+R8 DGND DGND.t1 267.276
+C0 out in 0.030632f
+C1 out DVDD 0.102413f
+C2 in DVDD 0.112359f
+C3 out DGND 0.119774f
+C4 in DGND 0.268142f
+C5 DVDD DGND 0.881849f
+.ends
+

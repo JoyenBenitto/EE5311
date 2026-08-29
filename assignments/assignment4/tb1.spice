@@ -1,0 +1,26 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment4/tb1.sch
+**.subckt tb1
+x1 VDD inp net1 GND inv
+x2 VDD net1 net2 GND inv
+vin inp GND PULSE 0 1.8 10ps 5ps 5ps 100ps 250ps
+V2 VDD GND 1.8
+**** begin user architecture code
+
+
+.include inv_extracted.spice
+.control
+tran 0.1p 250p
+plot v(net1) v(inp)
+meas tran tlh trig v(inp) val=0.9 rise=1 targ v(net1) val=0.9 rise=1
+meas tran thl trig v(inp) val=0.9 fall=1 targ v(net1) val=0.9 fall=1
+let delay= ($&thl + $&tlh) /2
+echo delay: $&delay
+.endc
+
+
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.GLOBAL VDD
+.end

@@ -1,0 +1,11 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment4/inv_tb.sch
+**.subckt inv_tb DVDD out in DGND vout1
+*.iopin DGND
+*.ipin in
+*.opin out
+*.iopin DVDD
+*.opin vout1
+x1 DVDD in vout1 DGND inv
+x2 DVDD vout1 out DGND inv
+**.ends
+.end

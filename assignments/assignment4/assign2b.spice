@@ -1,0 +1,53 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment4/assign2b.sch
+**.subckt assign2b
+x1 VDD net1 inp GND out1 inv_tb
+vin inp GND PULSE 0 1.8 10ps 5ps 5ps 100ps 250ps
+V2 VDD GND 1.8
+**** begin user architecture code
+
+
+.control
+tran 0.1p 250p
+plot v(out1) v(inp)
+meas tran tlh trig v(inp) val=0.9 rise=1 targ v(out1) val=0.9 rise=1
+meas tran thl trig v(inp) val=0.9 fall=1 targ v(out1) val=0.9 fall=1
+let delay= ($&thl + $&tlh) /2
+echo delay: $&delay
+.endc
+
+
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  inv_tb.sym # of pins=5
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment4/inv_tb.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment4/inv_tb.sch
+.subckt inv_tb DVDD out in DGND vout1
+*.iopin DGND
+*.ipin in
+*.opin out
+*.iopin DVDD
+*.opin vout1
+x1 DVDD in vout1 DGND inv
+x2 DVDD vout1 out DGND inv
+.ends
+
+
+* expanding   symbol:  inv.sym # of pins=8
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment4/inv.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment4/inv.sch
+.subckt inv DVDD in out DGND
+*.ipin in
+*.opin out
+*.iopin DVDD
+*.iopin DGND
+XM3 out in DVDD DVDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 out in DGND DGND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+.ends
+
+.GLOBAL GND
+.GLOBAL VDD
+.end

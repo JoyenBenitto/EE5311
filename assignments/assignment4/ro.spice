@@ -1,0 +1,75 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment4/ro.sch
+**.subckt ro
+x1 VDD out_pin net1 GND inv
+x3 VDD net1 net2 GND inv
+x4 VDD net2 net3 GND inv
+x6 VDD net3 net4 GND inv
+x7 VDD net4 net5 GND inv
+x8 VDD net5 net6 GND inv
+x9 VDD net6 out_pin GND inv
+V1 VDD GND {vdd_val}
+**** begin user architecture code
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+
+
+
+.param vdd_val = 1.8
+
+.ic v(out_pin)=0
+
+.control
+
+let Nsim = 9
+let periodvec = vector(Nsim)
+let freqvec = vector(Nsim)
+let vddvec = vector(Nsim)
+let index = 0
+
+while index < Nsim
+
+  let vddv = 1.0 + (index * 0.1)
+  alterparam vdd_val = $&vddv
+
+  reset
+  * Give it plenty of time (40ns) so 1.0V and 1.1V fully settle
+
+  * Give it a massive window (100ns) so 1.0V can easily hit 5 edges
+  tran 1p 100n uic
+
+  meas tran t1 WHEN v(out_pin)=0.4 rise=4
+  meas tran t2 WHEN v(out_pin)=0.4 rise=5
+
+  let periodvec[index] = t2 - t1
+  let freqvec[index] = 1 / (t2 - t1)
+  let vddvec[index] = vddv
+  let index = index + 1
+
+end
+
+plot freqvec vs vddvec
+plot periodvec vs vddvec
+
+
+.endc
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  inv.sym # of pins=8
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment4/inv.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment4/inv.sch
+.subckt inv DVDD in out DGND
+*.ipin in
+*.opin out
+*.iopin DVDD
+*.iopin DGND
+XM3 out in DVDD DVDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 out in DGND DGND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+.ends
+
+.GLOBAL GND
+.GLOBAL VDD
+.end

@@ -1,0 +1,39 @@
+* NGSPICE file created from inv_tb.ext - technology: sky130A
+
+.subckt inv_tb DVDD out in DGND vout1
+X0 vout1.t0 in.t0 DVDD.t1 DVDD.t0 sky130_fd_pr__pfet_01v8 ad=0.252 pd=2.28 as=0.252 ps=2.28 w=0.84 l=0.15
+X1 out.t0 vout1.t2 DVDD.t3 DVDD.t2 sky130_fd_pr__pfet_01v8 ad=0.252 pd=2.28 as=0.252 ps=2.28 w=0.84 l=0.15
+X2 vout1.t1 in.t1 DGND.t3 DGND.t2 sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.126 ps=1.44 w=0.42 l=0.15
+X3 out.t1 vout1.t3 DGND.t1 DGND.t0 sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.126 ps=1.44 w=0.42 l=0.15
+R0 in.n0 in.t0 298.841
+R1 in in.n0 285.467
+R2 in.n0 in.t1 144.601
+R3 DVDD.n0 DVDD.t2 1029.84
+R4 DVDD.t2 DVDD.t0 809.26
+R5 DVDD DVDD.t1 389.012
+R6 DVDD.n0 DVDD.t3 388.762
+R7 DVDD DVDD.n0 0.109875
+R8 vout1.n1 vout1.t0 414.721
+R9 vout1 vout1.n0 309.805
+R10 vout1.n0 vout1.t2 302.053
+R11 vout1.n1 vout1.t1 260.235
+R12 vout1.n0 vout1.t3 141.387
+R13 vout1 vout1.n1 38.777
+R14 out out.t0 417.733
+R15 out out.t1 270.022
+R16 DGND.n0 DGND.t0 5031.87
+R17 DGND.t0 DGND.t2 3930.1
+R18 DGND.n0 DGND.t1 271.079
+R19 DGND DGND.t3 269.514
+R20 DGND DGND.n0 0.159354
+C0 out DVDD 0.104524f
+C1 in vout1 0.052599f
+C2 in DVDD 0.107588f
+C3 DVDD vout1 0.226499f
+C4 out vout1 0.044074f
+C5 out DGND 0.101916f
+C6 vout1 DGND 0.361116f
+C7 in DGND 0.247639f
+C8 DVDD DGND 1.25652f
+.ends
+

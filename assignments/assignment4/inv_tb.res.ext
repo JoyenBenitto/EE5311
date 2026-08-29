@@ -1,0 +1,52 @@
+scale 1000 1 500000
+rnode "DGND.t2" 0 0 -414 167 0
+rnode "DGND.t0" 0 0 -138 167 0
+rnode "DGND.t1" 0 0 -153 167 0
+rnode "DGND.n0" 0 0 -183 62 0
+rnode "DGND.t3" 0 0 -429 167 0
+rnode "DGND" 0 0 -305 50 0
+resist "DGND" "DGND.n0" 0.158854
+resist "DGND" "DGND.t3" 269.513
+resist "DGND.n0" "DGND.t1" 271.078
+resist "DGND.t0" "DGND.t2" 3930.1
+resist "DGND.n0" "DGND.t0" 5031.87
+rnode "out.t0" 0 0 -123 473 0
+rnode "out.t1" 0 0 -123 167 0
+rnode "out" 0 0 -93 279 0
+resist "out" "out.t1" 270.022
+resist "out" "out.t0" 417.732
+rnode "vout1.t2" 0 0 -138 473 0
+rnode "vout1.t3" 0 0 -138 167 0
+rnode "vout1.n0" 0 0 -138 285 0
+rnode "vout1.t0" 0 0 -399 473 0
+rnode "vout1.t1" 0 0 -399 167 0
+rnode "vout1.n1" 0 0 -369 287 0
+rnode "vout1" 0 0 -256 270 0
+resist "vout1" "vout1.n1" 38.7765
+resist "vout1.n0" "vout1.t3" 141.387
+resist "vout1.n1" "vout1.t1" 260.234
+resist "vout1.n0" "vout1.t2" 302.053
+resist "vout1" "vout1.n0" 309.804
+resist "vout1.n1" "vout1.t0" 414.72
+rnode "DVDD.t0" 0 0 -414 473 0
+rnode "DVDD.t2" 0 0 -138 473 0
+rnode "DVDD.t3" 0 0 -153 473 0
+rnode "DVDD.n0" 0 0 -183 579 0
+rnode "DVDD.t1" 0 0 -429 473 0
+rnode "DVDD" 0 0 -267 612 0
+resist "DVDD" "DVDD.n0" 0.109375
+resist "DVDD.n0" "DVDD.t3" 388.762
+resist "DVDD" "DVDD.t1" 389.011
+resist "DVDD.t2" "DVDD.t0" 809.259
+resist "DVDD.n0" "DVDD.t2" 1029.84
+rnode "in.t0" 0 0 -414 473 0
+rnode "in.t1" 0 0 -414 167 0
+rnode "in.n0" 0 0 -414 287 0
+rnode "in" 0 0 -516 272 0
+resist "in.n0" "in.t1" 144.6
+resist "in" "in.n0" 285.467
+resist "in.n0" "in.t0" 298.84
+device msubckt sky130_fd_pr__nfet_01v8 -153 125 -152 126  "DGND.t0" "vout1.t3" 60 0 "DGND.t1" 84 5040,288 "out.t1" 84 5040,288
+device msubckt sky130_fd_pr__nfet_01v8 -429 125 -428 126  "DGND.t2" "in.t1" 60 0 "DGND.t3" 84 5040,288 "vout1.t1" 84 5040,288
+device msubckt sky130_fd_pr__pfet_01v8 -153 389 -152 390  "DVDD.t2" "vout1.t2" 60 0 "DVDD.t3" 168 10080,456 "out.t0" 168 10080,456
+device msubckt sky130_fd_pr__pfet_01v8 -429 389 -428 390  "DVDD.t0" "in.t0" 60 0 "DVDD.t1" 168 10080,456 "vout1.t0" 168 10080,456

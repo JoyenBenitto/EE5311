@@ -1,0 +1,5 @@
+out -92 279 li
+vout1 -255 270 li
+in -515 272 li
+DVDD -266 612 m1
+DGND -304 50 m1

@@ -14,10 +14,10 @@ x2 out net1 inverter
 alterparam width_p = 0.42
 reset
 tran 0.1p 250p
-let out_042 = v(out)
+let out_042 = v(net1)
 let in_042  = v(inp)
-meas tran tlh_042 trig v(inp) val=0.9 rise=1 targ v(out) val=0.9 rise=1
-meas tran thl_042 trig v(inp) val=0.9 fall=1 targ v(out) val=0.9 fall=1
+meas tran tlh_042 trig v(inp) val=0.9 rise=1 targ v(net1) val=0.9 rise=1
+meas tran thl_042 trig v(inp) val=0.9 fall=1 targ v(net1) val=0.9 fall=1
 let delay_042 = (tlh_042 + thl_042) / 2
 echo Wp = 0.42 : delay = $&delay_042
 
@@ -25,10 +25,10 @@ echo Wp = 0.42 : delay = $&delay_042
 alterparam width_p = 0.84
 reset
 tran 0.1p 250p
-let out_084 = v(out)
+let out_084 = v(net1)
 let in_084  = v(inp)
-meas tran tlh_084 trig v(inp) val=0.9 rise=1 targ v(out) val=0.9 rise=1
-meas tran thl_084 trig v(inp) val=0.9 fall=1 targ v(out) val=0.9 fall=1
+meas tran tlh_084 trig v(inp) val=0.9 rise=1 targ v(net1) val=0.9 rise=1
+meas tran thl_084 trig v(inp) val=0.9 fall=1 targ v(net1) val=0.9 fall=1
 let delay_084 = (tlh_084 + thl_084) / 2
 echo Wp = 0.84 : delay = $&delay_084
 
@@ -36,10 +36,10 @@ echo Wp = 0.84 : delay = $&delay_084
 alterparam width_p = 1.26
 reset
 tran 0.1p 250p
-let out_126 = v(out)
+let out_126 = v(net1)
 let in_126  = v(inp)
-meas tran tlh_126 trig v(inp) val=0.9 rise=1 targ v(out) val=0.9 rise=1
-meas tran thl_126 trig v(inp) val=0.9 fall=1 targ v(out) val=0.9 fall=1
+meas tran tlh_126 trig v(inp) val=0.9 rise=1 targ v(net1) val=0.9 rise=1
+meas tran thl_126 trig v(inp) val=0.9 fall=1 targ v(net1) val=0.9 fall=1
 let delay_126 = (tlh_126 + thl_126) / 2
 echo Wp = 1.26 : delay = $&delay_126
 

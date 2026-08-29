@@ -1,0 +1,6 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment4/inv.sch
+.subckt inv DVDD in out DGND
+*.PININFO in:I out:O DVDD:B DGND:B
+XM3 out in DVDD DVDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1
+XM2 out in DGND DGND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1
+.ends

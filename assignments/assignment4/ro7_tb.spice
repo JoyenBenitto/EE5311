@@ -1,0 +1,68 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment4/ro7_tb.sch
+**.subckt ro7_tb
+x1 vdd out out GND ro7
+V1 vdd GND {vdd_val}
+**** begin user architecture code
+
+
+.ic v(vout)=0
+.param vdd_val=1.8
+.control
+* Run transient analysis for 5ns.
+tran 1p 5n uic
+
+* CORRECTED: Use 'WHEN' to grab the exact timestamp of the edges
+meas tran t1 WHEN v(out)=0.9 rise=4
+meas tran t2 WHEN v(out)=0.9 rise=5
+
+* Calculate period and frequency (Frequency = 1 / Period)
+let period = t2 - t1
+let freq = 1 / period
+
+* Print the results to the terminal
+print period
+print freq
+
+* Plot the oscillating waveform
+plot v(out)
+.endc
+
+
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  ro7.sym # of pins=4
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment4/ro7.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment4/ro7.sch
+.subckt ro7 DVDD in out DGND
+*.ipin in
+*.opin out
+*.iopin DVDD
+*.iopin DGND
+x1 DVDD in net1 DGND inv
+x2 DVDD net1 net2 DGND inv
+x3 DVDD net2 net3 DGND inv
+x4 DVDD net3 net4 DGND inv
+x5 DVDD net4 net5 DGND inv
+x6 DVDD net5 net6 DGND inv
+x7 DVDD net6 out DGND inv
+.ends
+
+
+* expanding   symbol:  inv.sym # of pins=8
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment4/inv.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment4/inv.sch
+.subckt inv DVDD in out DGND
+*.ipin in
+*.opin out
+*.iopin DVDD
+*.iopin DGND
+XM3 out in DVDD DVDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 out in DGND DGND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+.ends
+
+.GLOBAL GND
+.end

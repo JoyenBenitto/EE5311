@@ -30,26 +30,26 @@ Cell pin lists are equivalent.
 Device classes sky130_fd_pr__nfet_01v8 and sky130_fd_pr__nfet_01v8 are equivalent.
 
 Subcircuit summary:
-Circuit 1: inv_tb                          |Circuit 2: inv_tb                          
+Circuit 1: ro7                             |Circuit 2: ro7                             
 -------------------------------------------|-------------------------------------------
-sky130_fd_pr__pfet_01v8 (2)                |sky130_fd_pr__pfet_01v8 (2)                
-sky130_fd_pr__nfet_01v8 (2)                |sky130_fd_pr__nfet_01v8 (2)                
-Number of devices: 4                       |Number of devices: 4                       
-Number of nets: 5                          |Number of nets: 5                          
+sky130_fd_pr__pfet_01v8 (7)                |sky130_fd_pr__pfet_01v8 (7)                
+sky130_fd_pr__nfet_01v8 (7)                |sky130_fd_pr__nfet_01v8 (7)                
+Number of devices: 14                      |Number of devices: 14                      
+Number of nets: 9                          |Number of nets: 9                          
 ---------------------------------------------------------------------------------------
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
 Netlists match uniquely.
 
 Subcircuit pins:
-Circuit 1: inv_tb                          |Circuit 2: inv_tb                          
+Circuit 1: ro7                             |Circuit 2: ro7                             
 -------------------------------------------|-------------------------------------------
-in                                         |in                                         
-out                                        |out                                        
-vout1                                      |vout1                                      
 DVDD                                       |DVDD                                       
 DGND                                       |DGND                                       
+out                                        |out                                        
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
-Device classes inv_tb and inv_tb are equivalent.
+Device classes ro7 and ro7 are equivalent.
 
 Final result: Circuits match uniquely.
 .

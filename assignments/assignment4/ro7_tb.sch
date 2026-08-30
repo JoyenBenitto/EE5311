@@ -7,11 +7,11 @@ F {}
 E {}
 N -450 -140 -450 -60 {lab=vdd}
 N -450 -0 -450 40 {lab=GND}
-N 30 -50 100 -50 {lab=#net1}
-N 100 -160 100 -50 {lab=#net1}
-N -290 -160 100 -160 {lab=#net1}
-N -290 -160 -290 -70 {lab=#net1}
-N -290 -70 -270 -70 {lab=#net1}
+N 30 -50 100 -50 {lab=out}
+N 100 -160 100 -50 {lab=out}
+N -290 -160 100 -160 {lab=out}
+N -290 -160 -290 -70 {lab=out}
+N -290 -70 -270 -70 {lab=out}
 N 30 -30 70 -30 {lab=GND}
 N 70 -30 70 30 {lab=GND}
 N 30 -70 70 -70 {lab=vdd}
@@ -20,7 +20,8 @@ C {vsource.sym} -450 -30 0 0 {name=V1 value=\{vdd_val\} savecurrent=false}
 C {gnd.sym} -450 40 0 0 {name=l2 lab=GND}
 C {lab_wire.sym} -450 -140 0 0 {name=p1 sig_type=std_logic lab=vdd}
 C {code_shown.sym} 290 -200 0 0 {name=sim only_toplevel=false value="
-.ic v(vout)=0
+.include ro7_extracted.spice
+.ic v(out)=0
 .param vdd_val=1.8
 .control
 * Run transient analysis for 5ns.

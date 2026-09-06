@@ -1,0 +1,17 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment5/nand.sch
+**.subckt nand VDD A out B GND
+*.ipin A
+*.opin out
+*.iopin VDD
+*.iopin GND
+*.ipin B
+XM1 out A net1 net2 sky130_fd_pr__nfet_01v8 L=0.15 W=1.68 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM2 out A VDD net3 sky130_fd_pr__pfet_01v8 L=0.15 W=1.68 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM3 net1 B GND net4 sky130_fd_pr__nfet_01v8 L=0.15 W=1.68 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM4 out B VDD net5 sky130_fd_pr__pfet_01v8 L=0.15 W=1.68 nf=4 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+**.ends
+.end

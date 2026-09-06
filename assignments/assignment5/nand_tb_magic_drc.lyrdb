@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<report-database>
+ <description>SKY130 DRC runset (converted from magic)</description>
+ <original-file>/home/joyen/ee5311/EE5311/assignments/assignment5/nand_tb.gds</original-file>
+ <generator>magic drc listall why (converted by run_magic_drc.lym)</generator>
+ <top-cell>nand_tb</top-cell>
+ <tags>
+ </tags>
+ <categories>
+  <category>
+   <name>poly.2</name>
+   <description>poly.2 : min. poly spacing : 0.21um</description>
+   <categories>
+   </categories>
+  </category>
+ </categories>
+ <cells>
+  <cell>
+   <name>nand_tb</name>
+   <variant/>
+   <layout-name/>
+   <references>
+   </references>
+  </cell>
+ </cells>
+ <items>
+  <item>
+   <tags/>
+   <category>'poly.2'</category>
+   <cell>nand_tb</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-7.66,1.575;-7.465,1.63)</value>
+   </values>
+  </item>
+ </items>
+</report-database>

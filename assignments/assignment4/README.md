@@ -39,7 +39,7 @@ make clean    # removes index.pdf and NS26Z186.zip
 
 ## Status
 
-Problem 2(a) (oscillation frequency at $V_{DD}=1.8$~V with layout parasitics)
-is complete. Problem 1 (inverter delay) and Problem 2(b)/(c) (frequency vs.\
-$V_{DD}$ sweep and comparison against Assignment 3) are marked `TODO` in
-`index.tex` pending those simulation runs.
+Complete: Problem 1 (inverter delay, extracted netlist and layout-parasitic
+net), Problem 2(a) (oscillation frequency at $V_{DD}=1.8$~V with layout
+parasitics), Problem 2(b) (frequency/period vs.\ $V_{DD}$ sweep), and
+Problem 2(c) (comparison against the pre-layout Assignment 3 results).

@@ -10,7 +10,8 @@ EE5311 (Digital IC Design) course.
   - [`assignment1`](assignments/assignment1) - MOSFET I-V characteristics (nMOS/pMOS transfer & output characteristics, velocity saturation, capacitor charging/discharging)
   - [`assignment2`](assignments/assignment2) - Inverter DC characteristics (static CMOS inverter sizing/VTC/noise margins, pseudo-nMOS inverter)
   - [`assignment3`](assignments/assignment3) - CMOS inverter transient characteristics and ring oscillator (propagation delay vs.\ Wp/VDD, energy-delay product, 7-/9-stage ring oscillator frequency)
-  - [`assignment4`](assignments/assignment4)
+  - [`assignment4`](assignments/assignment4) - Inverter and ring oscillator post-layout extracted simulation (DRC/LVS-clean layout, parasitic-extracted delay and oscillation frequency vs.\ pre-layout)
+  - [`assignment5`](assignments/assignment5) - NAND gate schematic and layout extracted simulation (delay vs.\ logical effort, layout-extracted delay)
 - `common/` - shared LaTeX template and the `release` Makefile logic used by every assignment
 
 ## Build

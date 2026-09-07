@@ -1,0 +1,18 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment5/nand_tb.sch
+.subckt nand_tb DVDD A out B B1 DGND
+*.PININFO A:I out:O DGND:B DVDD:B B:I B1:I
+x1 DVDD A out B DGND nand
+x2 DVDD out net1 B1 DGND nand
+.ends
+
+* expanding   symbol:  nand.sym # of pins=5
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment5/nand.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment5/nand.sch
+.subckt nand VDD A out B GND
+*.PININFO A:I out:O VDD:B GND:B B:I
+XM1 out A net1 GND sky130_fd_pr__nfet_01v8 L=0.15 W=1.68 nf=4
+XM2 out A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.68 nf=4
+XM3 net1 B GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1.68 nf=4
+XM4 out B VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.68 nf=4
+.ends
+

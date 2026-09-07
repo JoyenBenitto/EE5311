@@ -29,18 +29,14 @@ Circuit 1: sky130_fd_pr__nfet_01v8         |Circuit 2: sky130_fd_pr__nfet_01v8
 Cell pin lists are equivalent.
 Device classes sky130_fd_pr__nfet_01v8 and sky130_fd_pr__nfet_01v8 are equivalent.
 
-Cell nand_tb (0) disconnected node: out
-Cell nand_tb (1) disconnected node: out
-Class nand_tb (0):  Merged 23 parallel devices.
-Class nand_tb (1):  Merged 23 parallel devices.
-Cell nand_tb (0) disconnected node: out
-Cell nand_tb (1) disconnected node: out
+Class nand_tb (0):  Merged 24 parallel devices.
+Class nand_tb (1):  Merged 24 parallel devices.
 Subcircuit summary:
 Circuit 1: nand_tb                         |Circuit 2: nand_tb                         
 -------------------------------------------|-------------------------------------------
 sky130_fd_pr__pfet_01v8 (16->4)            |sky130_fd_pr__pfet_01v8 (16->4)            
-sky130_fd_pr__nfet_01v8 (16->5)            |sky130_fd_pr__nfet_01v8 (16->5)            
-Number of devices: 9                       |Number of devices: 9                       
+sky130_fd_pr__nfet_01v8 (16->4)            |sky130_fd_pr__nfet_01v8 (16->4)            
+Number of devices: 8                       |Number of devices: 8                       
 Number of nets: 10                         |Number of nets: 10                         
 ---------------------------------------------------------------------------------------
 Netlists match uniquely.
@@ -48,11 +44,11 @@ Netlists match uniquely.
 Subcircuit pins:
 Circuit 1: nand_tb                         |Circuit 2: nand_tb                         
 -------------------------------------------|-------------------------------------------
-B1                                         |B1                                         
-DVDD                                       |DVDD                                       
 DGND                                       |DGND                                       
+DVDD                                       |DVDD                                       
 B                                          |B                                          
 A                                          |A                                          
+B1                                         |B1                                         
 out                                        |out                                        
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.

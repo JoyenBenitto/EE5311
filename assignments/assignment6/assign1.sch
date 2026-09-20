@@ -92,29 +92,43 @@ C {vsource.sym} -860 -270 0 0 {name=V2 value=1.8 savecurrent=false}
 C {vdd.sym} -1000 -360 0 0 {name=l14 lab=VDD}
 C {lab_wire.sym} -860 -360 0 0 {name=p5 sig_type=std_logic lab=D}
 C {sky130_fd_pr/corner.sym} 610 -950 0 0 {name=CORNER only_toplevel=false corner=tt}
-C {code_shown.sym} 1150 -1100 0 0 {name=sim only_toplevel=false value="
+C {code_shown.sym} 2390 -1170 0 0 {name=sim only_toplevel=false value="
 .control
-* Force initial state so Q starts HIGH
-.ic v(Q)=1.8 v(net8)=0
+* Force initial state so Q starts LOW
+.ic v(Q)=0 v(net8)=1.8
 
 let t_start = 9.0n
 let t_step = 50p
 let t_stop = 10.0n
 let current_t = t_start
 
+* Initialize tracking variables
+let min_tdq = 1
+let opt_setup = 0
+let opt_tcq = 0
+
 while current_t <= t_stop
-    * D falls from 1.8V to 0V
-    alter @V2[pulse] = [ 1.8 0 $&current_t 5p 5p 10n 20n ]
+    alter @V2[pulse] = [ 0 1.8 $&current_t 5p 5p 10n 20n ]
     tran 5p 15n uic
 
-    * Measure Delays at 50% VDD (0.9V)
-    meas tran tdc TRIG v(D) VAL=0.9 FALL=1 TARG v(phi) VAL=0.9 RISE=1
-    meas tran tcq TRIG v(phi) VAL=0.9 RISE=1 TARG v(Q) VAL=0.9 FALL=1
-    meas tran tdq TRIG v(D) VAL=0.9 FALL=1 TARG v(Q) VAL=0.9 FALL=1
+    meas tran tdc TRIG v(D) VAL=0.9 RISE=1 TD=8n TARG v(phi) VAL=0.9 RISE=1 TD=9n
+    meas tran tcq TRIG v(phi) VAL=0.9 RISE=1 TD=9n TARG v(Q) VAL=0.9 RISE=1 TD=9.5n
+    meas tran tdq TRIG v(D) VAL=0.9 RISE=1 TD=8n TARG v(Q) VAL=0.9 RISE=1 TD=9.5n
 
-    print tdc tcq tdq
+    * Capture the minimum tDQ and corresponding setup/tcq
+    if tdq > 0
+        if tdq < min_tdq
+            let min_tdq = tdq
+            let opt_setup = tdc
+            let opt_tcq = tcq
+        end
+    end
+
     let current_t = current_t + t_step
 end
+
+print opt_setup opt_tcq min_tdq
+
 .endc
 "}
 C {vsource.sym} -770 -270 0 0 {name=V3 value="pulse 1.8 0 10n 5p 5p 9.99n 20n" savecurrent=false}

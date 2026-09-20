@@ -1,7 +1,7 @@
-** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment6/assign1.sch
-**.subckt assign1
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment6/assign1b.sch
+**.subckt assign1b
 V1 VDD gnd 1.8
-V2 D gnd 1.8
+V2 D gnd 0
 V3 phi_bar gnd pulse 1.8 0 10n 5p 5p 9.99n 20n
 V5 phi gnd pulse 0 1.8 10n 5p 5p 9.99n 20n
 x1 phi_bar VDD net3 net2 gnd phi transmission_gate
@@ -20,29 +20,30 @@ x11 VDD net8 Q gnd inv
 
 
 .control
-* Force initial state so Q starts LOW
-.ic v(Q)=0 v(net8)=1.8
-
+* Initialize variables for the sweep
 let t_start = 9.0n
 let t_step = 50p
-let t_stop = 10.0n
+let t_stop = 9.9n
 let current_t = t_start
 
-* Initialize tracking variables
 let min_tdq = 1
 let opt_setup = 0
 let opt_tcq = 0
 
 while current_t <= t_stop
-    alter @V2[pulse] = [ 0 1.8 $&current_t 5p 5p 10n 20n ]
-    tran 5p 15n uic
+    * Alter D input pulse delay
+    alter @V2[pulse] = [ 1.8 0 $&current_t 5p 5p 10n 20n ]
 
-    meas tran tdc TRIG v(D) VAL=0.9 RISE=1 TD=8n TARG v(phi) VAL=0.9 RISE=1 TD=9n
-    meas tran tcq TRIG v(phi) VAL=0.9 RISE=1 TD=9n TARG v(Q) VAL=0.9 RISE=1 TD=9.5n
-    meas tran tdq TRIG v(D) VAL=0.9 RISE=1 TD=8n TARG v(Q) VAL=0.9 RISE=1 TD=9.5n
+    * Run transient analysis WITHOUT 'uic' so SPICE calculates the DC operating point
+    tran 5p 15n
 
-    * Capture the minimum tDQ and corresponding setup/tcq
-    if tdq > 0
+    * Measurements
+    meas tran tdc TRIG v(D) VAL=0.9 FALL=1 TD=8n TARG v(phi) VAL=0.9 RISE=1 TD=9n
+    meas tran tcq TRIG v(phi) VAL=0.9 RISE=1 TD=9n TARG v(Q) VAL=0.9 FALL=1 TD=9.5n
+    meas tran tdq TRIG v(D) VAL=0.9 FALL=1 TD=8n TARG v(Q) VAL=0.9 FALL=1 TD=9.5n
+
+    * Safely check if tdq was measured successfully before comparing
+    if length(tdq) > 0
         if tdq < min_tdq
             let min_tdq = tdq
             let opt_setup = tdc
@@ -54,7 +55,6 @@ while current_t <= t_stop
 end
 
 print opt_setup opt_tcq min_tdq
-
 .endc
 
 

@@ -30,6 +30,12 @@ let min_tdq = 1
 let opt_setup = 0
 let opt_tcq = 0
 
+let n_pts = 18
+let tdc_sweep = unitvec(n_pts)
+let tcq_sweep = tdc_sweep * 0
+let tdq_sweep = tdc_sweep * 0
+let idx = 0
+
 while current_t <= t_stop
     * Alter D input pulse delay
     alter @V2[pulse] = [ 1.8 0 $&current_t 5p 5p 10n 20n ]
@@ -42,6 +48,14 @@ while current_t <= t_stop
     meas tran tcq TRIG v(phi) VAL=0.9 RISE=1 TD=9n TARG v(Q) VAL=0.9 FALL=1 TD=9.5n
     meas tran tdq TRIG v(D) VAL=0.9 FALL=1 TD=8n TARG v(Q) VAL=0.9 FALL=1 TD=9.5n
 
+    let tdc_sweep[idx] = tdc
+    if tcq > 0
+        let tcq_sweep[idx] = tcq
+    end
+    if tdq > 0
+        let tdq_sweep[idx] = tdq
+    end
+
     * Safely check if tdq was measured successfully before comparing
     if length(tdq) > 0
         if tdq < min_tdq
@@ -51,10 +65,16 @@ while current_t <= t_stop
         end
     end
 
+    let idx = idx + 1
     let current_t = current_t + t_step
 end
 
 print opt_setup opt_tcq min_tdq
+
+* Setup-time sweep: tDQ and tCQ vs tsetup (native ngspice plot)
+plot tdq_sweep tcq_sweep vs tdc_sweep
+setplot tran18
+plot v(D) v(phi) v(Q) xlimit 9.5n 10.5n
 .endc
 
 

@@ -24,13 +24,13 @@ X19 a_n2549_433# B1 DVDD DVDD sky130_fd_pr__pfet_01v8 ad=0.105 pd=0.92 as=0.105 
 X20 DGND B1 a_n2532_125# DGND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
 X21 a_n2532_125# B1 DGND DGND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
 X22 DGND B1 a_n2532_125# DGND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
-X23 a_n1922_125# out a_n2532_125# DGND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X23 a_n2549_433# out a_n2532_125# DGND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
 X24 DVDD out a_n2549_433# DVDD sky130_fd_pr__pfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
-X25 a_n2532_125# out a_n1922_125# DGND sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X25 a_n2532_125# out a_n2549_433# DGND sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
 X26 a_n2549_433# out DVDD DVDD sky130_fd_pr__pfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
-X27 a_n1922_125# out a_n2532_125# DGND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X27 a_n2549_433# out a_n2532_125# DGND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
 X28 DVDD out a_n2549_433# DVDD sky130_fd_pr__pfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
-X29 a_n2532_125# out a_n1922_125# DGND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X29 a_n2532_125# out a_n2549_433# DGND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
 X30 a_n2549_433# out DVDD DVDD sky130_fd_pr__pfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
 X31 out B DVDD DVDD sky130_fd_pr__pfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
 .ends

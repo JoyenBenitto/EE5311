@@ -1,0 +1,14 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment6/transmission_gate.sch
+**.subckt transmission_gate in out phi phi_bar GND VDD
+*.ipin in
+*.opin out
+*.ipin phi
+*.ipin phi_bar
+*.iopin GND
+*.iopin VDD
+XM3 in phi_bar out GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM4 in phi out VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+**.ends
+.end

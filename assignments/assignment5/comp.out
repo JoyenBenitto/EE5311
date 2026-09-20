@@ -37,7 +37,7 @@ Circuit 1: nand_tb                         |Circuit 2: nand_tb
 sky130_fd_pr__pfet_01v8 (16->4)            |sky130_fd_pr__pfet_01v8 (16->4)            
 sky130_fd_pr__nfet_01v8 (16->4)            |sky130_fd_pr__nfet_01v8 (16->4)            
 Number of devices: 8                       |Number of devices: 8                       
-Number of nets: 10                         |Number of nets: 10                         
+Number of nets: 9                          |Number of nets: 9                          
 ---------------------------------------------------------------------------------------
 Netlists match uniquely.
 

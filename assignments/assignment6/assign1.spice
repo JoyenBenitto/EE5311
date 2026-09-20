@@ -1,0 +1,83 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment6/assign1.sch
+**.subckt assign1
+V1 VDD gnd 1.8
+V2 D gnd 1.8
+V3 phi_bar gnd pulse 1.8 0 10n 5p 5p 9.99n 20n
+V5 phi gnd pulse 0 1.8 10n 5p 5p 9.99n 20n
+x1 phi_bar VDD net3 net2 gnd phi transmission_gate
+x2 VDD net4 net3 gnd inv
+x3 VDD D net1 gnd inv
+x4 phi VDD net1 net2 gnd phi_bar transmission_gate
+x5 VDD net2 net4 gnd inv
+x6 VDD net5 net6 gnd inv
+x7 VDD net4 net7 gnd inv
+x8 VDD net8 net5 gnd inv
+x9 phi VDD net6 net8 gnd phi_bar transmission_gate
+x10 phi_bar VDD net7 net8 gnd phi transmission_gate
+x11 VDD net8 Q gnd inv
+**** begin user architecture code
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+
+
+.control
+* Force initial state so Q starts HIGH
+.ic v(Q)=1.8 v(net8)=0
+
+let t_start = 9.0n
+let t_step = 50p
+let t_stop = 10.0n
+let current_t = t_start
+
+while current_t <= t_stop
+    * D falls from 1.8V to 0V
+    alter @V2[pulse] = [ 1.8 0 $&current_t 5p 5p 10n 20n ]
+    tran 5p 15n uic
+
+    * Measure Delays at 50% VDD (0.9V)
+    meas tran tdc TRIG v(D) VAL=0.9 FALL=1 TARG v(phi) VAL=0.9 RISE=1
+    meas tran tcq TRIG v(phi) VAL=0.9 RISE=1 TARG v(Q) VAL=0.9 FALL=1
+    meas tran tdq TRIG v(D) VAL=0.9 FALL=1 TARG v(Q) VAL=0.9 FALL=1
+
+    print tdc tcq tdq
+    let current_t = current_t + t_step
+end
+.endc
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  transmission_gate.sym # of pins=6
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment6/transmission_gate.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment6/transmission_gate.sch
+.subckt transmission_gate phi VDD in out GND phi_bar
+*.ipin in
+*.opin out
+*.ipin phi
+*.ipin phi_bar
+*.iopin GND
+*.iopin VDD
+XM3 in phi_bar out GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM4 in phi out VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+.ends
+
+
+* expanding   symbol:  inv.sym # of pins=4
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment6/inv.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment6/inv.sch
+.subckt inv VDD in out GND
+*.ipin in
+*.iopin GND
+*.iopin VDD
+*.opin out
+XM3 out in GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+XM4 out in VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+.ends
+
+.GLOBAL VDD
+.GLOBAL gnd
+.end

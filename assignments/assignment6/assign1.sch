@@ -98,14 +98,14 @@ C {code_shown.sym} 2390 -1170 0 0 {name=sim only_toplevel=false value="
 .ic v(Q)=0 v(net8)=1.8
 
 let t_start = 9.0n
-let t_step = 50p
-let t_stop = 10.0n
+let t_step = 10p
+let t_stop = 9.9n
 let current_t = t_start
 let min_tdq = 1
 let opt_setup = 0
 let opt_tcq = 0
 
-let n_pts = 20
+let n_pts = floor((t_stop - t_start) / t_step)
 let tdc_sweep = unitvec(n_pts)
 let tcq_sweep = tdc_sweep * 0
 let tdq_sweep = tdc_sweep * 0
@@ -146,6 +146,7 @@ print opt_setup opt_tcq min_tdq
 plot tdq_sweep tcq_sweep vs tdc_sweep
 setplot tran18
 plot v(D) v(phi) v(Q) xlimit 9.5n 10.5n
+print tcq_sweep tdq_sweep tdc_sweep
 .endc
 "}
 C {vsource.sym} -770 -270 0 0 {name=V3 value="pulse 1.8 0 10n 5p 5p 9.99n 20n" savecurrent=false}

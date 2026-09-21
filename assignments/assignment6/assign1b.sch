@@ -87,6 +87,12 @@ N 1770 770 1790 770 {lab=gnd}
 N 1790 770 1790 790 {lab=gnd}
 N 1770 640 1800 640 {lab=gnd}
 N -490 730 -490 770 {lab=gnd}
+N 3040 1060 3050 1060 {lab=VDD}
+N 3050 970 3050 1060 {lab=VDD}
+N 3040 1100 3060 1100 {lab=gnd}
+N 3060 1100 3060 1150 {lab=gnd}
+N 2740 760 2740 1060 {lab=Q}
+N 2700 770 2740 760 {lab=Q}
 C {vsource.sym} -490 700 0 0 {name=V1 value=1.8 savecurrent=false}
 C {vsource.sym} -350 700 0 0 {name=V2 value=0 savecurrent=false}
 C {vdd.sym} -490 610 0 0 {name=l14 lab=VDD}
@@ -195,3 +201,6 @@ C {vdd.sym} 1780 700 0 0 {name=l21 lab=VDD}
 C {gnd.sym} 1790 790 0 0 {name=l22 lab=gnd}
 C {gnd.sym} 1800 640 0 0 {name=l23 lab=gnd}
 C {gnd.sym} -490 770 0 0 {name=l3 lab=gnd}
+C {inv.sym} 2890 1080 0 0 {name=x12}
+C {vdd.sym} 3050 970 0 0 {name=l15 lab=VDD}
+C {gnd.sym} 3060 1150 0 0 {name=l24 lab=gnd}

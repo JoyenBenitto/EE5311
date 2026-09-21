@@ -15,6 +15,7 @@ x8 VDD net8 net5 gnd inv
 x9 phi VDD net6 net8 gnd phi_bar transmission_gate
 x10 phi_bar VDD net7 net8 gnd phi transmission_gate
 x11 VDD net8 Q gnd inv
+x12 VDD Q net9 gnd inv
 **** begin user architecture code
 .lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
 
@@ -91,7 +92,7 @@ plot tdq_sweep tcq_sweep vs tdc_sweep
 *.iopin VDD
 XM3 in phi_bar out GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-XM4 in phi out VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM4 in phi out VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
 .ends
 

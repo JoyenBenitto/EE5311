@@ -87,17 +87,22 @@ N 1260 -200 1280 -200 {lab=gnd}
 N 1280 -200 1280 -180 {lab=gnd}
 N 1260 -330 1290 -330 {lab=gnd}
 N -1000 -240 -1000 -200 {lab=gnd}
+N 2190 -200 2320 -200 {lab=Q}
+N 2620 -200 2630 -200 {lab=VDD}
+N 2630 -290 2630 -200 {lab=VDD}
+N 2620 -160 2640 -160 {lab=gnd}
+N 2640 -160 2640 -110 {lab=gnd}
 C {vsource.sym} -1000 -270 0 0 {name=V1 value=1.8 savecurrent=false}
 C {vsource.sym} -860 -270 0 0 {name=V2 value=1.8 savecurrent=false}
 C {vdd.sym} -1000 -360 0 0 {name=l14 lab=VDD}
 C {lab_wire.sym} -860 -360 0 0 {name=p5 sig_type=std_logic lab=D}
 C {sky130_fd_pr/corner.sym} 610 -950 0 0 {name=CORNER only_toplevel=false corner=tt}
-C {code_shown.sym} 2390 -1170 0 0 {name=sim only_toplevel=false value="
+C {code_shown.sym} 2800 -1710 0 0 {name=sim only_toplevel=false value="
 .control
 * Force initial state so Q starts LOW
 .ic v(Q)=0 v(net8)=1.8
 
-let t_start = 9.0n
+let t_start = 9.3n
 let t_step = 10p
 let t_stop = 9.9n
 let current_t = t_start
@@ -195,3 +200,6 @@ C {vdd.sym} 1270 -270 0 0 {name=l21 lab=VDD}
 C {gnd.sym} 1280 -180 0 0 {name=l22 lab=gnd}
 C {gnd.sym} 1290 -330 0 0 {name=l23 lab=gnd}
 C {gnd.sym} -1000 -200 0 0 {name=l3 lab=gnd}
+C {inv.sym} 2470 -180 0 0 {name=x12}
+C {vdd.sym} 2630 -290 0 0 {name=l15 lab=VDD}
+C {gnd.sym} 2640 -110 0 0 {name=l24 lab=gnd}

@@ -92,19 +92,19 @@ C {vsource.sym} -350 700 0 0 {name=V2 value=0 savecurrent=false}
 C {vdd.sym} -490 610 0 0 {name=l14 lab=VDD}
 C {lab_wire.sym} -350 610 0 0 {name=p5 sig_type=std_logic lab=D}
 C {sky130_fd_pr/corner.sym} 1120 20 0 0 {name=CORNER only_toplevel=false corner=tt}
-C {code_shown.sym} 2900 -200 0 0 {name=sim only_toplevel=false value="
+C {code_shown.sym} 2900 -190 0 0 {name=sim only_toplevel=false value="
 .control
 * Initialize variables for the sweep
-let t_start = 9.0n
-let t_step = 50p
-let t_stop = 9.9n
+let t_start = 9.5n
+let t_step = 10p
+let t_stop = 9.88n
 let current_t = t_start
 
 let min_tdq = 1
 let opt_setup = 0
 let opt_tcq = 0
 
-let n_pts = 18
+let n_pts = floor((t_stop - t_start) / t_step)
 let tdc_sweep = unitvec(n_pts)
 let tcq_sweep = tdc_sweep * 0
 let tdq_sweep = tdc_sweep * 0
@@ -118,9 +118,9 @@ while current_t <= t_stop
     tran 5p 15n
 
     * Measurements
-    meas tran tdc TRIG v(D) VAL=0.9 FALL=1 TD=8n TARG v(phi) VAL=0.9 RISE=1 TD=9n
-    meas tran tcq TRIG v(phi) VAL=0.9 RISE=1 TD=9n TARG v(Q) VAL=0.9 FALL=1 TD=9.5n
-    meas tran tdq TRIG v(D) VAL=0.9 FALL=1 TD=8n TARG v(Q) VAL=0.9 FALL=1 TD=9.5n
+    meas tran tdc TRIG v(D) VAL=0.9 FALL=1 TARG v(phi) VAL=0.9 RISE=1
+    meas tran tcq TRIG v(phi) VAL=0.9 RISE=1 TARG v(Q) VAL=0.9 FALL=1 TD=10n
+    meas tran tdq TRIG v(D) VAL=0.9 FALL=1 TARG v(Q) VAL=0.9 FALL=1 TD=10n
 
     let tdc_sweep[idx] = tdc
     if tcq > 0
@@ -147,8 +147,6 @@ print opt_setup opt_tcq min_tdq
 
 * Setup-time sweep: tDQ and tCQ vs tsetup (native ngspice plot)
 plot tdq_sweep tcq_sweep vs tdc_sweep
-setplot tran18
-plot v(D) v(phi) v(Q) xlimit 9.5n 10.5n
 .endc
 "}
 C {vsource.sym} -260 700 0 0 {name=V3 value="pulse 1.8 0 10n 5p 5p 9.99n 20n" savecurrent=false}

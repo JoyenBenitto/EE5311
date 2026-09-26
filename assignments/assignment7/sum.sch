@@ -10,7 +10,7 @@ N -200 -350 -30 -350 {lab=VDD}
 N -410 -290 -200 -290 {lab=#net1}
 N -200 -290 -30 -290 {lab=#net1}
 N -320 -290 -320 -160 {lab=#net1}
-N -320 -100 250 -100 {lab=cout}
+N -320 -100 250 -100 {lab=sout}
 N 250 -180 250 -160 {lab=#net2}
 N 250 -290 250 -240 {lab=#net3}
 N 160 -320 210 -320 {lab=a}
@@ -42,8 +42,8 @@ N -240 -210 210 -210 {lab=b}
 N -70 -320 -70 -170 {lab=cin}
 N -70 -170 180 -170 {lab=cin}
 N 180 -170 180 -130 {lab=cin}
-N 250 -100 550 -100 {lab=cout}
-N 550 -100 550 -90 {lab=cout}
+N 250 -100 550 -100 {lab=sout}
+N 550 -100 550 -90 {lab=sout}
 N -320 -130 -100 -130 {lab=VDD}
 N -100 -350 -100 -130 {lab=VDD}
 N -320 240 -0 240 {lab=#net4}
@@ -52,8 +52,8 @@ N -40 300 -40 370 {lab=GND}
 N 270 210 270 240 {lab=#net5}
 N 270 100 270 150 {lab=#net6}
 N -290 100 -290 240 {lab=#net4}
-N -290 -100 -290 40 {lab=cout}
-N 270 -100 270 40 {lab=cout}
+N -290 -100 -290 40 {lab=sout}
+N 270 -100 270 40 {lab=sout}
 N 200 70 230 70 {lab=cin}
 N 200 -130 200 70 {lab=cin}
 N -470 170 230 180 {lab=b}
@@ -115,7 +115,7 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {opin.sym} 550 -90 0 0 {name=p1 lab=cout}
+C {opin.sym} 550 -90 0 0 {name=p1 lab=sout}
 C {ipin.sym} -640 -320 0 0 {name=p2 lab=a}
 C {iopin.sym} -330 -440 3 0 {name=p3 lab=VDD}
 C {iopin.sym} -40 370 1 0 {name=p4 lab=GND}

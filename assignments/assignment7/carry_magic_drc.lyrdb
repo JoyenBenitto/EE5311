@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<report-database>
+ <description>SKY130 DRC runset (converted from magic)</description>
+ <original-file>/home/joyen/ee5311/EE5311/assignments/assignment7/carry.gds</original-file>
+ <generator>magic drc listall why (converted by run_magic_drc.lym)</generator>
+ <top-cell>carry</top-cell>
+ <tags>
+ </tags>
+ <categories>
+  <category>
+   <name>poly.4</name>
+   <description>poly.4 : poly spacing to Diffusion &lt; 0.075um</description>
+   <categories>
+   </categories>
+  </category>
+ </categories>
+ <cells>
+  <cell>
+   <name>carry</name>
+   <variant/>
+   <layout-name/>
+   <references>
+   </references>
+  </cell>
+ </cells>
+ <items>
+  <item>
+   <tags/>
+   <category>'poly.4'</category>
+   <cell>carry</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-8.935,-0.505;-8.435,-0.48)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'poly.4'</category>
+   <cell>carry</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-6.905,-0.505;-6.405,-0.48)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'poly.4'</category>
+   <cell>carry</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-4.875,-0.505;-4.375,-0.48)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'poly.4'</category>
+   <cell>carry</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-2.75,-0.505;-2.25,-0.48)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'poly.4'</category>
+   <cell>carry</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-1.45,-0.505;-0.95,-0.48)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'poly.4'</category>
+   <cell>carry</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-8.84,0.74;-8.34,0.765)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'poly.4'</category>
+   <cell>carry</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-6.81,0.74;-6.31,0.765)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'poly.4'</category>
+   <cell>carry</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-4.78,0.74;-4.28,0.765)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'poly.4'</category>
+   <cell>carry</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-2.75,0.74;-2.25,0.765)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'poly.4'</category>
+   <cell>carry</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-1.45,0.74;-0.95,0.765)</value>
+   </values>
+  </item>
+ </items>
+</report-database>

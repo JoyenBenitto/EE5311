@@ -106,6 +106,7 @@ C {vsource.sym} -1340 -160 0 0 {name=va2 value=1.8 savecurrent=false}
 C {lab_wire.sym} -1450 -240 0 0 {name=p7 sig_type=std_logic lab=b}
 C {lab_wire.sym} -1340 -240 0 0 {name=p8 sig_type=std_logic lab=cin}
 C {code_shown.sym} 1080 -660 0 0 {name=sim only_toplevel=false value="
+.include "carry_extracted.spice"
 .control
 * alter @va[pulse] = [ 1.8 0 0 0 0 4n 8n]
 * alter @va1[pulse] = [ 1.8 0 0 0 0 4n 8n]

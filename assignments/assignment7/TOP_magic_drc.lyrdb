@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<report-database>
+ <description>SKY130 DRC runset (converted from magic)</description>
+ <original-file>/home/joyen/ee5311/EE5311/assignments/assignment7/sum.gds</original-file>
+ <generator>magic drc listall why (converted by run_magic_drc.lym)</generator>
+ <top-cell>TOP</top-cell>
+ <tags>
+ </tags>
+ <categories>
+  <category>
+   <name>poly.4</name>
+   <description>poly.4 : poly spacing to Diffusion &lt; 0.075um</description>
+   <categories>
+   </categories>
+  </category>
+ </categories>
+ <cells>
+  <cell>
+   <name>TOP</name>
+   <variant/>
+   <layout-name/>
+   <references>
+   </references>
+  </cell>
+ </cells>
+ <items>
+  <item>
+   <tags/>
+   <category>'poly.4'</category>
+   <cell>TOP</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>box: (-0.805,-0.58;-0.505,-0.555)</value>
+   </values>
+  </item>
+ </items>
+</report-database>

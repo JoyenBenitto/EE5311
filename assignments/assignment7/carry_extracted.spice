@@ -1,0 +1,161 @@
+* NGSPICE file created from carry.ext - technology: sky130A
+
+.subckt carry a GND VDD b cout cin
+X0 a_n1787_n180# b.t0 cout.t5 GND.t15 sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X1 cout.t1 cin.t0 a_n1046_148# VDD.t9 sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.252 ps=2.28 w=0.84 l=0.15
+X2 a_n1787_n180# a.t0 GND.t1 GND.t0 sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X3 a_n1046_148# cin.t1 cout.t3 VDD.t8 sky130_fd_pr__pfet_01v8 ad=0.252 pd=2.28 as=0.21 ps=1.34 w=0.84 l=0.15
+X4 a_n1046_148# a.t1 VDD.t3 VDD.t2 sky130_fd_pr__pfet_01v8 ad=0.252 pd=2.28 as=0.21 ps=1.34 w=0.84 l=0.15
+X5 a_n1065_n180# cin.t2 cout.t2 GND.t5 sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X6 VDD.t15 b.t1 a_n1046_148# VDD.t14 sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.252 ps=2.28 w=0.84 l=0.15
+X7 a_n1046_148# b.t2 VDD.t13 VDD.t12 sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.21 ps=1.34 w=0.84 l=0.15
+X8 a_n1065_n180# a.t2 GND.t7 GND.t6 sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X9 VDD.t1 a.t3 a_n1046_148# VDD.t0 sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.21 ps=1.34 w=0.84 l=0.15
+X10 GND.t9 a.t4 a_n1787_n180# GND.t8 sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X11 cout.t4 b.t3 a_n1787_n180# GND.t14 sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X12 GND.t13 b.t4 a_n1065_n180# GND.t12 sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X13 a_n1768_148# a.t5 VDD.t5 VDD.t4 sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.252 ps=2.28 w=0.84 l=0.15
+X14 VDD.t7 a.t6 a_n1768_148# VDD.t6 sky130_fd_pr__pfet_01v8 ad=0.252 pd=2.28 as=0.21 ps=1.34 w=0.84 l=0.15
+X15 a_n1065_n180# b.t5 GND.t11 GND.t10 sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X16 cout.t7 b.t6 a_n1768_148# VDD.t11 sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.252 ps=2.28 w=0.84 l=0.15
+X17 cout.t0 cin.t3 a_n1065_n180# GND.t2 sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X18 GND.t4 a.t7 a_n1065_n180# GND.t3 sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X19 a_n1768_148# b.t7 cout.t6 VDD.t10 sky130_fd_pr__pfet_01v8 ad=0.252 pd=2.28 as=0.21 ps=1.34 w=0.84 l=0.15
+R0 b.n5 b.n4 606.891
+R1 b.n2 b.t7 287.594
+R2 b.n0 b.t1 266.707
+R3 b.n0 b.t2 260.281
+R4 b.n2 b.t6 239.393
+R5 b.n3 b.t3 202.44
+R6 b.n1 b.t4 199.227
+R7 b.n1 b.t5 192.8
+R8 b.n3 b.t0 189.588
+R9 b.n4 b.n3 103.266
+R10 b.n4 b.n2 96.8387
+R11 b b.n0 95.3781
+R12 b.n5 b 51.852
+R13 b b.n1 51.4138
+R14 b b.n5 1.46111
+R15 cout.n3 cout.n1 399.182
+R16 cout.n3 cout.n2 396.923
+R17 cout cout.n3 305.072
+R18 cout cout.n5 285.937
+R19 cout.n4 cout.n0 276.022
+R20 cout.n4 cout 210.279
+R21 cout.n5 cout.t5 71.4291
+R22 cout.n5 cout.t4 71.4291
+R23 cout.n0 cout.t2 71.4291
+R24 cout.n0 cout.t0 71.4291
+R25 cout.n2 cout.t6 58.6315
+R26 cout.n2 cout.t7 58.6315
+R27 cout.n1 cout.t3 58.6315
+R28 cout.n1 cout.t1 58.6315
+R29 cout cout.n4 2.13383
+R30 GND.n1 GND.t6 5019.58
+R31 GND.t12 GND.t5 4187.1
+R32 GND.t2 GND.t15 3917.42
+R33 GND.t14 GND.t8 3917.42
+R34 GND.t6 GND.t3 1845.16
+R35 GND.t3 GND.t10 1845.16
+R36 GND.t10 GND.t12 1845.16
+R37 GND.t5 GND.t2 1845.16
+R38 GND.t15 GND.t14 1845.16
+R39 GND.t8 GND.t0 1845.16
+R40 GND.n4 GND.t1 255.385
+R41 GND.n4 GND.t9 255.32
+R42 GND.n3 GND.n2 212.242
+R43 GND.n1 GND.n0 212.242
+R44 GND.n2 GND.t11 71.4291
+R45 GND.n2 GND.t13 71.4291
+R46 GND.n0 GND.t7 71.4291
+R47 GND.n0 GND.t4 71.4291
+R48 GND GND.n4 1.18279
+R49 GND.n3 GND.n1 0.339042
+R50 GND GND.n3 0.285656
+R51 cin.n0 cin.t0 266.707
+R52 cin.n0 cin.t1 260.281
+R53 cin.n1 cin.t3 229.754
+R54 cin.n1 cin.t2 162.274
+R55 cin cin.n1 125.32
+R56 cin cin.n0 122.108
+R57 VDD.n1 VDD.t2 1029.86
+R58 VDD.t14 VDD.t8 809.26
+R59 VDD.t9 VDD.t10 809.26
+R60 VDD.t11 VDD.t6 809.26
+R61 VDD.n4 VDD.t5 386.685
+R62 VDD.n4 VDD.t7 386.399
+R63 VDD.t2 VDD.t0 381.173
+R64 VDD.t0 VDD.t12 381.173
+R65 VDD.t12 VDD.t14 381.173
+R66 VDD.t8 VDD.t9 381.173
+R67 VDD.t10 VDD.t11 381.173
+R68 VDD.t6 VDD.t4 381.173
+R69 VDD.n1 VDD.n0 330.363
+R70 VDD.n3 VDD.n2 330.142
+R71 VDD.n2 VDD.t13 58.6315
+R72 VDD.n2 VDD.t15 58.6315
+R73 VDD.n0 VDD.t3 58.6315
+R74 VDD.n0 VDD.t1 58.6315
+R75 VDD VDD.n4 1.16196
+R76 VDD.n3 VDD.n1 0.339042
+R77 VDD VDD.n3 0.28175
+R78 a.n1 a.t6 274.74
+R79 a.n0 a.t3 274.74
+R80 a.n1 a.t5 252.248
+R81 a.n0 a.t1 252.248
+R82 a.n2 a.t0 216.9
+R83 a.n5 a.t7 207.261
+R84 a a.n3 195.399
+R85 a.n4 a 190.719
+R86 a.n5 a.t2 184.768
+R87 a.n2 a.t4 178.34
+R88 a a.n5 102.535
+R89 a.n3 a.n2 101.659
+R90 a.n3 a.n1 96.8387
+R91 a.n4 a.n0 96.8387
+R92 a a.n4 0.730803
+C0 a_n1768_148# a 0.093324f
+C1 a_n1046_148# a_n1768_148# 0.03122f
+C2 cin a_n1065_n180# 0.032452f
+C3 b a_n1768_148# 0.040307f
+C4 cout a 0.06774f
+C5 cin VDD 0.139162f
+C6 cout a_n1046_148# 0.136148f
+C7 a_n1065_n180# VDD 0.001598f
+C8 cout b 0.41594f
+C9 cin a_n1787_n180# 2.24e-19
+C10 a_n1065_n180# a_n1787_n180# 0.019488f
+C11 a_n1787_n180# VDD 0.002669f
+C12 cout a_n1768_148# 0.136347f
+C13 a cin 0.011237f
+C14 a_n1046_148# cin 0.03668f
+C15 a a_n1065_n180# 0.14669f
+C16 b cin 0.050602f
+C17 a VDD 0.62903f
+C18 a_n1046_148# a_n1065_n180# 0.033167f
+C19 b a_n1065_n180# 0.175701f
+C20 a_n1046_148# VDD 0.474481f
+C21 b VDD 0.303378f
+C22 a a_n1787_n180# 0.084806f
+C23 b a_n1787_n180# 0.03334f
+C24 a_n1768_148# cin 2.23e-19
+C25 cout cin 0.08525f
+C26 a_n1768_148# VDD 0.312572f
+C27 cout a_n1065_n180# 0.098675f
+C28 cout VDD 0.123449f
+C29 a_n1046_148# a 0.166946f
+C30 b a 0.192967f
+C31 a_n1768_148# a_n1787_n180# 0.048422f
+C32 a_n1046_148# b 0.177206f
+C33 cout a_n1787_n180# 0.098602f
+C34 cout GND 0.259271f
+C35 cin GND 0.313476f
+C36 b GND 0.711068f
+C37 a GND 1.23592f
+C38 VDD GND 2.69851f
+C39 a_n1065_n180# GND 0.577002f
+C40 a_n1787_n180# GND 0.379247f
+C41 a_n1046_148# GND 0.164725f
+C42 a_n1768_148# GND 0.120779f
+.ends
+

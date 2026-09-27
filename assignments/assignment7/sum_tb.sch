@@ -40,14 +40,16 @@ C {vsource.sym} -530 -60 0 0 {name=va2 value=1.8 savecurrent=false}
 C {lab_wire.sym} -640 -140 0 0 {name=p3 sig_type=std_logic lab=b}
 C {lab_wire.sym} -530 -140 0 0 {name=p4 sig_type=std_logic lab=c}
 C {code_shown.sym} 840 -250 0 0 {name=sim only_toplevel=false value="
+.include "sum_extracted.spice"
 .control
-alter @va[pulse] = [ 1.8 0 10p 5p 5p]
-alter @va1[pulse] = [ 1.8 0 10p 5p 5p]
-alter @va2[pulse] = [ 1.8 0 10p 5p 5p]
+*alter @va[pulse] = [ 1.8 0 10p 5p 5p]
+*alter @va1[pulse] = [ 0 1.8 10p 5p 5p]
+*alter @va2[pulse] = [ 1.8 0 10p 5p 5p]
 
 tran 1p 400p
 
 plot v(a) v(b) v(c) v(sum_bar)
+print v(sum_bar)
 .endc
 "}
 C {sky130_fd_pr/corner.sym} 970 130 0 0 {name=CORNER only_toplevel=false corner=tt}

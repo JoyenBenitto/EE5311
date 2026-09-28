@@ -88,7 +88,7 @@ N -70 70 -70 330 {lab=GND}
 N -430 70 -330 70 {lab=coutbar}
 N -440 -130 -430 70 {lab=coutbar}
 C {sky130_fd_pr/nfet_01v8.sym} -310 70 0 0 {name=M1
-W=0.84
+W=0.42
 L=0.15
 nf=1 
 mult=1
@@ -102,7 +102,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} -220 -320 0 0 {name=M2
-W=1.68
+W=0.42
 L=0.15
 nf=1
 mult=1
@@ -122,7 +122,7 @@ C {iopin.sym} -40 370 1 0 {name=p4 lab=GND}
 C {ipin.sym} -640 -200 0 0 {name=p6 lab=b}
 C {ipin.sym} -640 -130 0 0 {name=p7 lab=coutbar}
 C {sky130_fd_pr/pfet_01v8.sym} -340 -130 0 0 {name=M4
-W=1.68
+W=0.42
 L=0.15
 nf=1
 mult=1
@@ -136,7 +136,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} -430 -320 0 0 {name=M5
-W=1.68
+W=0.42
 L=0.15
 nf=1
 mult=1
@@ -150,7 +150,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} -50 -320 0 0 {name=M6
-W=1.68
+W=0.42
 L=0.15
 nf=1
 mult=1
@@ -164,7 +164,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 230 -320 0 0 {name=M7
-W=1.68
+W=0.42
 L=0.15
 nf=1
 mult=1
@@ -178,7 +178,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 230 -210 0 0 {name=M3
-W=1.68
+W=0.42
 L=0.15
 nf=1
 mult=1
@@ -192,7 +192,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 230 -130 0 0 {name=M8
-W=1.68
+W=0.42
 L=0.15
 nf=1
 mult=1
@@ -207,7 +207,7 @@ spiceprefix=X
 }
 C {ipin.sym} 170 -130 0 0 {name=p5 lab=cin}
 C {sky130_fd_pr/nfet_01v8.sym} -340 270 0 0 {name=M9
-W=0.84
+W=0.42
 L=0.15
 nf=1 
 mult=1
@@ -221,7 +221,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -170 270 0 0 {name=M10
-W=0.84
+W=0.42
 L=0.15
 nf=1 
 mult=1
@@ -235,7 +235,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -20 270 0 0 {name=M11
-W=0.84
+W=0.42
 L=0.15
 nf=1 
 mult=1
@@ -249,7 +249,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 250 70 0 0 {name=M12
-W=0.84
+W=0.42
 L=0.15
 nf=1 
 mult=1
@@ -263,7 +263,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 250 180 0 0 {name=M13
-W=0.84
+W=0.42
 L=0.15
 nf=1 
 mult=1
@@ -277,7 +277,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 250 270 0 0 {name=M14
-W=0.84
+W=0.42
 L=0.15
 nf=1 
 mult=1

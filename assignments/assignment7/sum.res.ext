@@ -17,19 +17,19 @@ rnode "coutbar.t0" 0 0 -566 -153 0
 rnode "coutbar" 0 0 -566 56 0
 resist "coutbar" "coutbar.t1" 228.147
 resist "coutbar" "coutbar.t0" 335.793
-rnode "cin.t2" 0 0 -436 198 0
-rnode "cin.t3" 0 0 -436 -153 0
-rnode "cin.t1" 0 0 -842 198 0
-rnode "cin.t0" 0 0 -842 -154 0
-rnode "cin.n0" 0 0 -842 21 0
-rnode "cin.n1" 0 0 -436 21 0
-rnode "cin" 0 0 -436 69 0
-resist "cin" "cin.n1" 53.4582
-resist "cin" "cin.t2" 207.26
-resist "cin.n1" "cin.t3" 255.898
-resist "cin.n0" "cin.t0" 257.505
-resist "cin.n0" "cin.t1" 260.718
-resist "cin.n1" "cin.n0" 447.644
+rnode "a.t2" 0 0 -436 198 0
+rnode "a.t3" 0 0 -436 -153 0
+rnode "a.t1" 0 0 -842 198 0
+rnode "a.t0" 0 0 -842 -154 0
+rnode "a.n0" 0 0 -842 21 0
+rnode "a.n1" 0 0 -436 21 0
+rnode "a" 0 0 -446 69 0
+resist "a" "a.n1" 53.4582
+resist "a" "a.t2" 207.26
+resist "a.n1" "a.t3" 255.898
+resist "a.n0" "a.t0" 257.505
+resist "a.n0" "a.t1" 260.718
+resist "a.n1" "a.n0" 447.644
 rnode "VDD.t8" 0 0 -1102 198 0
 rnode "VDD.t7" 0 0 -972 198 0
 rnode "VDD.t0" 0 0 -842 198 0
@@ -101,26 +101,26 @@ resist "GND.t5" "GND.t3" 1470.44
 resist "GND.t9" "GND.t5" 1470.44
 resist "GND.t2" "GND.t0" 3121.85
 resist "GND.n0" "GND.t9" 4627.63
-rnode "a.t1" 0 0 -176 198 0
-rnode "a.t2" 0 0 -1102 198 0
-rnode "a.t3" 0 0 -1102 -154 0
-rnode "a.t0" 0 0 -176 -153 0
-rnode "a" 0 0 -92 17 0
-resist "a" "a.t0" 359.893
-resist "a" "a.t1" 377.567
-resist "a.t3" "a.t2" 633.027
-resist "a.t0" "a.t3" 1887.83
-device msubckt sky130_fd_pr__nfet_01v8 -1117 -196 -1116 -195  "GND.t8" "a.t3" 60 0 "sout.t2" 84 5040,288 "a_n1087_n196#" 84 4200,184
+rnode "cin.t1" 0 0 -176 198 0
+rnode "cin.t2" 0 0 -1102 198 0
+rnode "cin.t3" 0 0 -1102 -154 0
+rnode "cin.t0" 0 0 -176 -153 0
+rnode "cin" 0 0 -93 69 0
+resist "cin" "cin.t1" 294.02
+resist "cin" "cin.t0" 443.44
+resist "cin.t3" "cin.t2" 633.027
+resist "cin.t0" "cin.t3" 1887.83
+device msubckt sky130_fd_pr__nfet_01v8 -1117 -196 -1116 -195  "GND.t8" "cin.t3" 60 0 "sout.t2" 84 5040,288 "a_n1087_n196#" 84 4200,184
 device msubckt sky130_fd_pr__nfet_01v8 -321 -195 -320 -194  "GND.t5" "b.t3" 60 0 "GND.t6" 84 4200,184 "a_n551_n195#" 84 4200,184
 device msubckt sky130_fd_pr__pfet_01v8 -321 156 -320 157  "VDD.t5" "b.t2" 60 0 "VDD.t6" 84 4200,184 "a_n551_156#" 84 4200,184
-device msubckt sky130_fd_pr__nfet_01v8 -451 -195 -450 -194  "GND.t3" "cin.t3" 60 0 "a_n551_n195#" 84 4200,184 "GND.t4" 84 4200,184
-device msubckt sky130_fd_pr__pfet_01v8 -451 156 -450 157  "VDD.t2" "cin.t2" 60 0 "a_n551_156#" 84 4200,184 "VDD.t3" 84 4200,184
+device msubckt sky130_fd_pr__nfet_01v8 -451 -195 -450 -194  "GND.t3" "a.t3" 60 0 "a_n551_n195#" 84 4200,184 "GND.t4" 84 4200,184
+device msubckt sky130_fd_pr__pfet_01v8 -451 156 -450 157  "VDD.t2" "a.t2" 60 0 "a_n551_156#" 84 4200,184 "VDD.t3" 84 4200,184
 device msubckt sky130_fd_pr__pfet_01v8 -581 156 -580 157  "VDD.t4" "coutbar.t1" 60 0 "sout.t1" 84 5040,288 "a_n551_156#" 84 4200,184
-device msubckt sky130_fd_pr__pfet_01v8 -1117 156 -1116 157  "VDD.t8" "a.t2" 60 0 "sout.t3" 84 5040,288 "a_n1087_156#" 84 4200,184
-device msubckt sky130_fd_pr__pfet_01v8 -191 156 -190 157  "VDD.t9" "a.t1" 60 0 "a_n551_156#" 84 4200,184 "VDD.t10" 84 5040,288
-device msubckt sky130_fd_pr__pfet_01v8 -857 156 -856 157  "VDD.t0" "cin.t1" 60 0 "a_n957_156#" 84 4200,184 "VDD.t1" 84 5040,288
+device msubckt sky130_fd_pr__pfet_01v8 -1117 156 -1116 157  "VDD.t8" "cin.t2" 60 0 "sout.t3" 84 5040,288 "a_n1087_156#" 84 4200,184
+device msubckt sky130_fd_pr__pfet_01v8 -191 156 -190 157  "VDD.t9" "cin.t1" 60 0 "a_n551_156#" 84 4200,184 "VDD.t10" 84 5040,288
+device msubckt sky130_fd_pr__pfet_01v8 -857 156 -856 157  "VDD.t0" "a.t1" 60 0 "a_n957_156#" 84 4200,184 "VDD.t1" 84 5040,288
 device msubckt sky130_fd_pr__nfet_01v8 -581 -195 -580 -194  "GND.t2" "coutbar.t0" 60 0 "sout.t0" 84 5040,288 "a_n551_n195#" 84 4200,184
-device msubckt sky130_fd_pr__nfet_01v8 -857 -196 -856 -195  "GND.t0" "cin.t0" 60 0 "a_n957_n196#" 84 4200,184 "GND.t1" 84 5040,288
+device msubckt sky130_fd_pr__nfet_01v8 -857 -196 -856 -195  "GND.t0" "a.t0" 60 0 "a_n957_n196#" 84 4200,184 "GND.t1" 84 5040,288
 device msubckt sky130_fd_pr__pfet_01v8 -987 156 -986 157  "VDD.t7" "b.t1" 60 0 "a_n1087_156#" 84 4200,184 "a_n957_156#" 84 4200,184
 device msubckt sky130_fd_pr__nfet_01v8 -987 -196 -986 -195  "GND.t7" "b.t0" 60 0 "a_n1087_n196#" 84 4200,184 "a_n957_n196#" 84 4200,184
-device msubckt sky130_fd_pr__nfet_01v8 -191 -195 -190 -194  "GND.t9" "a.t0" 60 0 "a_n551_n195#" 84 4200,184 "GND.t10" 84 5040,288
+device msubckt sky130_fd_pr__nfet_01v8 -191 -195 -190 -194  "GND.t9" "cin.t0" 60 0 "a_n551_n195#" 84 4200,184 "GND.t10" 84 5040,288

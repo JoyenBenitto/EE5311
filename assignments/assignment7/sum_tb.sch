@@ -10,7 +10,6 @@ N -830 -30 -830 80 {lab=gnd}
 N -640 -140 -640 -20 {lab=b}
 N -730 -140 -730 -90 {lab=a}
 N -530 -140 -530 -90 {lab=c}
-N -830 80 -530 80 {lab=gnd}
 N -530 -30 -530 80 {lab=gnd}
 N -640 40 -640 80 {lab=gnd}
 N -730 -30 -730 80 {lab=gnd}
@@ -35,8 +34,8 @@ C {gnd.sym} -830 80 0 0 {name=l10 lab=gnd}
 C {vsource.sym} -830 -60 0 0 {name=vdd value=1.8 savecurrent=false}
 C {vsource.sym} -730 -60 0 0 {name=va value=1.8 savecurrent=false}
 C {lab_wire.sym} -730 -140 0 0 {name=p1 sig_type=std_logic lab=a}
-C {vsource.sym} -640 10 0 0 {name=va1 value=1.8 savecurrent=false}
-C {vsource.sym} -530 -60 0 0 {name=va2 value=1.8 savecurrent=false}
+C {vsource.sym} -640 10 0 0 {name=va1 value=0 savecurrent=false}
+C {vsource.sym} -530 -60 0 0 {name=va2 value=0 savecurrent=false}
 C {lab_wire.sym} -640 -140 0 0 {name=p3 sig_type=std_logic lab=b}
 C {lab_wire.sym} -530 -140 0 0 {name=p4 sig_type=std_logic lab=c}
 C {code_shown.sym} 840 -250 0 0 {name=sim only_toplevel=false value="
@@ -59,3 +58,6 @@ C {lab_wire.sym} -210 10 0 0 {name=p6 sig_type=std_logic lab=c}
 C {gnd.sym} -150 80 0 0 {name=l1 lab=gnd}
 C {vdd.sym} 180 -110 0 0 {name=l2 lab=VDD}
 C {lab_wire.sym} 220 -10 0 0 {name=p7 sig_type=std_logic lab=sum_bar}
+C {gnd.sym} -730 80 0 0 {name=l3 lab=gnd}
+C {gnd.sym} -640 80 0 0 {name=l4 lab=gnd}
+C {gnd.sym} -530 80 0 0 {name=l5 lab=gnd}

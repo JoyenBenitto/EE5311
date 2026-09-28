@@ -12,6 +12,8 @@ EE5311 (Digital IC Design) course.
   - [`assignment3`](assignments/assignment3) - CMOS inverter transient characteristics and ring oscillator (propagation delay vs.\ Wp/VDD, energy-delay product, 7-/9-stage ring oscillator frequency)
   - [`assignment4`](assignments/assignment4) - Inverter and ring oscillator post-layout extracted simulation (DRC/LVS-clean layout, parasitic-extracted delay and oscillation frequency vs.\ pre-layout)
   - [`assignment5`](assignments/assignment5) - NAND gate schematic and layout extracted simulation (delay vs.\ logical effort, layout-extracted delay)
+  - [`assignment6`](assignments/assignment6) - Transmission-gate D flip-flop setup time / tCQ / tDQ characterization (rising and falling D/Q edges)
+  - [`assignment7`](assignments/assignment7) - Ripple-carry adder (mirror carry/sum) schematic and layout extracted delay vs.\ logical effort
 - `common/` - shared LaTeX template and the `release` Makefile logic used by every assignment
 
 ## Build

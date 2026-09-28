@@ -1,5 +1,5 @@
 .PHONY: all
-all: assignment1 assignment2 assignment3 assignment4 assignment5
+all: assignment1 assignment2 assignment3 assignment4 assignment5 assignment6 assignment7
 
 .PHONY: assignment1
 assignment1:
@@ -26,6 +26,16 @@ assignment5:
 	@echo "Building assignment 5..."
 	$(MAKE) -C assignments/assignment5 all
 
+.PHONY: assignment6
+assignment6:
+	@echo "Building assignment 6..."
+	$(MAKE) -C assignments/assignment6 all
+
+.PHONY: assignment7
+assignment7:
+	@echo "Building assignment 7..."
+	$(MAKE) -C assignments/assignment7 all
+
 .PHONY: release
 release:
 	@echo "Releasing assignment 1..."
@@ -38,6 +48,10 @@ release:
 	$(MAKE) -C assignments/assignment4 release
 	@echo "Releasing assignment 5..."
 	$(MAKE) -C assignments/assignment5 release
+	@echo "Releasing assignment 6..."
+	$(MAKE) -C assignments/assignment6 release
+	@echo "Releasing assignment 7..."
+	$(MAKE) -C assignments/assignment7 release
 
 clean:
 	@echo "Cleaning assignment 1..."
@@ -50,3 +64,7 @@ clean:
 	$(MAKE) -C assignments/assignment4 clean
 	@echo "Cleaning assignment 5..."
 	$(MAKE) -C assignments/assignment5 clean
+	@echo "Cleaning assignment 6..."
+	$(MAKE) -C assignments/assignment6 clean
+	@echo "Cleaning assignment 7..."
+	$(MAKE) -C assignments/assignment7 clean

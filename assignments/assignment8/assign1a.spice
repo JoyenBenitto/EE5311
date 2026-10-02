@@ -1,0 +1,38 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment7/assign1a.sch
+**.subckt assign1a
+x1 VDD a b c0_b cin s0 gnd sum
+x2 VDD a b cin c0_b gnd carry
+x3 VDD a1 b1 net1 c0_b s1 gnd sum
+x4 VDD a1 b1 c0_b net1 gnd carry
+vdd VDD gnd 1.8
+va a gnd 1.8
+va1 b gnd 0
+va2 cin gnd 1.8
+va3 a1 gnd 0
+va4 b1 gnd 1.8
+**** begin user architecture code
+
+
+.include carry_extracted.spice
+.include sum_extracted.spice
+.control
+* alter @va[pulse] = [ 1.8 0 0 0 0 4n 8n]
+* alter @va1[pulse] = [ 1.8 0 0 0 0 4n 8n]
+alter @va2[pulse] = [ 0 1.8 0 10p 10p 4n 8n ]
+* alter @va3[pulse] = [ 1.8 0 0 0 0 4n 8n]
+* alter @va4[pulse] = [ 1.8 0 0 0 0 4n 8n]
+
+tran 1p 20n
+meas tran delay_cin_net1 TRIG v(cin) VAL=0.9 RISE=3 TARG v(c0_b) VAL=0.9 FALL=3
+meas tran delay_cin_s0 TRIG v(cin) VAL=0.9 RISE=3 TARG v(s0) VAL=0.9 RISE=3
+plot v(cin) v(s0)
+print delay_cin_net1 delay_cin_s0
+.endc
+
+
+.lib /cad/share/pdk/sky130B/libs.tech/combined/sky130.lib.spice tt
+**** end user architecture code
+**.ends
+.GLOBAL VDD
+.GLOBAL gnd
+.end

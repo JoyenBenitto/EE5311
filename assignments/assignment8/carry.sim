@@ -1,0 +1,32 @@
+| units: 500000 tech: sky130A format: MIT
+x b cout a_n1787_n180# GND s=4200,184 d=5040,288 l=30 w=84 x=-1280 y=-179 sky130_fd_pr__nfet_01v8
+x cin a_n1046_148# cout VDD s=10080,456 d=8400,268 l=30 w=168 x=-985 y=148 sky130_fd_pr__pfet_01v8
+x a GND a_n1787_n180# GND s=5040,288 d=4200,184 l=30 w=84 x=-1816 y=-179 sky130_fd_pr__nfet_01v8
+x cin cout a_n1046_148# VDD s=8400,268 d=10080,456 l=30 w=168 x=-855 y=148 sky130_fd_pr__pfet_01v8
+x a VDD a_n1046_148# VDD s=8400,268 d=10080,456 l=30 w=168 x=-189 y=148 sky130_fd_pr__pfet_01v8
+x cin cout a_n1065_n180# GND s=4200,184 d=5040,288 l=30 w=84 x=-874 y=-179 sky130_fd_pr__nfet_01v8
+x b a_n1046_148# VDD VDD s=10080,456 d=8400,268 l=30 w=168 x=-579 y=148 sky130_fd_pr__pfet_01v8
+x b VDD a_n1046_148# VDD s=8400,268 d=8400,268 l=30 w=168 x=-449 y=148 sky130_fd_pr__pfet_01v8
+x a GND a_n1065_n180# GND s=4200,184 d=5040,288 l=30 w=84 x=-189 y=-179 sky130_fd_pr__nfet_01v8
+x a a_n1046_148# VDD VDD s=8400,268 d=8400,268 l=30 w=168 x=-319 y=148 sky130_fd_pr__pfet_01v8
+x a a_n1787_n180# GND GND s=4200,184 d=5040,288 l=30 w=84 x=-1686 y=-179 sky130_fd_pr__nfet_01v8
+x b a_n1787_n180# cout GND s=5040,288 d=4200,184 l=30 w=84 x=-1410 y=-179 sky130_fd_pr__nfet_01v8
+x b a_n1065_n180# GND GND s=5040,288 d=4200,184 l=30 w=84 x=-579 y=-179 sky130_fd_pr__nfet_01v8
+x a VDD a_n1768_148# VDD s=10080,456 d=8400,268 l=30 w=168 x=-1797 y=148 sky130_fd_pr__pfet_01v8
+x a a_n1768_148# VDD VDD s=8400,268 d=10080,456 l=30 w=168 x=-1667 y=148 sky130_fd_pr__pfet_01v8
+x b GND a_n1065_n180# GND s=4200,184 d=4200,184 l=30 w=84 x=-449 y=-179 sky130_fd_pr__nfet_01v8
+x b a_n1768_148# cout VDD s=10080,456 d=8400,268 l=30 w=168 x=-1391 y=148 sky130_fd_pr__pfet_01v8
+x cin a_n1065_n180# cout GND s=5040,288 d=4200,184 l=30 w=84 x=-1004 y=-179 sky130_fd_pr__nfet_01v8
+x a a_n1065_n180# GND GND s=4200,184 d=4200,184 l=30 w=84 x=-319 y=-179 sky130_fd_pr__nfet_01v8
+x b cout a_n1768_148# VDD s=8400,268 d=10080,456 l=30 w=168 x=-1261 y=148 sky130_fd_pr__pfet_01v8
+R cout 2899
+R cin 1925
+R b 4306
+R a 4124
+C VDD0 2.7
+R VDD 10319
+R GND 2303
+R a_n1065_n180# 2749
+R a_n1787_n180# 1540
+R a_n1046_148# 5109
+R a_n1768_148# 2820

@@ -1,0 +1,93 @@
+timestamp 0
+version 8.3
+tech sky130A
+style ngspice()
+scale 1000 1 500000
+resistclasses 4400000 2200000 950000 3050000 120000 197000 114000 191000 120000 197000 114000 191000 48200 319800 2000000 48200 48200 12800 125 125 47 47 29 5
+parameters sky130_fd_pr__nfet_01v8 l=l w=w a1=as p1=ps a2=ad p2=pd
+parameters sky130_fd_pr__pfet_01v8 l=l w=w a1=as p1=ps a2=ad p2=pd
+port "sout" 7 1640 950 1708 980 li
+port "coutbar" 6 -140 870 -72 900 li
+port "cin" 5 -140 790 -72 820 li
+port "b" 4 -140 710 -72 740 li
+port "a" 3 -140 630 -72 660 li
+port "GND" 2 750 30 818 60 m1
+port "VDD" 1 750 1574 818 1604 m1
+node "sout" 0 0 1640 950 li 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "coutbar" 32131 6780.67 -140 870 li 0 0 0 0 0 0 0 0 68208 3976 68208 3976 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 179508 10388 0 0 1375808 55712 910482 42738 0 0 0 0 0 0 0 0 0 0
+equiv "coutbar" "cin"
+equiv "coutbar" "b"
+equiv "coutbar" "a"
+equiv "coutbar" "GND"
+equiv "coutbar" "VDD"
+equiv "coutbar" "Pcin2.G"
+equiv "coutbar" "Pcin2.S"
+equiv "coutbar" "Pcin2.D"
+equiv "coutbar" "Pb2.G"
+equiv "coutbar" "Pb2.S"
+equiv "coutbar" "Pb2.D"
+equiv "coutbar" "Pa2.G"
+equiv "coutbar" "Pa2.S"
+equiv "coutbar" "Pa2.D"
+equiv "coutbar" "Pcbar.G"
+equiv "coutbar" "Pcbar.S"
+equiv "coutbar" "Pcbar.D"
+equiv "coutbar" "Pcin.G"
+equiv "coutbar" "Pcin.S"
+equiv "coutbar" "Pcin.D"
+equiv "coutbar" "Pb.G"
+equiv "coutbar" "Pb.S"
+equiv "coutbar" "Pb.D"
+equiv "coutbar" "Pa.G"
+equiv "coutbar" "Pa.S"
+equiv "coutbar" "Pa.D"
+equiv "coutbar" "Ncin2.G"
+equiv "coutbar" "Ncin2.S"
+equiv "coutbar" "Ncin2.D"
+equiv "coutbar" "Na2.G"
+equiv "coutbar" "Na2.S"
+equiv "coutbar" "Na2.D"
+equiv "coutbar" "Nb2.G"
+equiv "coutbar" "Nb2.S"
+equiv "coutbar" "Nb2.D"
+equiv "coutbar" "Ncin.G"
+equiv "coutbar" "Ncin.S"
+equiv "coutbar" "Ncin.D"
+equiv "coutbar" "Ncbar.G"
+equiv "coutbar" "Ncbar.S"
+equiv "coutbar" "Ncbar.D"
+equiv "coutbar" "Nb.G"
+equiv "coutbar" "Nb.S"
+equiv "coutbar" "Nb.D"
+equiv "coutbar" "Na.G"
+equiv "coutbar" "Na.S"
+equiv "coutbar" "Na.D"
+node "w_1391_1240#" 1238 185.736 1391 1240 nw 0 0 0 0 61912 1004 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "w_1141_1240#" 1238 185.736 1141 1240 nw 0 0 0 0 61912 1004 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "w_891_1240#" 1238 185.736 891 1240 nw 0 0 0 0 61912 1004 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "w_641_1240#" 1238 185.736 641 1240 nw 0 0 0 0 61912 1004 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "w_391_1240#" 1238 185.736 391 1240 nw 0 0 0 0 61912 1004 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "w_141_1240#" 1238 185.736 141 1240 nw 0 0 0 0 61912 1004 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "w_n109_1240#" 1238 185.736 -109 1240 nw 0 0 0 0 61912 1004 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+substrate "VSUBS" 0 0 -1073741817 -1073741817 space 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cap "w_891_1240#" "coutbar" 174.179
+cap "w_141_1240#" "coutbar" 175.805
+cap "coutbar" "w_n109_1240#" 160.261
+cap "coutbar" "w_1391_1240#" 156.177
+cap "w_641_1240#" "coutbar" 173.409
+cap "w_1141_1240#" "coutbar" 171.534
+cap "w_391_1240#" "coutbar" 175.239
+device msubckt sky130_fd_pr__nfet_01v8 1485 168 1486 169 l=30 w=84 "VSUBS" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__nfet_01v8 1235 168 1236 169 l=30 w=84 "VSUBS" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__nfet_01v8 985 168 986 169 l=30 w=84 "VSUBS" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__nfet_01v8 735 168 736 169 l=30 w=84 "VSUBS" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__nfet_01v8 485 168 486 169 l=30 w=84 "VSUBS" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__nfet_01v8 235 168 236 169 l=30 w=84 "VSUBS" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__nfet_01v8 -15 168 -14 169 l=30 w=84 "VSUBS" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__pfet_01v8 1485 1340 1486 1341 l=30 w=84 "w_1391_1240#" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__pfet_01v8 1235 1340 1236 1341 l=30 w=84 "w_1141_1240#" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__pfet_01v8 985 1340 986 1341 l=30 w=84 "w_891_1240#" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__pfet_01v8 735 1340 736 1341 l=30 w=84 "w_641_1240#" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__pfet_01v8 485 1340 486 1341 l=30 w=84 "w_391_1240#" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__pfet_01v8 235 1340 236 1341 l=30 w=84 "w_141_1240#" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284
+device msubckt sky130_fd_pr__pfet_01v8 -15 1340 -14 1341 l=30 w=84 "w_n109_1240#" "coutbar" 60 0 "coutbar" 0 0 "coutbar" 168 4872,284

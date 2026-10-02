@@ -1,0 +1,28 @@
+| units: 500000 tech: sky130A format: MIT
+x cin a_n551_n195# GND GND s=4200,184 d=5040,288 l=30 w=84 x=-190 y=-194 sky130_fd_pr__nfet_01v8
+x b a_n1087_n196# a_n957_n196# GND s=4200,184 d=4200,184 l=30 w=84 x=-986 y=-195 sky130_fd_pr__nfet_01v8
+x b a_n1087_156# a_n957_156# VDD s=4200,184 d=4200,184 l=30 w=84 x=-986 y=156 sky130_fd_pr__pfet_01v8
+x a a_n957_n196# GND GND s=4200,184 d=5040,288 l=30 w=84 x=-856 y=-195 sky130_fd_pr__nfet_01v8
+x coutbar sout a_n551_n195# GND s=5040,288 d=4200,184 l=30 w=84 x=-580 y=-194 sky130_fd_pr__nfet_01v8
+x a a_n957_156# VDD VDD s=4200,184 d=5040,288 l=30 w=84 x=-856 y=156 sky130_fd_pr__pfet_01v8
+x cin a_n551_156# VDD VDD s=4200,184 d=5040,288 l=30 w=84 x=-190 y=156 sky130_fd_pr__pfet_01v8
+x cin sout a_n1087_156# VDD s=5040,288 d=4200,184 l=30 w=84 x=-1116 y=156 sky130_fd_pr__pfet_01v8
+x coutbar sout a_n551_156# VDD s=5040,288 d=4200,184 l=30 w=84 x=-580 y=156 sky130_fd_pr__pfet_01v8
+x a a_n551_156# VDD VDD s=4200,184 d=4200,184 l=30 w=84 x=-450 y=156 sky130_fd_pr__pfet_01v8
+x a a_n551_n195# GND GND s=4200,184 d=4200,184 l=30 w=84 x=-450 y=-194 sky130_fd_pr__nfet_01v8
+x b VDD a_n551_156# VDD s=4200,184 d=4200,184 l=30 w=84 x=-320 y=156 sky130_fd_pr__pfet_01v8
+x b GND a_n551_n195# GND s=4200,184 d=4200,184 l=30 w=84 x=-320 y=-194 sky130_fd_pr__nfet_01v8
+x cin sout a_n1087_n196# GND s=5040,288 d=4200,184 l=30 w=84 x=-1116 y=-195 sky130_fd_pr__nfet_01v8
+R sout 2930
+R coutbar 827
+R a 1952
+R b 1888
+R cin 3763
+R VDD 8668
+R GND 1782
+R a_n551_n195# 894
+R a_n957_n196# 168
+R a_n1087_n196# 168
+R a_n551_156# 1347
+R a_n957_156# 259
+R a_n1087_156# 259

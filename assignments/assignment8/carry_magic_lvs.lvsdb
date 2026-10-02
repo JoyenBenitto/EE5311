@@ -23,7 +23,7 @@ layout(
  circuit(carry
 
   # Circuit boundary
-  rect((-5655 -8985) (8590 10795))
+  rect((-5655 -8985) (8641 10795))
 
   # Nets with their geometries
   net(1 name(cout)
@@ -45,16 +45,16 @@ layout(
    rect(net_markers (-3645 -1180) (100 100))
   )
   net(7 name('a_n1065_n180#')
-   rect(net_markers (2835 -5375) (100 100))
+   rect(net_markers (2886 -5375) (100 100))
   )
   net(8 name('a_n1787_n180#')
-   rect(net_markers (1846 -8985) (100 100))
+   rect(net_markers (1920 -8985) (100 100))
   )
   net(9 name('a_n1046_148#')
-   rect(net_markers (774 -5280) (100 100))
+   rect(net_markers (314 -5280) (100 100))
   )
   net(10 name('a_n1768_148#')
-   rect(net_markers (554 -8890) (100 100))
+   rect(net_markers (178 -8890) (100 100))
   )
 
   # Devices and their connections

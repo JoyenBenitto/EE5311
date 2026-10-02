@@ -29,29 +29,29 @@ Circuit 1: sky130_fd_pr__pfet_01v8         |Circuit 2: sky130_fd_pr__pfet_01v8
 Cell pin lists are equivalent.
 Device classes sky130_fd_pr__pfet_01v8 and sky130_fd_pr__pfet_01v8 are equivalent.
 
-Class carry (1):  Merged 10 parallel devices.
 Subcircuit summary:
-Circuit 1: carry                           |Circuit 2: carry                           
+Circuit 1: sum                             |Circuit 2: sum                             
 -------------------------------------------|-------------------------------------------
-sky130_fd_pr__nfet_01v8 (5)                |sky130_fd_pr__nfet_01v8 (10->5)            
-sky130_fd_pr__pfet_01v8 (5)                |sky130_fd_pr__pfet_01v8 (10->5)            
-Number of devices: 10                      |Number of devices: 10                      
-Number of nets: 10                         |Number of nets: 10                         
+sky130_fd_pr__nfet_01v8 (7)                |sky130_fd_pr__nfet_01v8 (7)                
+sky130_fd_pr__pfet_01v8 (7)                |sky130_fd_pr__pfet_01v8 (7)                
+Number of devices: 14                      |Number of devices: 14                      
+Number of nets: 13                         |Number of nets: 13                         
 ---------------------------------------------------------------------------------------
 Netlists match uniquely.
 
 Subcircuit pins:
-Circuit 1: carry                           |Circuit 2: carry                           
+Circuit 1: sum                             |Circuit 2: sum                             
 -------------------------------------------|-------------------------------------------
 GND                                        |GND                                        
 VDD                                        |VDD                                        
+coutbar                                    |coutbar                                    
 cin                                        |cin                                        
 b                                          |b                                          
-cout                                       |cout                                       
 a                                          |a                                          
+sout                                       |sout                                       
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
-Device classes carry and carry are equivalent.
+Device classes sum and sum are equivalent.
 
 Final result: Circuits match uniquely.
 .

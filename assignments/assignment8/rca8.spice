@@ -1,0 +1,63 @@
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment8/rca8.sch
+.subckt rca8 VDD GND a1 a5 a2 a4 a7 a3 a6 a0 b5 b0 b2 b4 b1 b7 b3 b6 cin0 sout5 sout4 sout2 cout7 sout7 sout6 sout3 sout1 sout0
+*.PININFO a0:I b0:I cin0:I sout0:O VDD:B GND:B a1:I b1:I sout1:O VDD:B GND:B a2:I b2:I sout2:O VDD:B GND:B a3:I b3:I sout3:O VDD:B
+*+ GND:B a4:I b4:I sout4:O VDD:B GND:B a5:I b5:I sout5:O VDD:B GND:B a6:I b6:I sout6:O VDD:B GND:B a7:I b7:I sout7:O VDD:B GND:B cout7:O
+x1 VDD a0 b0 cin0 GND net1 sout0 rca1
+x2 VDD a1 b1 net1 GND net2 sout1 rca1
+x3 VDD a2 b2 net2 GND net3 sout2 rca1
+x4 VDD a3 b3 net3 GND net4 sout3 rca1
+x5 VDD a4 b4 net4 GND net7 sout4 rca1
+x6 VDD a5 b5 net7 GND net5 sout5 rca1
+x7 VDD a6 b6 net5 GND net6 sout6 rca1
+x8 VDD a7 b7 net6 GND cout7 sout7 rca1
+.ends
+
+* expanding   symbol:  rca1.sym # of pins=7
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment8/rca1.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment8/rca1.sch
+.subckt rca1 VDD a b cin GND cout sum
+*.PININFO VDD:B GND:B a:I sum:O b:I cin:I cout:O
+x5 VDD a b cout cin sum GND sum
+x6 VDD a b cin cout GND carry
+.ends
+
+
+* expanding   symbol:  sum.sym # of pins=7
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment8/sum.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment8/sum.sch
+.subckt sum VDD a b coutbar cin sout GND
+*.PININFO sout:O a:I VDD:B GND:B b:I coutbar:I cin:I
+XM1 sout coutbar net4 GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1
+XM2 net1 b VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM4 sout coutbar net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM5 net1 a VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM6 net1 cin VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM7 net3 a VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM3 net2 b net3 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM8 sout cin net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1
+XM9 net4 a GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1
+XM10 net4 b GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1
+XM11 net4 cin GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1
+XM12 sout cin net6 GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1
+XM13 net6 b net5 GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1
+XM14 net5 a GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1
+.ends
+
+
+* expanding   symbol:  carry.sym # of pins=6
+** sym_path: /home/joyen/ee5311/EE5311/assignments/assignment8/carry.sym
+** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment8/carry.sch
+.subckt carry VDD a b cin cout GND
+*.PININFO cout:O a:I VDD:B GND:B b:I cin:I
+XM1 cout cin net3 GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.84 nf=2
+XM2 net1 b VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.68 nf=4
+XM3 net3 a GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.84 nf=2
+XM4 cout cin net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.68 nf=4
+XM5 net1 a VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.68 nf=4
+XM6 net2 a VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.68 nf=4
+XM7 cout b net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.68 nf=4
+XM8 net3 b GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.84 nf=2
+XM9 cout b net4 GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.84 nf=2
+XM10 net4 a GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.84 nf=2
+.ends
+

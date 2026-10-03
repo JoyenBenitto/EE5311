@@ -28,30 +28,107 @@ Circuit 1: sky130_fd_pr__pfet_01v8         |Circuit 2: sky130_fd_pr__pfet_01v8
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes sky130_fd_pr__pfet_01v8 and sky130_fd_pr__pfet_01v8 are equivalent.
+Flattening unmatched subcell rca1 in circuit rca8 (0)(8 instances)
+Flattening unmatched subcell sum in circuit rca8 (0)(8 instances)
+Flattening unmatched subcell carry in circuit rca8 (0)(8 instances)
 
+Class rca8 (1):  Merged 80 parallel devices.
 Subcircuit summary:
-Circuit 1: sum                             |Circuit 2: sum                             
+Circuit 1: rca8                            |Circuit 2: rca8                            
 -------------------------------------------|-------------------------------------------
-sky130_fd_pr__nfet_01v8 (7)                |sky130_fd_pr__nfet_01v8 (7)                
-sky130_fd_pr__pfet_01v8 (7)                |sky130_fd_pr__pfet_01v8 (7)                
-Number of devices: 14                      |Number of devices: 14                      
-Number of nets: 13                         |Number of nets: 13                         
+sky130_fd_pr__nfet_01v8 (96)               |sky130_fd_pr__nfet_01v8 (136->96)          
+sky130_fd_pr__pfet_01v8 (96)               |sky130_fd_pr__pfet_01v8 (136->96)          
+Number of devices: 192                     |Number of devices: 192                     
+Number of nets: 115 **Mismatch**           |Number of nets: 108 **Mismatch**           
 ---------------------------------------------------------------------------------------
-Netlists match uniquely.
+NET mismatches: Class fragments follow (with fanout counts):
+Circuit 1: rca8                            |Circuit 2: rca8                            
+
+---------------------------------------------------------------------------------------
+Net: cout7                                 |Net: cin1                                  
+  sky130_fd_pr__nfet_01v8/2 = 1            |  sky130_fd_pr__nfet_01v8/(1|3) = 16       
+  sky130_fd_pr__pfet_01v8/2 = 1            |  sky130_fd_pr__nfet_01v8/2 = 29           
+  sky130_fd_pr__nfet_01v8/(1|3) = 2        |  sky130_fd_pr__pfet_01v8/(1|3) = 16       
+  sky130_fd_pr__pfet_01v8/(1|3) = 2        |  sky130_fd_pr__pfet_01v8/2 = 29           
+                                           |                                           
+Net: net1                                  |(no matching net)                          
+  sky130_fd_pr__nfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__pfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__nfet_01v8/(1|3) = 2        |                                           
+  sky130_fd_pr__pfet_01v8/(1|3) = 2        |                                           
+                                           |                                           
+Net: net2                                  |(no matching net)                          
+  sky130_fd_pr__nfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__pfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__nfet_01v8/(1|3) = 2        |                                           
+  sky130_fd_pr__pfet_01v8/(1|3) = 2        |                                           
+                                           |                                           
+Net: net3                                  |(no matching net)                          
+  sky130_fd_pr__nfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__pfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__nfet_01v8/(1|3) = 2        |                                           
+  sky130_fd_pr__pfet_01v8/(1|3) = 2        |                                           
+                                           |                                           
+Net: net4                                  |(no matching net)                          
+  sky130_fd_pr__nfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__pfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__nfet_01v8/(1|3) = 2        |                                           
+  sky130_fd_pr__pfet_01v8/(1|3) = 2        |                                           
+                                           |                                           
+Net: net7                                  |(no matching net)                          
+  sky130_fd_pr__nfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__pfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__nfet_01v8/(1|3) = 2        |                                           
+  sky130_fd_pr__pfet_01v8/(1|3) = 2        |                                           
+                                           |                                           
+Net: net5                                  |(no matching net)                          
+  sky130_fd_pr__nfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__pfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__nfet_01v8/(1|3) = 2        |                                           
+  sky130_fd_pr__pfet_01v8/(1|3) = 2        |                                           
+                                           |                                           
+Net: net6                                  |(no matching net)                          
+  sky130_fd_pr__nfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__pfet_01v8/2 = 4            |                                           
+  sky130_fd_pr__nfet_01v8/(1|3) = 2        |                                           
+  sky130_fd_pr__pfet_01v8/(1|3) = 2        |                                           
+---------------------------------------------------------------------------------------
+Netlists do not match.
+Port matching may fail to disambiguate symmetries.
 
 Subcircuit pins:
-Circuit 1: sum                             |Circuit 2: sum                             
+Circuit 1: rca8                            |Circuit 2: rca8                            
 -------------------------------------------|-------------------------------------------
+cout7                                      |cin1 **Mismatch**                          
+cin0                                       |cin0                                       
+sout7                                      |sout3 **Mismatch**                         
+sout6                                      |sout2 **Mismatch**                         
+sout5                                      |sout4 **Mismatch**                         
+sout4                                      |sout1 **Mismatch**                         
+sout3                                      |sout5 **Mismatch**                         
+sout2                                      |sout7 **Mismatch**                         
+sout1                                      |sout6 **Mismatch**                         
+sout0                                      |sout0                                      
+b7                                         |b4 **Mismatch**                            
+b6                                         |b5 **Mismatch**                            
+b5                                         |b7 **Mismatch**                            
+b4                                         |b2 **Mismatch**                            
+b3                                         |b1 **Mismatch**                            
+b2                                         |b3 **Mismatch**                            
+b1                                         |b6 **Mismatch**                            
+b0                                         |b0                                         
+a0                                         |a0                                         
+a7                                         |a2 **Mismatch**                            
+a6                                         |a7 **Mismatch**                            
+a5                                         |a3 **Mismatch**                            
+a4                                         |a4                                         
+a3                                         |a6 **Mismatch**                            
+a2                                         |a5 **Mismatch**                            
+a1                                         |a1                                         
 GND                                        |GND                                        
 VDD                                        |VDD                                        
-coutbar                                    |coutbar                                    
-cin                                        |cin                                        
-b                                          |b                                          
-a                                          |a                                          
-sout                                       |sout                                       
 ---------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes sum and sum are equivalent.
+Cell pin lists for rca8 and rca8 altered to match.
+Device classes rca8 and rca8 are equivalent.
 
-Final result: Circuits match uniquely.
-.
+Final result: Top level cell failed pin matching.

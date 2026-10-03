@@ -1,0 +1,54 @@
+| units: 500000 tech: sky130A format: MIT
+x cin cout a_n993_69# VDD s=8400,268 d=10080,456 l=30 w=168 x=-802 y=69 sky130_fd_pr__pfet_01v8
+x b a_n993_69# VDD VDD s=10080,456 d=8400,268 l=30 w=168 x=-526 y=69 sky130_fd_pr__pfet_01v8
+x a a_n2896_148# VDD VDD s=4200,184 d=4200,184 l=30 w=84 x=-2795 y=148 sky130_fd_pr__pfet_01v8
+x b VDD a_n2896_148# VDD s=4200,184 d=4200,184 l=30 w=84 x=-2665 y=148 sky130_fd_pr__pfet_01v8
+x cout sum a_n2896_n203# GND s=5040,288 d=4200,184 l=30 w=84 x=-2925 y=-202 sky130_fd_pr__nfet_01v8
+x b cout a_n1715_69# VDD s=8400,268 d=10080,456 l=30 w=168 x=-1208 y=69 sky130_fd_pr__pfet_01v8
+x a VDD a_n993_69# VDD s=8400,268 d=10080,456 l=30 w=168 x=-136 y=69 sky130_fd_pr__pfet_01v8
+x cin a_n2896_148# VDD VDD s=4200,184 d=5040,288 l=30 w=84 x=-2535 y=148 sky130_fd_pr__pfet_01v8
+x b GND a_n1012_n259# GND s=4200,184 d=4200,184 l=30 w=84 x=-396 y=-258 sky130_fd_pr__nfet_01v8
+x cin a_n1012_n259# cout GND s=5040,288 d=4200,184 l=30 w=84 x=-951 y=-258 sky130_fd_pr__nfet_01v8
+x cout sum a_n2896_148# VDD s=5040,288 d=4200,184 l=30 w=84 x=-2925 y=148 sky130_fd_pr__pfet_01v8
+x cin a_n993_69# cout VDD s=10080,456 d=8400,268 l=30 w=168 x=-932 y=69 sky130_fd_pr__pfet_01v8
+x cin cout a_n1012_n259# GND s=4200,184 d=5040,288 l=30 w=84 x=-821 y=-258 sky130_fd_pr__nfet_01v8
+x a a_n1012_n259# GND GND s=4200,184 d=4200,184 l=30 w=84 x=-266 y=-258 sky130_fd_pr__nfet_01v8
+x cin sum a_n3432_n204# GND s=5040,288 d=4200,184 l=30 w=84 x=-3461 y=-203 sky130_fd_pr__nfet_01v8
+x b a_n1715_69# cout VDD s=10080,456 d=8400,268 l=30 w=168 x=-1338 y=69 sky130_fd_pr__pfet_01v8
+x a a_n993_69# VDD VDD s=8400,268 d=8400,268 l=30 w=168 x=-266 y=69 sky130_fd_pr__pfet_01v8
+x a a_n1715_69# VDD VDD s=8400,268 d=10080,456 l=30 w=168 x=-1614 y=69 sky130_fd_pr__pfet_01v8
+x a GND a_n1012_n259# GND s=4200,184 d=5040,288 l=30 w=84 x=-136 y=-258 sky130_fd_pr__nfet_01v8
+x a a_n2896_n203# GND GND s=4200,184 d=4200,184 l=30 w=84 x=-2795 y=-202 sky130_fd_pr__nfet_01v8
+x a GND a_n1734_n259# GND s=5040,288 d=4200,184 l=30 w=84 x=-1763 y=-258 sky130_fd_pr__nfet_01v8
+x b a_n3432_n204# a_n3302_n204# GND s=4200,184 d=4200,184 l=30 w=84 x=-3331 y=-203 sky130_fd_pr__nfet_01v8
+x b GND a_n2896_n203# GND s=4200,184 d=4200,184 l=30 w=84 x=-2665 y=-202 sky130_fd_pr__nfet_01v8
+x a a_n1734_n259# GND GND s=4200,184 d=5040,288 l=30 w=84 x=-1633 y=-258 sky130_fd_pr__nfet_01v8
+x a a_n3302_n204# GND GND s=4200,184 d=5040,288 l=30 w=84 x=-3201 y=-203 sky130_fd_pr__nfet_01v8
+x b VDD a_n993_69# VDD s=8400,268 d=8400,268 l=30 w=168 x=-396 y=69 sky130_fd_pr__pfet_01v8
+x a VDD a_n1715_69# VDD s=10080,456 d=8400,268 l=30 w=168 x=-1744 y=69 sky130_fd_pr__pfet_01v8
+x b a_n1734_n259# cout GND s=5040,288 d=4200,184 l=30 w=84 x=-1357 y=-258 sky130_fd_pr__nfet_01v8
+x cin sum a_n3432_148# VDD s=5040,288 d=4200,184 l=30 w=84 x=-3461 y=148 sky130_fd_pr__pfet_01v8
+x cin a_n2896_n203# GND GND s=4200,184 d=5040,288 l=30 w=84 x=-2535 y=-202 sky130_fd_pr__nfet_01v8
+x b a_n1012_n259# GND GND s=5040,288 d=4200,184 l=30 w=84 x=-526 y=-258 sky130_fd_pr__nfet_01v8
+x b a_n3432_148# a_n3302_148# VDD s=4200,184 d=4200,184 l=30 w=84 x=-3331 y=148 sky130_fd_pr__pfet_01v8
+x a a_n3302_148# VDD VDD s=4200,184 d=5040,288 l=30 w=84 x=-3201 y=148 sky130_fd_pr__pfet_01v8
+x b cout a_n1734_n259# GND s=4200,184 d=5040,288 l=30 w=84 x=-1227 y=-258 sky130_fd_pr__nfet_01v8
+R sum 2384
+R cout 4125
+= cout in
+R a 6572
+R b 6361
+R cin 4858
+C VDD0 4.2
+R VDD 21406
+R GND 5094
+R a_n1012_n259# 2749
+R a_n1734_n259# 1540
+R a_n2896_n203# 798
+R a_n3302_n204# 168
+R a_n3432_n204# 168
+R a_n993_69# 4802
+R a_n1715_69# 2614
+R a_n2896_148# 1347
+R a_n3302_148# 259
+R a_n3432_148# 259

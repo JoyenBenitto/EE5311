@@ -1,0 +1,39 @@
+* NGSPICE file created from rca1.ext - technology: sky130A
+
+.subckt rca1 cout cin b a sum GND VDD
+X0 a_n993_69# cin cout VDD sky130_fd_pr__pfet_01v8 ad=0.252 pd=2.28 as=0.21 ps=1.34 w=0.84 l=0.15
+X1 VDD b a_n993_69# VDD sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.252 ps=2.28 w=0.84 l=0.15
+X2 VDD a a_n2896_148# VDD sky130_fd_pr__pfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X3 a_n2896_148# b VDD VDD sky130_fd_pr__pfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X4 a_n2896_n203# cout sum GND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X5 a_n1715_69# b cout VDD sky130_fd_pr__pfet_01v8 ad=0.252 pd=2.28 as=0.21 ps=1.34 w=0.84 l=0.15
+X6 a_n993_69# a VDD VDD sky130_fd_pr__pfet_01v8 ad=0.252 pd=2.28 as=0.21 ps=1.34 w=0.84 l=0.15
+X7 VDD cin a_n2896_148# VDD sky130_fd_pr__pfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X8 a_n1012_n259# b GND GND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X9 cout cin a_n1012_n259# GND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X10 a_n2896_148# cout sum VDD sky130_fd_pr__pfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X11 cout cin a_n993_69# VDD sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.252 ps=2.28 w=0.84 l=0.15
+X12 a_n1012_n259# cin cout GND sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X13 GND a a_n1012_n259# GND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X14 a_n3432_n204# cin sum GND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X15 cout b a_n1715_69# VDD sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.252 ps=2.28 w=0.84 l=0.15
+X16 VDD a a_n993_69# VDD sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.21 ps=1.34 w=0.84 l=0.15
+X17 VDD a a_n1715_69# VDD sky130_fd_pr__pfet_01v8 ad=0.252 pd=2.28 as=0.21 ps=1.34 w=0.84 l=0.15
+X18 a_n1012_n259# a GND GND sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X19 GND a a_n2896_n203# GND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X20 a_n1734_n259# a GND GND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X21 a_n3302_n204# b a_n3432_n204# GND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X22 a_n2896_n203# b GND GND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X23 GND a a_n1734_n259# GND sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X24 GND a a_n3302_n204# GND sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X25 a_n993_69# b VDD VDD sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.21 ps=1.34 w=0.84 l=0.15
+X26 a_n1715_69# a VDD VDD sky130_fd_pr__pfet_01v8 ad=0.21 pd=1.34 as=0.252 ps=2.28 w=0.84 l=0.15
+X27 cout b a_n1734_n259# GND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X28 a_n3432_148# cin sum VDD sky130_fd_pr__pfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X29 GND cin a_n2896_n203# GND sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X30 GND b a_n1012_n259# GND sky130_fd_pr__nfet_01v8 ad=0.105 pd=0.92 as=0.126 ps=1.44 w=0.42 l=0.15
+X31 a_n3302_148# b a_n3432_148# VDD sky130_fd_pr__pfet_01v8 ad=0.105 pd=0.92 as=0.105 ps=0.92 w=0.42 l=0.15
+X32 VDD a a_n3302_148# VDD sky130_fd_pr__pfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+X33 a_n1734_n259# b cout GND sky130_fd_pr__nfet_01v8 ad=0.126 pd=1.44 as=0.105 ps=0.92 w=0.42 l=0.15
+.ends
+

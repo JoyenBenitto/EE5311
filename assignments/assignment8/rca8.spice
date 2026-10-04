@@ -1,7 +1,7 @@
 ** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment8/rca8.sch
-.subckt rca8 VDD GND a1 a5 a2 a4 a7 a3 a6 a0 b5 b0 b2 b4 b1 b7 b3 b6 cin0 sout5 sout4 sout2 cout7 sout7 sout6 sout3 sout1 sout0
-*.PININFO a0:I b0:I cin0:I sout0:O VDD:B GND:B a1:I b1:I sout1:O VDD:B GND:B a2:I b2:I sout2:O VDD:B GND:B a3:I b3:I sout3:O VDD:B
-*+ GND:B a4:I b4:I sout4:O VDD:B GND:B a5:I b5:I sout5:O VDD:B GND:B a6:I b6:I sout6:O VDD:B GND:B a7:I b7:I sout7:O VDD:B GND:B cout7:O
+.subckt rca8 VDD GND a2 a4 a3 a7 a5 a1 a6 a0 b3 b0 b5 b6 b2 b7 b1 b4 cin0 cout7 sout3 sout7 sout6 sout2 sout5 sout4 sout1 sout0
+*.PININFO a0:I b0:I cin0:I sout0:O VDD:B GND:B a1:I b1:I sout1:O a2:I b2:I sout2:O a3:I b3:I sout3:O a4:I b4:I sout4:O a5:I b5:I
+*+ sout5:O a6:I b6:I sout6:O a7:I b7:I sout7:O cout7:O
 x1 VDD a0 b0 cin0 GND net1 sout0 rca1
 x2 VDD a1 b1 net1 GND net2 sout1 rca1
 x3 VDD a2 b2 net2 GND net3 sout2 rca1

@@ -35,15 +35,13 @@ N 650 -180 720 -180 {lab=cout}
 N 650 -90 740 -90 {lab=sout7}
 C {rca8.sym} -30 -30 0 0 {name=x1}
 C {code_shown.sym} 1070 -660 0 0 {name=sim only_toplevel=false value="
+.include "rca8_extracted.spice"
 .control
 alter @va2[pulse] = [ 0 1.8 0 10p 10p 4n 8n ]
 
 tran 1p 20n
-meas tran delay_cin_net1 TRIG v(cin) VAL=0.9 RISE=3 TARG v(cout) VAL=0.9 FALL=3
+* meas tran delay_cin_net1 TRIG v(cin) VAL=0.9 RISE=3 TARG v(cout) VAL=0.9 FALL=3
 plot v(cin) v(sout1)
-
-* Print only the last value for each vector
-print v(sout0)[length(v(sout0))-1] v(sout1)[length(v(sout1))-1] v(sout2)[length(v(sout2))-1]
 .endc
 "}
 C {sky130_fd_pr/corner.sym} 1200 -290 0 0 {name=CORNER only_toplevel=false corner=tt}

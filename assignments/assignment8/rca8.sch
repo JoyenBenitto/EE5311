@@ -94,6 +94,8 @@ N 4080 200 4160 200 {lab=VDD}
 N 4160 -190 4160 200 {lab=VDD}
 N 3600 -200 4160 -190 {lab=VDD}
 N 3600 -200 3600 -170 {lab=VDD}
+N 2920 200 3020 200 {lab=VDD}
+N 3020 -180 3020 200 {lab=VDD}
 C {ipin.sym} -270 200 0 0 {name=p13 lab=a0}
 C {ipin.sym} -270 220 0 0 {name=p16 lab=b0}
 C {ipin.sym} -270 240 0 0 {name=p1 lab=cin0}

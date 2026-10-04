@@ -1,23 +1,33 @@
 ** sch_path: /home/joyen/ee5311/EE5311/assignments/assignment8/assignrca1.sch
 **.subckt assignrca1
-x1 cout cin val0 val_1 val0 val_1 val0 val_1 val0 val_1 val0 val_1 val0 val_1 val0 val0 val0 val_1 sout0 sout1 sout2 sout3 sout4
-+ sout5 sout6 net1 gnd VDD rca8
+x1 net2 cin val1 val0 val0 val1 val1 val0 val0 val1 val1 val0 val0 val1 val1 val0 val0 val1 sout0 sout1 sout2 sout3 sout4 sout5
++ sout6 net1 gnd VDD rca8
 vdd VDD gnd 1.8
 va3 val0 gnd 0
-va4 val_1 gnd 1.8
+va4 val1 gnd 1.8
 va2 cin gnd 1.8
 x2 VDD net1 sout7 gnd inv
-x3 VDD cout cout gnd inv
+x3 VDD net2 cout gnd inv
 **** begin user architecture code
 
 
 .include rca8_extracted.spice
 .control
+* Set up the input pulse
 alter @va2[pulse] = [ 0 1.8 0 10p 10p 4n 8n ]
 
-tran 1p 20n
-* meas tran delay_cin_net1 TRIG v(cin) VAL=0.9 RISE=3 TARG v(cout) VAL=0.9 FALL=3
-plot v(cin) v(sout1)
+* Extend transient time to 40n to avoid 'out of interval' errors
+tran 1p 40n
+
+* Measure critical path delay from cin to cout
+meas tran delay_cin_cout TRIG v(cin) VAL=0.9 RISE=3 TARG v(cout) VAL=0.9 FALL=3
+
+* Measure critical path delay from cin to MSB sum (sout7)
+meas tran delay_cin_sout7 TRIG v(cin) VAL=0.9 RISE=3 TARG v(sout7) VAL=0.9 FALL=3
+
+* Print the delay results for your summary table
+print delay_cin_cout delay_cin_sout7
+plot v(cin) v(cout)
 .endc
 
 

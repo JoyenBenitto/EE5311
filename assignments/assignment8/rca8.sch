@@ -52,10 +52,8 @@ N 230 0 230 220 {lab=GND}
 N 230 0 510 -0 {lab=GND}
 N 640 220 760 220 {lab=GND}
 N 760 0 760 220 {lab=GND}
-N 510 -0 760 -0 {lab=GND}
 N 1220 220 1360 220 {lab=GND}
 N 1360 0 1360 220 {lab=GND}
-N 750 -0 1360 0 {lab=GND}
 N 1800 220 1920 220 {lab=GND}
 N 1920 0 1920 220 {lab=GND}
 N 1360 -0 1920 0 {lab=GND}
@@ -96,6 +94,7 @@ N 3600 -200 4160 -190 {lab=VDD}
 N 3600 -200 3600 -170 {lab=VDD}
 N 2920 200 3020 200 {lab=VDD}
 N 3020 -180 3020 200 {lab=VDD}
+N 510 0 1360 0 {lab=GND}
 C {ipin.sym} -270 200 0 0 {name=p13 lab=a0}
 C {ipin.sym} -270 220 0 0 {name=p16 lab=b0}
 C {ipin.sym} -270 240 0 0 {name=p1 lab=cin0}

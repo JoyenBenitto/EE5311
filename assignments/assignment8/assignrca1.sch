@@ -36,22 +36,23 @@ N 650 -90 740 -90 {lab=sout7}
 C {rca8.sym} -30 -30 0 0 {name=x1}
 C {code_shown.sym} 1060 -760 0 0 {name=sim only_toplevel=false value="
 .include "rca8_extracted.spice"
+.save all
 .control
-* Set up the input pulse
 alter @va2[pulse] = [ 0 1.8 0 10p 10p 4n 8n ]
+tran 5p 40n
 
-* Extend transient time to 40n to avoid 'out of interval' errors
-tran 1p 40n
+* cin -> cout7 (adder output, before the load inverter x3)
+meas tran c_delay_fall TRIG v(cin) VAL=0.9 RISE=3 TARG v(cout) VAL=0.9 FALL=3
+meas tran c_delay_rise TRIG v(cin) VAL=0.9 FALL=3 TARG v(cout) VAL=0.9 RISE=3
 
-* Measure critical path delay from cin to cout
-meas tran delay_cin_cout TRIG v(cin) VAL=0.9 RISE=3 TARG v(cout) VAL=0.9 FALL=3
+* cin -> sum7 (adder output, before the output inverter x2)
+meas tran s_delay_rise TRIG v(cin) VAL=0.9 RISE=3 TARG v(sout7) VAL=0.9 RISE=3
+meas tran s_delay_fall TRIG v(cin) VAL=0.9 FALL=3 TARG v(sout7) VAL=0.9 FALL=3
 
-* Measure critical path delay from cin to MSB sum (sout7)
-meas tran delay_cin_sout7 TRIG v(cin) VAL=0.9 RISE=3 TARG v(sout7) VAL=0.9 FALL=3
-
-* Print the delay results for your summary table
-print delay_cin_cout delay_cin_sout7
-plot v(cin) v(cout)
+let cin_to_cout=(c_delay_rise+c_delay_fall)/2
+let cin_to_s7=(s_delay_rise+s_delay_fall)/2
+print cin_to_cout cin_to_s7
+plot v(cin) v(net2) v(net1)
 .endc
 "}
 C {sky130_fd_pr/corner.sym} 1200 -290 0 0 {name=CORNER only_toplevel=false corner=tt}

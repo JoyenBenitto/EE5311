@@ -35,7 +35,7 @@ N 650 -180 720 -180 {lab=cout}
 N 650 -90 740 -90 {lab=sout7}
 C {rca8.sym} -30 -30 0 0 {name=x1}
 C {code_shown.sym} 1060 -760 0 0 {name=sim only_toplevel=false value="
-.include "rca8_extracted.spice"
+*.include "rca8_extracted.spice"
 .save all
 .control
 alter @va2[pulse] = [ 0 1.8 0 10p 10p 4n 8n ]
@@ -52,7 +52,7 @@ meas tran s_delay_fall TRIG v(cin) VAL=0.9 FALL=3 TARG v(sout7) VAL=0.9 FALL=3
 let cin_to_cout=(c_delay_rise+c_delay_fall)/2
 let cin_to_s7=(s_delay_rise+s_delay_fall)/2
 print cin_to_cout cin_to_s7
-plot v(cin) v(net2) v(net1)
+plot v(cin) v(cout) v(sout7)
 .endc
 "}
 C {sky130_fd_pr/corner.sym} 1200 -290 0 0 {name=CORNER only_toplevel=false corner=tt}

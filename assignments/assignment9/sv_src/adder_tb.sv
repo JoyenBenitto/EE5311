@@ -1,19 +1,24 @@
+`include "config.svh"
+
 module adder_tb;
 
-parameter int width = 16;
+parameter int width = `WIDTH;
 
 logic [width-1:0] a, b;
-logic cin, cout;
+logic clk = 0, cin, cout;
 logic [width-1:0] sum;
 logic [width:0] expected;
 int count, errors;
 
-adder #(.width(width)) dut (.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout));
+adder #(.width(width)) dut (.clk(clk), .a(a), .b(b), .cin(cin), .sum(sum), .cout(cout));
+
+always #5 clk = ~clk;
 
 assign expected = a + b + cin;
 
 task automatic check();
-    #10; // let the combinational adder settle
+    repeat (2) @(posedge clk); // input register, then output register
+    #1;
     if ({cout, sum} !== expected) begin
         errors++;
         $error("%0d): a = %h, b = %h, cin = %b, {cout,sum} = %h, expected = %h", count, a, b, cin, {cout, sum}, expected);

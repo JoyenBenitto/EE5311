@@ -1,0 +1,70 @@
+\title{EE5311 -- Assignment 9}
+\author{Joyen Benitto}
+\date{\today}
+\maketitle
+
+\section{Problem 1: 16-bit carry-bypass adder}
+
+\subsubsection{(a) Design}
+
+Four 4-bit ripple blocks (\texttt{bypass\_block}) and a bypass mux after each of the first three (\texttt{bypass\_logic}); the last block has no mux, as in the figure. The mux selects $C_{in}$ of the block when every bit propagates ($\&(a \oplus b)$), otherwise the ripple carry. A \texttt{clk} input was added and \texttt{a}, \texttt{b}, \texttt{cin} are registered on the inputs and \texttt{sum}, \texttt{cout} on the outputs.
+
+\subsubsection{(b) Testbench}
+
+100 random vectors (\texttt{\$urandom()}), including random \texttt{cin}; \texttt{\{cout,sum\}} is compared with \texttt{a + b + cin} after two clock edges (input and output registers).
+
+\textbf{Result: PASS, 100 vectors.} Width is selected with \texttt{make sim WIDTH=16|32}.
+
+\subsubsection{(c) Synthesis (Yosys, sky130\_fd\_sc\_hd tt\_025C\_1v80)}
+
+The bypass logic is logically redundant, so with a flat synthesis ABC removes the muxes and returns a plain ripple adder (16 \texttt{maj3} + 32 \texttt{xnor2}). \texttt{keep\_hierarchy} on \texttt{bypass\_block} and \texttt{bypass\_logic} keeps the bypass structure.
+
+\begin{center}
+\begin{tabular}{lcc}
+\hline
+Cell & 16-bit & 32-bit \\
+\hline
+\texttt{dfxtp\_1} (flip-flop) & 50 & 98 \\
+\texttt{maj3\_1} & 16 & 32 \\
+\texttt{xnor2\_1} & 32 & 64 \\
+\texttt{xor2\_1} & 12 & 28 \\
+\texttt{nand4\_1} & 3 & 7 \\
+\texttt{mux2\_1} & 3 & 7 \\
+\hline
+Total & 116 & 236 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{(d) STA}
+
+Clock period 3~ns. Critical path of the whole netlist:
+flip-flop $\to$ ripple through all four blocks and all three muxes $\to$ flip-flop.
+\textbf{Arrival 7.39~ns, slack $-4.51$~ns.}
+
+\subsubsection{(e) Is it right? No}
+
+This path needs every bit of block $i$ to propagate (so the carry ripples the whole block) and, at the same time, the bypass mux of block $i$ to take the ripple carry. A full ripple means $\text{propagate}=1$, so the mux selects $C_{in}$ instead. The path is false. It was removed with
+\begin{verbatim}
+set_false_path -through [get_pins genblk1[i].bypass_block_inst/cin] \
+               -through [get_pins genblk1[i].bypass_block_inst/cout]
+\end{verbatim}
+for $i = 0 \ldots 2$ (not the last block: it has no mux, so its ripple is real). The real critical path is the ripple through block~0, the three bypass muxes, then the ripple through block~3. \textbf{Arrival 4.33~ns, slack $-1.46$~ns} (so a period of about 4.5~ns is needed).
+
+\section{Problem 2: 32-bit carry-bypass adder}
+
+The module is parameterized by \texttt{width} (\texttt{num\_stages = width/4}, so 8 blocks of 4 bits, 7 bypass muxes). All parts repeated with \texttt{make ... WIDTH=32}.
+
+\begin{center}
+\begin{tabular}{lcc}
+\hline
+ & 16-bit & 32-bit \\
+\hline
+Testbench (100 vectors) & PASS & PASS \\
+Critical path before false path & 7.39~ns (slack $-4.51$) & 14.82~ns (slack $-11.95$) \\
+Critical path after false path & 4.33~ns (slack $-1.46$) & 5.67~ns (slack $-2.79$) \\
+\hline
+\end{tabular}
+\end{center}
+
+The false-path-free critical path grows by 1.34~ns for 16 extra bits (four more muxes), rather than growing with the full width as a ripple adder would.

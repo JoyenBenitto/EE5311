@@ -2,4 +2,5 @@
 *.pdf
 *.zip
 *.swp
+build/
 NS26Z186

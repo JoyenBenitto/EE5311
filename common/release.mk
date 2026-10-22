@@ -19,7 +19,7 @@ release: all
 	@echo "Packaging $(ROLLNO).zip for $(ASSIGN_NAME)..."
 	@rm -rf .release_stage $(ROLLNO).zip
 	@mkdir -p .release_stage/$(ROLLNO)
-	@cp $(RELEASE_FILES) .release_stage/$(ROLLNO)/
+	@cp -r $(RELEASE_FILES) .release_stage/$(ROLLNO)/
 	@echo "Source, simulation setup, and build instructions:" > .release_stage/$(ROLLNO)/README.md
 	@echo "$(REPO_URL)/tree/main/assignments/$(ASSIGN_NAME)" >> .release_stage/$(ROLLNO)/README.md
 	@cd .release_stage && zip -q -r ../$(ROLLNO).zip $(ROLLNO)

@@ -5,19 +5,16 @@ module adder_tb;
 parameter int width = `WIDTH;
 
 logic [width-1:0] a, b;
-logic clk = 0, cin, cout;
+logic cin, cout;
 logic [width-1:0] sum;
 logic [width:0] expected;
 int count, errors;
 
-adder #(.width(width)) dut (.clk(clk), .a(a), .b(b), .cin(cin), .sum(sum), .cout(cout));
-
-always #5 clk = ~clk;
+adder #(.width(width)) dut (.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout));
 
 assign expected = a + b + cin;
 
 task automatic check();
-    repeat (2) @(posedge clk); // input register, then output register
     #1;
     if ({cout, sum} !== expected) begin
         errors++;

@@ -27,7 +27,21 @@ sta:
 	@echo "Running STA..."
 	@cd sta && STAGES=$$(($(WIDTH)/4)) sta -no_init -exit sta.tcl
 
-.PHONY: report
-report:
-	pandoc index.tex -o index.pdf --template=../../common/template.tex --pdf-engine=pdflatex \
+.PHONY: all
+all: index.pdf
+
+TEMPLATE := ../../common/template.tex
+
+index.pdf: index.tex $(TEMPLATE)
+	pandoc index.tex -o index.pdf --template=$(TEMPLATE) --pdf-engine=pdflatex \
 		--toc --number-sections -V boxlinks=true -V graphics=true
+
+.PHONY: report
+report: index.pdf
+
+clean: clean-release
+	rm -f index.pdf
+
+include ../../common/release.mk
+# sources and logs shipped in the zip (directories are copied recursively)
+RELEASE_FILES += Makefile sv_src synth sta report

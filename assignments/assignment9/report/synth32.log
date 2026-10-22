@@ -100,7 +100,7 @@ Removed a total of 0 dead cases.
 
 4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
 Removed 0 redundant assignments.
-Promoted 10 assignments to connections.
+Promoted 5 assignments to connections.
 
 4.2.4. Executing PROC_INIT pass (extract init attributes).
 
@@ -110,33 +110,21 @@ Promoted 10 assignments to connections.
 Converted 0 switches.
 
 4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
-Creating decoders for process `\adder.$proc$../sv_src/adder.sv:65$31'.
-Creating decoders for process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$52'.
+Creating decoders for process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$51'.
 
 4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
-No latch inferred for signal `$paramod\bypass_block\width=s32'00000000000000000000000000000100.\c[0]' from process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$52'.
-No latch inferred for signal `$paramod\bypass_block\width=s32'00000000000000000000000000000100.\c[1]' from process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$52'.
-No latch inferred for signal `$paramod\bypass_block\width=s32'00000000000000000000000000000100.\c[2]' from process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$52'.
-No latch inferred for signal `$paramod\bypass_block\width=s32'00000000000000000000000000000100.\c[3]' from process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$52'.
-No latch inferred for signal `$paramod\bypass_block\width=s32'00000000000000000000000000000100.\c[4]' from process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$52'.
+No latch inferred for signal `$paramod\bypass_block\width=s32'00000000000000000000000000000100.\c[0]' from process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$51'.
+No latch inferred for signal `$paramod\bypass_block\width=s32'00000000000000000000000000000100.\c[1]' from process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$51'.
+No latch inferred for signal `$paramod\bypass_block\width=s32'00000000000000000000000000000100.\c[2]' from process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$51'.
+No latch inferred for signal `$paramod\bypass_block\width=s32'00000000000000000000000000000100.\c[3]' from process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$51'.
+No latch inferred for signal `$paramod\bypass_block\width=s32'00000000000000000000000000000100.\c[4]' from process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$51'.
 
 4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
-Creating register for signal `\adder.\sum' using process `\adder.$proc$../sv_src/adder.sv:65$31'.
-  created $dff cell `$procdff$56' with positive edge clock.
-Creating register for signal `\adder.\cout' using process `\adder.$proc$../sv_src/adder.sv:65$31'.
-  created $dff cell `$procdff$57' with positive edge clock.
-Creating register for signal `\adder.\a_q' using process `\adder.$proc$../sv_src/adder.sv:65$31'.
-  created $dff cell `$procdff$58' with positive edge clock.
-Creating register for signal `\adder.\b_q' using process `\adder.$proc$../sv_src/adder.sv:65$31'.
-  created $dff cell `$procdff$59' with positive edge clock.
-Creating register for signal `\adder.\cin_q' using process `\adder.$proc$../sv_src/adder.sv:65$31'.
-  created $dff cell `$procdff$60' with positive edge clock.
 
 4.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
 
 4.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
-Removing empty process `adder.$proc$../sv_src/adder.sv:65$31'.
-Removing empty process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$52'.
+Removing empty process `$paramod\bypass_block\width=s32'00000000000000000000000000000100.$proc$../sv_src/adder.sv:0$51'.
 Cleaned up 0 empty switches.
 
 4.2.12. Executing OPT_EXPR pass (perform const folding).
@@ -173,8 +161,8 @@ Optimizing module adder.
 Finding unused cells or wires in module $paramod\bypass_logic\width=s32'00000000000000000000000000000100..
 Finding unused cells or wires in module $paramod\bypass_block\width=s32'00000000000000000000000000000100..
 Finding unused cells or wires in module \adder..
-Removed 0 unused cells and 40 unused wires.
-<suppressed ~3 debug messages>
+Removed 0 unused cells and 35 unused wires.
+<suppressed ~2 debug messages>
 
 4.6. Executing CHECK pass (checking for obvious problems).
 Checking module $paramod\bypass_block\width=s32'00000000000000000000000000000100...
@@ -570,14 +558,13 @@ Generating RTLIL representation for module `\_90_lut'.
 Successfully finished Verilog frontend.
 
 4.21.2. Continuing TECHMAP pass.
-Using extmapper simplemap for cells of type $dff.
 Using extmapper simplemap for cells of type $xor.
 Using extmapper simplemap for cells of type $reduce_and.
 Using extmapper simplemap for cells of type $mux.
-Using extmapper simplemap for cells of type $or.
 Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $or.
 No more expansions possible.
-<suppressed ~103 debug messages>
+<suppressed ~98 debug messages>
 
 4.22. Executing OPT pass (performing simple optimizations).
 
@@ -739,17 +726,16 @@ Removed 0 unused modules.
 
 === adder ===
 
-   Number of wires:                 13
-   Number of wire bits:            213
-   Number of public wires:          13
-   Number of public wire bits:     213
-   Number of ports:                  6
-   Number of port bits:             99
+   Number of wires:                  7
+   Number of wire bits:            114
+   Number of public wires:           7
+   Number of public wire bits:     114
+   Number of ports:                  5
+   Number of port bits:             98
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                113
-     $_DFF_P_                       98
+   Number of cells:                 15
      $paramod\bypass_block\width=s32'00000000000000000000000000000100      8
      $paramod\bypass_logic\width=s32'00000000000000000000000000000100      7
 
@@ -759,19 +745,18 @@ Removed 0 unused modules.
      $paramod\bypass_block\width=s32'00000000000000000000000000000100      8
      $paramod\bypass_logic\width=s32'00000000000000000000000000000100      7
 
-   Number of wires:                385
-   Number of wire bits:            699
-   Number of public wires:         216
-   Number of public wire bits:     530
-   Number of ports:                 81
-   Number of port bits:            288
+   Number of wires:                379
+   Number of wire bits:            600
+   Number of public wires:         210
+   Number of public wire bits:     431
+   Number of ports:                 80
+   Number of port bits:            287
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                346
+   Number of cells:                248
      $_ANDNOT_                      40
      $_AND_                         16
-     $_DFF_P_                       98
      $_MUX_                          7
      $_NAND_                        16
      $_NOR_                         16
@@ -824,7 +809,6 @@ Found gzip magic in file `/cad/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sk
 Mapping DFF cells in module `$paramod\bypass_block\width=s32'00000000000000000000000000000100':
 Mapping DFF cells in module `$paramod\bypass_logic\width=s32'00000000000000000000000000000100':
 Mapping DFF cells in module `\adder':
-  mapped 98 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_1 cells.
 
 6. Executing ABC pass (technology mapping using ABC).
 
@@ -932,8 +916,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_2
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_4".
-ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/cad/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib.gz" has 334 cells (94 skipped: 63 seq; 13 tri-state; 18 no func; 0 dont_use).  Time =     0.12 sec
-ABC: Memory =   19.85 MB. Time =     0.12 sec
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/cad/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib.gz" has 334 cells (94 skipped: 63 seq; 13 tri-state; 18 no func; 0 dont_use).  Time =     0.13 sec
+ABC: Memory =   19.85 MB. Time =     0.13 sec
 ABC: Warning: Detected 9 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -967,7 +951,7 @@ ABC: ABC command line: "source <abc-temp-dir>/abc.script".
 ABC: 
 ABC: + read_blif <abc-temp-dir>/input.blif 
 ABC: + read_lib -w /cad/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib.gz 
-ABC: Parsing finished successfully.  Parsing time =     0.09 sec
+ABC: Parsing finished successfully.  Parsing time =     0.10 sec
 ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_12" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_3" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_4" without logic function.
@@ -1130,19 +1114,18 @@ Removing temp directory.
 
 === adder ===
 
-   Number of wires:                 13
-   Number of wire bits:            213
-   Number of public wires:          13
-   Number of public wire bits:     213
-   Number of ports:                  6
-   Number of port bits:             99
+   Number of wires:                  7
+   Number of wire bits:            114
+   Number of public wires:           7
+   Number of public wire bits:     114
+   Number of ports:                  5
+   Number of port bits:             98
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                113
+   Number of cells:                 15
      $paramod\bypass_block\width=s32'00000000000000000000000000000100      8
      $paramod\bypass_logic\width=s32'00000000000000000000000000000100      7
-     sky130_fd_sc_hd__dfxtp_1       98
 
 === design hierarchy ===
 
@@ -1150,18 +1133,17 @@ Removing temp directory.
      $paramod\bypass_block\width=s32'00000000000000000000000000000100      8
      $paramod\bypass_logic\width=s32'00000000000000000000000000000100      7
 
-   Number of wires:                665
-   Number of wire bits:            979
-   Number of public wires:         216
-   Number of public wire bits:     530
-   Number of ports:                 81
-   Number of port bits:            288
+   Number of wires:                659
+   Number of wire bits:            880
+   Number of public wires:         210
+   Number of public wire bits:     431
+   Number of ports:                 80
+   Number of port bits:            287
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                268
+   Number of cells:                170
      $scopeinfo                     32
-     sky130_fd_sc_hd__dfxtp_1       98
      sky130_fd_sc_hd__maj3_1        32
      sky130_fd_sc_hd__mux2_1         7
      sky130_fd_sc_hd__nand4_1        7
@@ -1183,6 +1165,6 @@ Dumping module adder to page 1.
 Exec: dot -Tsvg '../build/synth/adder.dot' > '../build/synth/adder.svg.new' && mv '../build/synth/adder.svg.new' '../build/synth/adder.svg'
 
 Warnings: 1 unique messages, 2 total
-End of script. Logfile hash: 2df2465735, CPU: user 0.27s system 0.02s, MEM: 42.62 MB peak
+End of script. Logfile hash: 5cb91fc72a, CPU: user 0.25s system 0.02s, MEM: 41.68 MB peak
 Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
-Time spent: 50% 2x abc (0 sec), 21% 1x show (0 sec), ...
+Time spent: 60% 2x abc (0 sec), 11% 2x read_liberty (0 sec), ...
